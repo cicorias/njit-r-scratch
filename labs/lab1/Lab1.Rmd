@@ -31,4 +31,119 @@ sqrt( (4+3) * (2+1))
 1. 2^ (3^4)  **OR**  $2^{3^4}$
 
 
+## Exercise 1.3
 
+```{r}
+(1 + 2 * 3^4) / (5/6 - 7)
+```
+
+## Exercise 1.4
+```{r}
+(0.25 - 0.2) / sqrt( 0.2 * (1 - 0.2)/100 )
+
+```
+
+## Exercise 1.5
+```{r}
+v1 <- 2; v2 <- 3; v3 <- 4; v4 <- 5
+
+v1 * v2 * v3 * v4
+
+```
+
+## Exercise 1.6
+
+```{r}
+rivers
+tail(rivers, n = 1)
+```
+
+
+
+## Exercise 1.7
+
+```{r}
+library('UsingR')
+data("exec.pay")
+exec.pay
+#View(exec.pay)
+message("last value: ", tail(exec.pay, n = 1))
+message("max: ", max(exec.pay))
+rm(exec.pay)
+
+```
+
+## Exercise 1.8
+
+```{r}
+message("mean: ", mean(exec.pay))
+message("min: ", min(exec.pay))
+message("max: ", max(exec.pay))
+```
+
+## Exercise 1.9 
+
+```{r}
+message("mean: ", mean(exec.pay))
+message("with trim 10%: ", mean(exec.pay, trim = 0.10))
+```
+
+## Exercise 1.10
+
+```{r}
+#?Orange
+#Orange
+colnames(Orange)
+```
+
+
+## Exercise 1.11
+
+```{r}
+
+tree_avg = mean(Orange$age)
+message("tree avg age: ", tree_avg)
+```
+
+## Exercise 1.12
+
+```{r}
+max_circumference = max(Orange$circumference)
+message("max circumference: ", max_circumference)
+```
+
+
+## Exercise 1.18
+
+```{r}
+x = c(1, 3, 5, 7, 9)
+y = c(2, 3, 5, 7, 11, 13)
+length(x)
+length(y)
+# x + y
+x>5
+x[x>5]
+sum(x>5)
+sum(x[x>5])
+sum(x>5|x<3)
+y[3]
+y[-3]
+y[x]
+y[y>=7] 
+```
+
+
+|formula|guess|
+|-------|-----|
+|x+1|c(2, 4, 6, 8, 10)|
+|y*2|c(4, 6, 10, 14, 22, 26)|
+|length (x) and length (y)|5 and 6||
+x+y (recycling)|c(3, 6, 10, 14, 20, 13)  **ended up as an exception - "longer object length is not a multiple of shorter object length" **|
+|sum(x>5) and sum(x[x>5])|2 and 16|
+|sum(x>5|x<3)|3|
+|y[3]|5|
+|y[−3]|7      -> **I guessed this wrong - turns our it 'drops' an element**|
+|y[x] (What is NA?)|??|
+|y[y>=7]|c(7, 11, 13)|
+ 
+ 
