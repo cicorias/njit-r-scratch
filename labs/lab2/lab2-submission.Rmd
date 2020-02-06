@@ -7,11 +7,34 @@ output: html_notebook
 library(readr)
 
 
+myframe <- read.csv(".data/attributes.csv", sep = ",", header = TRUE, na.strings = "NA", strip.white = TRUE, stringsAsFactors = FALSE)
+
+
+
+message(getwd())
+attributes <- read_csv(".data/attributes.csv")
+prod_description <- read_csv(".data/product_descriptions.csv")
+sample_submission <- read_csv(".data/sample_submission.csv")
+test_data <- read_csv(".data/test.csv")
+train_data <- read_csv(".data/train.csv")
 
 ```
 
 
 ```{r}
+
+get_last_row <- function(x) {
+  number_rows <- nrow(x)
+  number_cols <-  length(x)
+  rv <- list("number_rows" = number_rows, "number_columns" = number_cols)
+  return(rv)
+}
+
+```
+
+```{r}
+
+get_last_row(attributes)
 
 ```
 
