@@ -1,109 +1,231 @@
 ---
-title: "R Notebook"
-output: html_notebook
+title: "Lab 2 Submission"
+author: "Shawn Cicoria"
+date: 2020-04-08
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
 ---
 
-```{r}
 
 
-initial <- read.table(".data/attributes.csv", nrows = 10)
-#classes <- sapply(initial, class)
-#tabAll <- read.table(".data/attributes.csv", colClasses = classes)
+## Question 1
 
 
-```
+### a) & f) result
+```{r basereadcsv}
 
-
-```{r}
-library(readr)
+skip_a = F  #used for quick skip of long running read
 
 rm(list = ls(pattern="^a_"))
 
-system.time({
-  message(getwd())
-  a_attributes1 <- read.csv(".data/attributes.csv")
-  a_prod_description1 <- read.csv(".data/product_descriptions.csv")
-  a_sample_submission1 <- read.csv(".data/sample_submission.csv")
-  a_test_data1 <- read.csv(".data/test.csv")
-  a_train_data1 <- read.csv(".data/train.csv")
-})
-
-rm(list = ls(pattern="^a_"))
-
-```
-
-```{r}
-myframe <- read.csv(".data/attributes.csv", sep = ",", header = TRUE, na.strings = "NA", strip.white = TRUE, stringsAsFactors = FALSE)
-```
-
-
-```{r}
-rm(list = ls(pattern="^b_"))
-system.time({
-  message(getwd())
-  b_attributes2 <- read_csv(".data/attributes.csv", col_types = cols())
-  b_prod_description2 <- read_csv(".data/product_descriptions.csv", col_types = cols())
-  b_sample_submission2 <- read_csv(".data/sample_submission.csv", col_types = cols())
-  b_test_data2 <- read_csv(".data/test.csv", col_types = cols())
-  b_train_data2 <- read_csv(".data/train.csv", col_types = cols())
-})
-
-rm(list = ls(pattern="^b_"))
-```
-
-
-
-```{r}
-source("myscripts.R")
-```
-
-
-```{r}
-message(get_last_value(attributes))
-```
-```{r}
-
-message(get_last_value(prod_description))
-```
-
-```{r}
-get_last_value(prod_description)
-```
-
-
-```{r}
-
-get_last_value(sample_submission)
-```
-
-```{r}
-
-get_last_value(test_data)
-```
-
-```{r}
-get_last_value(train_data)
-```
-
-```{r}
-attributes[ get_last_row(attributes)$number_rows, get_last_row(attributes)$   ]
-```
-
-
-```{r}
-
-get_last_row <- function(x) {
-  number_rows <- nrow(x)
-  number_cols <-  length(x)
-  rv <- list("number_rows" = number_rows, "number_columns" = number_cols)
-  return(rv)
+if (!skip_a) {
+  system.time({
+    message(getwd())
+    a_attributes <- read.csv(".data/attributes.csv")
+    a_prod_description <- read.csv(".data/product_descriptions.csv")
+    a_sample_submission <- read.csv(".data/sample_submission.csv")
+    a_test_data <- read.csv(".data/test.csv")
+    a_train_data <- read.csv(".data/train.csv")
+  })
+  
+  rm(list = ls(pattern="^a_"))
 }
 
 ```
 
-```{r}
 
-get_last_row(attributes)
+### a) & e) & f) result
+```{r readrreadcsv}
+library(readr)
+
+rm(list = ls(pattern="^b_"))
+system.time({
+  b_attributes <- read_csv(".data/attributes.csv", col_types = cols())
+  b_prod_description <- read_csv(".data/product_descriptions.csv", col_types = cols())
+  b_sample_submission <- read_csv(".data/sample_submission.csv", col_types = cols())
+  b_test_data <- read_csv(".data/test.csv", col_types = cols())
+  b_train_data <- read_csv(".data/train.csv", col_types = cols())
+})
+
+#rm(list = ls(pattern="^b_"))
+```
+
+
+```{r loadscripts}
+source("myscripts.R")
+```
+
+
+
+### Last row and Column value
+
+```{r showlast, results='asis'}
+message("attributes csv: ", get_last_value(b_attributes), appendLF = T)
+message("prod_description csv: ", get_last_value(b_prod_description))
+message("sample_submission csv: ", get_last_value(b_sample_submission))
+message("test_data csv: ", get_last_value(b_test_data))
+message("train_data csv: ", get_last_value(b_train_data))
 
 ```
+
+
+### Display odd numbers of columns and even rows for `train_data.csv`
+### Question 1 c)
+
+```{r rawevenodd}
+
+odd_columns <- seq_len(ncol(b_train_data)) %% 2 == 0
+even_rows <- seq_len(nrow(b_train_data)) %% 2 == 0
+
+head(b_train_data[even_rows, odd_columns])
+
+
+```
+```{r usingdplyr}
+library(dplyr)
+
+
+ds1 <- b_train_data %>% dplyr::filter(row_number() %% 2 == 0)
+odd_columns <- seq_len(ncol(ds1)) %% 2 == 0
+head(ds1[, odd_columns])
+
+```
+
+
+### part d)
+
+```{r}
+
+# put, get to different object and compare
+dput(b_sample_submission, file = "temp.bin")
+b_sample_submission_2 <- dget("temp.bin", keep.source = F)
+all_equal(b_sample_submission, b_sample_submission_2)
+
+
+# now save, load, and compare the SAME original object name
+save(b_sample_submission_2, file = "temp2.rda")
+rm(b_sample_submission_2)
+load(file = "temp2.rda")
+all_equal(b_sample_submission, b_sample_submission_2)
+
+
+save.image("MyData.Rdata")
+
+
+list.files(pattern = "*.RData")
+
+
+file.remove("MyData.Rdata", "temp.bin", "temp2.rda")
+
+
+```
+
+
+\pagebreak
+## Question 2
+
+(a) Create a new vector called “test” containing five numbers of your choice.
+
+```{r}
+test <- c(4, 3, 2, 5, 1)
+
+```
+
+(b) Create a second vector called “students” containing five common names of your choice.
+
+```{r}
+students <- c("john", "paul", "ringo", "george", "pete")
+```
+
+(c) Determine the class of “students” and “test”.
+
+```{r}
+class(students)
+class(test)
+```
+
+(d) Create a data frame containing two columns, “students” and “tests” as defined above.
+
+```{r}
+
+new_df <- data.frame(students, test)
+
+head(new_df)
+```
+
+(e) Convert “test” to character class, and confirm that you were successful
+
+```{r}
+message("old class: ", class(new_df$test))
+
+df2 <- mutate(new_df, test = as.character(test))
+
+message("new class: ", class(df2$test))
+df2
+```
+
+\pagebreak
+
+## Question 3
+
+(a) Select just the Sepal.Length and Species columns from the iris data set and save the result to a new
+data.frame named iris.2
+(b) Calculate the mean of the Sepal.length column in iris.2
+(c) Calculate the mean of sepal.length, but only for the setosa species
+(d) Calculate the number of sepal lengths that are more than one standard deviation below the average
+sepal length
+
+
+
+\pagebreak
+
+# Issue with read.csv parsing and stringsAsFactors setting
+
+>Note: The parsing is not only "slow" but incorrect. See the extra "description" data that appears below the output `[1] Power tool`. This is not how the data is supposed to appear.
+
+```{r readtest1}
+tabAll <- read.csv(".data/attributes.csv")
+tabAll[2044803,3]
+```
+
+>Note: Using a technique from the R Programming Book (R.Peng) - p25 - allow the column classes to be determined, but we still have an issue with the parsing.
+
+```{r readtest2}
+initial <- read.csv(".data/attributes.csv", nrows = 100)
+classes <- sapply(initial, class)
+tabAll <- read.csv(".data/attributes.csv", colClasses = classes)
+
+tabAll[2044803,3]
+```
+
+
+>Note: Finally, if we add the `stringsAsFactors = FALSE` flag (see [stringsAsFactors: An unauthorized biography](https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/)) for more information.
+
+```{r readtest3}
+
+initial <- read.csv(".data/attributes.csv", nrows = 100, stringsAsFactors = FALSE)
+classes <- sapply(initial, class)
+tabAll <- read.csv(".data/attributes.csv", colClasses = classes)
+
+tabAll[2044803,3]
+
+```
+
+
+
+
+```{r readtest4}
+myframe <- read.csv(".data/attributes.csv", sep = ",", 
+                    header = TRUE, na.strings = "NA", 
+                    strip.white = TRUE, stringsAsFactors = FALSE)
+```
+
+
+# Extra R scripts
+
+
+
 

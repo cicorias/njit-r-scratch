@@ -8,7 +8,6 @@ get_last_row <- function(x) {
 }
 
 
-
 get_last_value <- function(x) {
   number_rows <- nrow(x)
   number_cols <-  length(x)
