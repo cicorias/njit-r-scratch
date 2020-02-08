@@ -6,18 +6,76 @@ output: html_notebook
 ```{r}
 library(readr)
 
+rm(list = ls(pattern="^a_"))
 
+system.time({
+  message(getwd())
+  a_attributes1 <- read.csv(".data/attributes.csv")
+  a_prod_description1 <- read.csv(".data/product_descriptions.csv")
+  a_sample_submission1 <- read.csv(".data/sample_submission.csv")
+  a_test_data1 <- read.csv(".data/test.csv")
+  a_train_data1 <- read.csv(".data/train.csv")
+})
+
+rm(list = ls(pattern="^a_"))
+
+```
+
+```{r}
 myframe <- read.csv(".data/attributes.csv", sep = ",", header = TRUE, na.strings = "NA", strip.white = TRUE, stringsAsFactors = FALSE)
+```
+
+
+```{r}
+rm(list = ls(pattern="^b_"))
+system.time({
+  message(getwd())
+  b_attributes2 <- read_csv(".data/attributes.csv", col_types = cols())
+  b_prod_description2 <- read_csv(".data/product_descriptions.csv", col_types = cols())
+  b_sample_submission2 <- read_csv(".data/sample_submission.csv", col_types = cols())
+  b_test_data2 <- read_csv(".data/test.csv", col_types = cols())
+  b_train_data2 <- read_csv(".data/train.csv", col_types = cols())
+})
+
+rm(list = ls(pattern="^b_"))
+```
 
 
 
-message(getwd())
-attributes <- read_csv(".data/attributes.csv")
-prod_description <- read_csv(".data/product_descriptions.csv")
-sample_submission <- read_csv(".data/sample_submission.csv")
-test_data <- read_csv(".data/test.csv")
-train_data <- read_csv(".data/train.csv")
+```{r}
+source("myscripts.R")
+```
 
+
+```{r}
+message(get_last_value(attributes))
+```
+```{r}
+
+message(get_last_value(prod_description))
+```
+
+```{r}
+get_last_value(prod_description)
+```
+
+
+```{r}
+
+get_last_value(sample_submission)
+```
+
+```{r}
+
+get_last_value(test_data)
+```
+
+```{r}
+get_last_value(train_data)
+```
+
+```{r}
+attributes[ get_last_row(attributes)$number_rows, get_last_row(attributes)$   ]
 ```
 
 

@@ -1751,26 +1751,159 @@ summary {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcilcblxuXG5teWZyYW1lIDwtIHJlYWQuY3N2KFwiLmRhdGEvYXR0cmlidXRlcy5jc3ZcIiwgc2VwID0gXCIsXCIsIGhlYWRlciA9IFRSVUUsIG5hLnN0cmluZ3MgPSBcIk5BXCIsIHN0cmlwLndoaXRlID0gVFJVRSwgc3RyaW5nc0FzRmFjdG9ycyA9IEZBTFNFKVxuXG5cblxubWVzc2FnZShnZXR3ZCgpKVxuYXR0cmlidXRlcyA8LSByZWFkX2NzdihcIi5kYXRhL2F0dHJpYnV0ZXMuY3N2XCIpXG5wcm9kX2Rlc2NyaXB0aW9uIDwtIHJlYWRfY3N2KFwiLmRhdGEvcHJvZHVjdF9kZXNjcmlwdGlvbnMuY3N2XCIpXG5zYW1wbGVfc3VibWlzc2lvbiA8LSByZWFkX2NzdihcIi5kYXRhL3NhbXBsZV9zdWJtaXNzaW9uLmNzdlwiKVxudGVzdF9kYXRhIDwtIHJlYWRfY3N2KFwiLmRhdGEvdGVzdC5jc3ZcIilcbnRyYWluX2RhdGEgPC0gcmVhZF9jc3YoXCIuZGF0YS90cmFpbi5jc3ZcIilcblxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcilcblxucm0obGlzdCA9IGxzKHBhdHRlcm49XCJeYV9cIikpXG5cbnN5c3RlbS50aW1lKHtcbiAgbWVzc2FnZShnZXR3ZCgpKVxuICBhX2F0dHJpYnV0ZXMxIDwtIHJlYWQuY3N2KFwiLmRhdGEvYXR0cmlidXRlcy5jc3ZcIilcbiAgYV9wcm9kX2Rlc2NyaXB0aW9uMSA8LSByZWFkLmNzdihcIi5kYXRhL3Byb2R1Y3RfZGVzY3JpcHRpb25zLmNzdlwiKVxuICBhX3NhbXBsZV9zdWJtaXNzaW9uMSA8LSByZWFkLmNzdihcIi5kYXRhL3NhbXBsZV9zdWJtaXNzaW9uLmNzdlwiKVxuICBhX3Rlc3RfZGF0YTEgPC0gcmVhZC5jc3YoXCIuZGF0YS90ZXN0LmNzdlwiKVxuICBhX3RyYWluX2RhdGExIDwtIHJlYWQuY3N2KFwiLmRhdGEvdHJhaW4uY3N2XCIpXG59KVxuYGBgIn0= -->
 <pre class="r"><code>library(readr)
 
+rm(list = ls(pattern=&quot;^a_&quot;))
 
-myframe &lt;- read.csv(&quot;.data/attributes.csv&quot;, sep = &quot;,&quot;, header = TRUE, na.strings = &quot;NA&quot;, strip.white = TRUE, stringsAsFactors = FALSE)
-
-
-
-message(getwd())
-attributes &lt;- read_csv(&quot;.data/attributes.csv&quot;)
-prod_description &lt;- read_csv(&quot;.data/product_descriptions.csv&quot;)
-sample_submission &lt;- read_csv(&quot;.data/sample_submission.csv&quot;)
-test_data &lt;- read_csv(&quot;.data/test.csv&quot;)
-train_data &lt;- read_csv(&quot;.data/train.csv&quot;)
+system.time({
+  message(getwd())
+  a_attributes1 &lt;- read.csv(&quot;.data/attributes.csv&quot;)
+  a_prod_description1 &lt;- read.csv(&quot;.data/product_descriptions.csv&quot;)
+  a_sample_submission1 &lt;- read.csv(&quot;.data/sample_submission.csv&quot;)
+  a_test_data1 &lt;- read.csv(&quot;.data/test.csv&quot;)
+  a_train_data1 &lt;- read.csv(&quot;.data/train.csv&quot;)
+})</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQzovZy9uaml0L25qaXQtci1zY3JhdGNoL2xhYnMvbGFiMlxuIn0= -->
+<pre><code>C:/g/njit/njit-r-scratch/labs/lab2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgdXNlciAgc3lzdGVtIGVsYXBzZWQgXG4gIDIxLjcyICAgIDAuMjIgICAyMS45NCBcbiJ9 -->
+<pre><code>   user  system elapsed 
+  21.72    0.22   21.94 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm0obGlzdCA9IGxzKHBhdHRlcm49XCJeYV9cIikpXG5cbmBgYCJ9 -->
+<pre class="r"><code>rm(list = ls(pattern=&quot;^a_&quot;))
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlmcmFtZSA8LSByZWFkLmNzdihcIi5kYXRhL2F0dHJpYnV0ZXMuY3N2XCIsIHNlcCA9IFwiLFwiLCBoZWFkZXIgPSBUUlVFLCBuYS5zdHJpbmdzID0gXCJOQVwiLCBzdHJpcC53aGl0ZSA9IFRSVUUsIHN0cmluZ3NBc0ZhY3RvcnMgPSBGQUxTRSlcbmBgYCJ9 -->
+<pre class="r"><code>myframe &lt;- read.csv(&quot;.data/attributes.csv&quot;, sep = &quot;,&quot;, header = TRUE, na.strings = &quot;NA&quot;, strip.white = TRUE, stringsAsFactors = FALSE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm0obGlzdCA9IGxzKHBhdHRlcm49XCJeYl9cIikpXG5zeXN0ZW0udGltZSh7XG4gIG1lc3NhZ2UoZ2V0d2QoKSlcbiAgYl9hdHRyaWJ1dGVzMiA8LSByZWFkX2NzdihcIi5kYXRhL2F0dHJpYnV0ZXMuY3N2XCIsIGNvbF90eXBlcyA9IGNvbHMoKSlcbiAgYl9wcm9kX2Rlc2NyaXB0aW9uMiA8LSByZWFkX2NzdihcIi5kYXRhL3Byb2R1Y3RfZGVzY3JpcHRpb25zLmNzdlwiLCBjb2xfdHlwZXMgPSBjb2xzKCkpXG4gIGJfc2FtcGxlX3N1Ym1pc3Npb24yIDwtIHJlYWRfY3N2KFwiLmRhdGEvc2FtcGxlX3N1Ym1pc3Npb24uY3N2XCIsIGNvbF90eXBlcyA9IGNvbHMoKSlcbiAgYl90ZXN0X2RhdGEyIDwtIHJlYWRfY3N2KFwiLmRhdGEvdGVzdC5jc3ZcIiwgY29sX3R5cGVzID0gY29scygpKVxuICBiX3RyYWluX2RhdGEyIDwtIHJlYWRfY3N2KFwiLmRhdGEvdHJhaW4uY3N2XCIsIGNvbF90eXBlcyA9IGNvbHMoKSlcbn0pXG5gYGAifQ== -->
+<pre class="r"><code>rm(list = ls(pattern=&quot;^b_&quot;))
+system.time({
+  message(getwd())
+  b_attributes2 &lt;- read_csv(&quot;.data/attributes.csv&quot;, col_types = cols())
+  b_prod_description2 &lt;- read_csv(&quot;.data/product_descriptions.csv&quot;, col_types = cols())
+  b_sample_submission2 &lt;- read_csv(&quot;.data/sample_submission.csv&quot;, col_types = cols())
+  b_test_data2 &lt;- read_csv(&quot;.data/test.csv&quot;, col_types = cols())
+  b_train_data2 &lt;- read_csv(&quot;.data/train.csv&quot;, col_types = cols())
+})</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQzovZy9uaml0L25qaXQtci1zY3JhdGNoL2xhYnMvbGFiMlxuIn0= -->
+<pre><code>C:/g/njit/njit-r-scratch/labs/lab2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgdXNlciAgc3lzdGVtIGVsYXBzZWQgXG4gICAxLjQwICAgIDAuMDQgICAgMS40NSBcbiJ9 -->
+<pre><code>   user  system elapsed 
+   1.40    0.04    1.45 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm0obGlzdCA9IGxzKHBhdHRlcm49XCJeYl9cIikpXG5gYGAifQ== -->
+<pre class="r"><code>rm(list = ls(pattern=&quot;^b_&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc291cmNlKFwibXlzY3JpcHRzLlJcIilcbmBgYCJ9 -->
+<pre class="r"><code>source(&quot;myscripts.R&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShnZXRfbGFzdF92YWx1ZShhdHRyaWJ1dGVzKSlcblxuYGBgIn0= -->
+<pre class="r"><code>message(get_last_value(attributes))
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUG93ZXIgVG9vbFxuIn0= -->
+<pre><code>Power Tool</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShnZXRfbGFzdF92YWx1ZShwcm9kX2Rlc2NyaXB0aW9uKSlcblxuYGBgIn0= -->
+<pre class="r"><code>message(get_last_value(prod_description))
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiVGhlIEJvc2NoIHF1aWNrIGNoYW5nZSBiaS1tZXRhbCBob2xlIHNhd3MgZmVhdHVyZSBQcm9ncmVzc29yIHRvb3RoIGdlb21ldHJ5LCBjb21iaW5pbmcgY3V0dGluZyB0ZWV0aCB3aXRoIHNwZWNpYWxseSBkZXNpZ25lZCBjaGlwLXJlbW92YWwgdGVldGggZm9yIHN1cGVyLWZhc3QgY3V0dGluZyBhY3Rpb24gaW4gbWV0YWwgYW5kIHdvb2QuIFRoZXkgd29yayB3aXRoIG1hbmRyZWwgbW9kZWxzIEhTQkFNLCBQQ00zOCwgUENNMTIgYW5kIFBDTVNEU1BMLiBIb2xlIHNhd3MgMS0xLzIgaW4uIGFuZCBsYXJnZXIgY2FuIGFsc28gYmUgdXNlZCB3aXRoIG1hbmRyZWwgbW9kZWwgSFNCQU1QLlByb2dyZXNzb3IgdG9vdGggZGVzaWduIGZvciBmYXN0ZXIgY3V0dGluZyBhbmQgbG9uZ2VyIGxpZmVSZWluZm9yY2VkIHNob3VsZGVyIGZvciBpbmNyZWFzZWQgc3RyZW5ndGg4JSBDb2JhbHQgYWxsb3kgaGFzIGhpZ2hlciBoZWF0IHJlc2lzdGFuY2UxMC1kZWdyZWUgY3V0dGluZyBhbmdsZSBmb3IgaGlnaCBwZXJmb3JtYW5jZVxuIn0= -->
+<pre><code>The Bosch quick change bi-metal hole saws feature Progressor tooth geometry, combining cutting teeth with specially designed chip-removal teeth for super-fast cutting action in metal and wood. They work with mandrel models HSBAM, PCM38, PCM12 and PCMSDSPL. Hole saws 1-1/2 in. and larger can also be used with mandrel model HSBAMP.Progressor tooth design for faster cutting and longer lifeReinforced shoulder for increased strength8% Cobalt alloy has higher heat resistance10-degree cutting angle for high performance</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MSwibnJvdyI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJtVlRzVzdiTUJDbDVUaEZETFFJa0IrNHBWdWtWZzRLWkcyY0lVTURHSEdIYkFWTm5TWENGRThscWJyZSt1VkpqN0tVcG9vQWtjZlR1L2Z1a2RURDdlUFYvSEV1aEppSzZXa2lwak1PeGVseWxTKytMSVE0U1hnMUVTZmlMTTYvR1hYUkpZUTQvL2NobVgydkVHN0lxd3ArdGxydFFGWFNsZ2dibmRZWXBJR0tESUtYZXc5YmxLRjFDQ3RIcFVQdnlVRWdDaFdVU0l4MWgwdFFWRyswMWJZRTFZWVE1NERJaUwzbXdUZW90RFRtQUFWNlhWb3NXRXczcWNPYWZySFNFYnBsV3Q4MjZOS3Q5T0dGUjZxZ3lZSzJjR3hMMmdMMlJFVUdiT0RBb2RzZFZXcis0dEJBVFFVYUQzZnJtNi8zbDdCYTNsOWRkMU8rNkdvNVd0K3VWOTh5dUhzeG1LZjVwd1ZMWkIzQ1NGZWlBeVV0U09NSk5naXQ1NTdmcWh4RlZ0bWJqVG42N0N4Rk01RnRzQk1GeUVZQm83ZjRnTm95U2pHOXI2ZzFCZWRqbGJiS29ZeXFQamkwWmFpdVA4S1NOdElFYnNyUUFTcnBvZEpseFFVVm53K3d2dlpCV29YNTU3UkE3Z2RmaVpac05mTEdDdUE5NXJpTzJORnRtVmxaby8vL3BvaUx4bEhScXZDRFhTbW5tM2dlNHpwbHBCL1h6UXNaWkxaMVREbUNuem5hWjRQVWUzNlRQenc4ODhQVDB3ajhqanBGaGlieEhzOUdLaE0zU3B5M05sSVhxYXBhdTB2elJXeWwvd0ZFcnpmcDMxZHgxRXllZTY1WnozWEtXNjh0RGk2TjNLRHBGeC9ZUTJjaGE1eTJZZkRNV1o4RjRwczZaQlNaSWRPWkUwOS9BZjZrNGt6QUF3QUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["product_description"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"The Bosch quick change bi-metal hole saws feature Progressor tooth geometry, combining cutting teeth with specially designed chip-removal teeth for super-fast cutting action in metal and wood. They work with mandrel models HSBAM, PCM38, PCM12 and PCMSDSPL. Hole saws 1-1/2 in. and larger can also be used with mandrel model HSBAMP.Progressor tooth design for faster cutting and longer lifeReinforced shoulder for increased strength8% Cobalt alloy has higher heat resistance10-degree cutting angle for high performance"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MSwibnJvdyI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVB5d3JDTUJEY3ByYlNnbEx3T3l5MDR0bURmb0I0NmpXMlVZc3hrVFEram42eVg2QnVTZ0kxZ2MzdURzUE16bTVUTGRJcUJZQVF3cGhBR09FSThYcGJsTXNTWUVSd0MyQUVpZWxQWk0xNkFHQnErdW9OOXYwUkkwRXZyTU1oRzRDSllwemRxYWlaejY0NTdYeDIybEJOODROQ0lZK2VLUG5JbmNFRWk3encrK0xEOXZISVkzblZyUlJJSmVid3lITUpsQWRrTjJHa20zbDl1b256dkNqTUtUWXhXTC9BMW1BMm51UnJ0U0tyRlROeGJBVnpLVG5kTTI2WEtXYm9JK1JYMVFydE1pUGE1VnBxNm5ocExibEQrbkR3K1FIdFhweXFzUUVBQUE9PSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["relevance"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"1"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MSwibnJvdyI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVFXMjdDTUJEY09JOHFxVXFSdUVBdWtLalE5Z1J3QU1RWGY1VngzQ2Fxc1pIdENENDVPYkNPYkFuWjBuclg2OWtaajNlYi9XZTFyd0FnaGJRZ2tPWllRckhlTGxmZks0Q000Q21CREVxWEw0aGFUQTJBK2RQRisxYzlTTmJYdlJLOE52UWN6ZVdTSHJtSlpsNE5wNXIxUDViclk0eG5ncG9ZWDNYVTB2WlhJMVVFTDdVNnQwSGlEWU5jY2J2anduU0x3Qy9xWkFjbEVVcWNrenhTU1hUVW1JL1NVWGNONjBmNTN5dy8zRlA4RjREWFMzdzgxVTZUM0QxWDdya0tMdjhHeVlOTFFROWMrTU1NUFV3VzJwTWVwQTJlc1d0YXF5d051SW9wRVRxVE9iZzlBSFRZMlFmQ0FRQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["search_term"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"4 inch hole saw"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MSwibnJvdyI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVB3WXJDTUJDZHByYlN3RmJCNzdDZzRzR0RJS3dmSUo2OHhocTFiRFlwYWJydWNmOWwvU2YvUnAyVUJFb0NrNWw1UE42YnQ5OGVGdlJBQVNDR09DVVFKemhDK3JtYnpaZHpnQUhCTFlJQlpMYi9JbXZTQVFDNTdSdnkvNkRyK2g0UUU4bStlWVBEdUFkbW1ndit3MlRKUTNZcFdCT3k2WWtaVnB3MUNnWDBUS3RiNFEwK3NNZ2ZmaTk4Mko0QmVhaHFVeW1KVkdJUFR3S1hTQWZBcUpWVytqUXRyNjM4bXE3c0pTNHdPTHZJVlcrMmx1VGxwQklubFhKNXFTVDNJUVU3Y3VHV0hDTjBDWXBhVjlMNHlJZzJoVkdHZVI0dGxmQklsdzJlYndXS3M1ZXdBUUFBIn0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["relevance"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"2.33"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MSwibnJvdyI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVBTd3JDTUJDZHBxWml3QTk0QVM5Z1FVVndyd2NRY2VFMnRsR0xNWkUwVlplZVhKMlVCQ1NCeWN5OHZMeVp0OXNjRnV6QUFDQ0ZOQ09RVWl3aFcyOW44K1Vjb0VPd1M2QURQWmRmeUJxM0FNRG83NEZ0OVZPWXlWNXJHWDJoaXQ5RUhkSHBnOHRHeE14QzhqcG1zcEpibnA4TWlrVDBudEhQUElqM01jZ2JyeThlVEorSTNOVjNXMm1GVk9MV3A5R1V4RVRBc0ZGT3Vwd1dsMFpkcHl1M2liY05mbHppNDY5Mkk4blhTMUV2bFFsMXJwUUlKaVUvQ3VtYkFWcG9IZVIzVXlrYkxDTmE1MVpiSG5pczBESWdyVGY0L0FCajJUVjN0Z0VBQUE9PSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["value"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Power Tool"}],"options":{"columns":{"min":{},"max":[10],"total":[1]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5nZXRfbGFzdF9yb3cgPC0gZnVuY3Rpb24oeCkge1xuICBudW1iZXJfcm93cyA8LSBucm93KHgpXG4gIG51bWJlcl9jb2xzIDwtICBsZW5ndGgoeClcbiAgcnYgPC0gbGlzdChcIm51bWJlcl9yb3dzXCIgPSBudW1iZXJfcm93cywgXCJudW1iZXJfY29sdW1uc1wiID0gbnVtYmVyX2NvbHMpXG4gIHJldHVybihydilcbn1cblxuYGBgIn0= -->
+<pre class="r"><code>
+get_last_row &lt;- function(x) {
+  number_rows &lt;- nrow(x)
+  number_cols &lt;-  length(x)
+  rv &lt;- list(&quot;number_rows&quot; = number_rows, &quot;number_columns&quot; = number_cols)
+  return(rv)
+}
+</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -1786,7 +1919,7 @@ train_data &lt;- read_csv(&quot;.data/train.csv&quot;)
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkocmVhZHIpCgoKbXlmcmFtZSA8LSByZWFkLmNzdigiLmRhdGEvYXR0cmlidXRlcy5jc3YiLCBzZXAgPSAiLCIsIGhlYWRlciA9IFRSVUUsIG5hLnN0cmluZ3MgPSAiTkEiLCBzdHJpcC53aGl0ZSA9IFRSVUUsIHN0cmluZ3NBc0ZhY3RvcnMgPSBGQUxTRSkKCgoKbWVzc2FnZShnZXR3ZCgpKQphdHRyaWJ1dGVzIDwtIHJlYWRfY3N2KCIuZGF0YS9hdHRyaWJ1dGVzLmNzdiIpCnByb2RfZGVzY3JpcHRpb24gPC0gcmVhZF9jc3YoIi5kYXRhL3Byb2R1Y3RfZGVzY3JpcHRpb25zLmNzdiIpCnNhbXBsZV9zdWJtaXNzaW9uIDwtIHJlYWRfY3N2KCIuZGF0YS9zYW1wbGVfc3VibWlzc2lvbi5jc3YiKQp0ZXN0X2RhdGEgPC0gcmVhZF9jc3YoIi5kYXRhL3Rlc3QuY3N2IikKdHJhaW5fZGF0YSA8LSByZWFkX2NzdigiLmRhdGEvdHJhaW4uY3N2IikKCmBgYAoKCmBgYHtyfQoKZ2V0X2xhc3Rfcm93IDwtIGZ1bmN0aW9uKHgpIHsKICBudW1iZXJfcm93cyA8LSBucm93KHgpCiAgbnVtYmVyX2NvbHMgPC0gIGxlbmd0aCh4KQogIHJ2IDwtIGxpc3QoIm51bWJlcl9yb3dzIiA9IG51bWJlcl9yb3dzLCAibnVtYmVyX2NvbHVtbnMiID0gbnVtYmVyX2NvbHMpCiAgcmV0dXJuKHJ2KQp9CgpgYGAKCmBgYHtyfQoKZ2V0X2xhc3Rfcm93KGF0dHJpYnV0ZXMpCgpgYGAKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkocmVhZHIpCgpybShsaXN0ID0gbHMocGF0dGVybj0iXmFfIikpCgpzeXN0ZW0udGltZSh7CiAgbWVzc2FnZShnZXR3ZCgpKQogIGFfYXR0cmlidXRlczEgPC0gcmVhZC5jc3YoIi5kYXRhL2F0dHJpYnV0ZXMuY3N2IikKICBhX3Byb2RfZGVzY3JpcHRpb24xIDwtIHJlYWQuY3N2KCIuZGF0YS9wcm9kdWN0X2Rlc2NyaXB0aW9ucy5jc3YiKQogIGFfc2FtcGxlX3N1Ym1pc3Npb24xIDwtIHJlYWQuY3N2KCIuZGF0YS9zYW1wbGVfc3VibWlzc2lvbi5jc3YiKQogIGFfdGVzdF9kYXRhMSA8LSByZWFkLmNzdigiLmRhdGEvdGVzdC5jc3YiKQogIGFfdHJhaW5fZGF0YTEgPC0gcmVhZC5jc3YoIi5kYXRhL3RyYWluLmNzdiIpCn0pCgpybShsaXN0ID0gbHMocGF0dGVybj0iXmFfIikpCgpgYGAKCmBgYHtyfQpteWZyYW1lIDwtIHJlYWQuY3N2KCIuZGF0YS9hdHRyaWJ1dGVzLmNzdiIsIHNlcCA9ICIsIiwgaGVhZGVyID0gVFJVRSwgbmEuc3RyaW5ncyA9ICJOQSIsIHN0cmlwLndoaXRlID0gVFJVRSwgc3RyaW5nc0FzRmFjdG9ycyA9IEZBTFNFKQpgYGAKCgpgYGB7cn0Kcm0obGlzdCA9IGxzKHBhdHRlcm49Il5iXyIpKQpzeXN0ZW0udGltZSh7CiAgbWVzc2FnZShnZXR3ZCgpKQogIGJfYXR0cmlidXRlczIgPC0gcmVhZF9jc3YoIi5kYXRhL2F0dHJpYnV0ZXMuY3N2IiwgY29sX3R5cGVzID0gY29scygpKQogIGJfcHJvZF9kZXNjcmlwdGlvbjIgPC0gcmVhZF9jc3YoIi5kYXRhL3Byb2R1Y3RfZGVzY3JpcHRpb25zLmNzdiIsIGNvbF90eXBlcyA9IGNvbHMoKSkKICBiX3NhbXBsZV9zdWJtaXNzaW9uMiA8LSByZWFkX2NzdigiLmRhdGEvc2FtcGxlX3N1Ym1pc3Npb24uY3N2IiwgY29sX3R5cGVzID0gY29scygpKQogIGJfdGVzdF9kYXRhMiA8LSByZWFkX2NzdigiLmRhdGEvdGVzdC5jc3YiLCBjb2xfdHlwZXMgPSBjb2xzKCkpCiAgYl90cmFpbl9kYXRhMiA8LSByZWFkX2NzdigiLmRhdGEvdHJhaW4uY3N2IiwgY29sX3R5cGVzID0gY29scygpKQp9KQoKcm0obGlzdCA9IGxzKHBhdHRlcm49Il5iXyIpKQpgYGAKCgoKYGBge3J9CnNvdXJjZSgibXlzY3JpcHRzLlIiKQpgYGAKCgpgYGB7cn0KbWVzc2FnZShnZXRfbGFzdF92YWx1ZShhdHRyaWJ1dGVzKSkKYGBgCmBgYHtyfQoKbWVzc2FnZShnZXRfbGFzdF92YWx1ZShwcm9kX2Rlc2NyaXB0aW9uKSkKYGBgCgpgYGB7cn0KZ2V0X2xhc3RfdmFsdWUocHJvZF9kZXNjcmlwdGlvbikKYGBgCgoKYGBge3J9CgpnZXRfbGFzdF92YWx1ZShzYW1wbGVfc3VibWlzc2lvbikKYGBgCgpgYGB7cn0KCmdldF9sYXN0X3ZhbHVlKHRlc3RfZGF0YSkKYGBgCgpgYGB7cn0KZ2V0X2xhc3RfdmFsdWUodHJhaW5fZGF0YSkKYGBgCgpgYGB7cn0KYXR0cmlidXRlc1sgZ2V0X2xhc3Rfcm93KGF0dHJpYnV0ZXMpJG51bWJlcl9yb3dzLCBnZXRfbGFzdF9yb3coYXR0cmlidXRlcykkICAgXQpgYGAKCgpgYGB7cn0KCmdldF9sYXN0X3JvdyA8LSBmdW5jdGlvbih4KSB7CiAgbnVtYmVyX3Jvd3MgPC0gbnJvdyh4KQogIG51bWJlcl9jb2xzIDwtICBsZW5ndGgoeCkKICBydiA8LSBsaXN0KCJudW1iZXJfcm93cyIgPSBudW1iZXJfcm93cywgIm51bWJlcl9jb2x1bW5zIiA9IG51bWJlcl9jb2xzKQogIHJldHVybihydikKfQoKYGBgCgpgYGB7cn0KCmdldF9sYXN0X3JvdyhhdHRyaWJ1dGVzKQoKYGBgCgo=</div>
 
 
 
