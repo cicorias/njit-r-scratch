@@ -4,6 +4,17 @@ output: html_notebook
 ---
 
 ```{r}
+
+
+initial <- read.table(".data/attributes.csv", nrows = 10)
+#classes <- sapply(initial, class)
+#tabAll <- read.table(".data/attributes.csv", colClasses = classes)
+
+
+```
+
+
+```{r}
 library(readr)
 
 rm(list = ls(pattern="^a_"))
