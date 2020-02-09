@@ -1753,29 +1753,26 @@ summary {
 
 
 <!-- rnb-text-begin -->
-<p>1.20 The built-in data set islands contains the size of the world’s land masses that exceed 10,000 square miles. Use sort() with the argument decreasing=TRUE to find the seven largest land masses. For Example, the expected solution is &gt; sort(islands, decreasing=TRUE)[1:7] Asia Africa North America South America Antarctica Europe Australia 16988 11506 9390 6795 5500 3745 2968</p>
+<div id="the-built-in-data-set-islands-contains-the-size-of-the-worlds-land-masses-that-exceed-10000-square-miles.-use-sort-with-the-argument-decreasingtrue-to-find-the-seven-largest-land-masses." class="section level3">
+<h3>1.20 The built-in data set islands contains the size of the world’s land masses that exceed 10,000 square miles. Use sort() with the argument decreasing=TRUE to find the seven largest land masses.</h3>
+<p>For Example, the expected solution is</p>
+<pre><code>&gt; sort(islands, decreasing=TRUE)[1:7]
+         Asia        Africa North America South America    Antarctica        Europe     Australia 
+        16988         11506          9390          6795          5500          3745          2968
+</code></pre>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcImlzbGFuZHNcIilcblxuXG5oZWFkKHNvcnQoaXNsYW5kcywgZGVjcmVhc2luZyA9IFQpLCBuID0gNylcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcImlzbGFuZHNcIilcbmhlYWQoc29ydChpc2xhbmRzLCBkZWNyZWFzaW5nID0gVCksIG4gPSA3KVxuc29ydChpc2xhbmRzLCBkZWNyZWFzaW5nID0gVClbMTo3XVxuXG5gYGAifQ== -->
 <pre class="r"><code>data(&quot;islands&quot;)
-
-
-head(sort(islands, decreasing = T), n = 7)</code></pre>
+head(sort(islands, decreasing = T), n = 7)
+sort(islands, decreasing = T)[1:7]
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgQXNpYSAgICAgICAgQWZyaWNhIE5vcnRoIEFtZXJpY2EgU291dGggQW1lcmljYSAgICBBbnRhcmN0aWNhICAgICAgICBFdXJvcGUgICAgIEF1c3RyYWxpYSBcbiAgICAgICAgMTY5ODggICAgICAgICAxMTUwNiAgICAgICAgICA5MzkwICAgICAgICAgIDY3OTUgICAgICAgICAgNTUwMCAgICAgICAgICAzNzQ1ICAgICAgICAgIDI5NjggXG4ifQ== -->
-<pre><code>         Asia        Africa North America South America    Antarctica        Europe     Australia 
-        16988         11506          9390          6795          5500          3745          2968 </code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc29ydChpc2xhbmRzLCBkZWNyZWFzaW5nID0gVClbMTo3XVxuYGBgIn0= -->
-<pre class="r"><code>sort(islands, decreasing = T)[1:7]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgQXNpYSAgICAgICAgQWZyaWNhIE5vcnRoIEFtZXJpY2EgU291dGggQW1lcmljYSAgICBBbnRhcmN0aWNhICAgICAgICBFdXJvcGUgICAgIEF1c3RyYWxpYSBcbiAgICAgICAgMTY5ODggICAgICAgICAxMTUwNiAgICAgICAgICA5MzkwICAgICAgICAgIDY3OTUgICAgICAgICAgNTUwMCAgICAgICAgICAzNzQ1ICAgICAgICAgIDI5NjggXG4ifQ== -->
-<pre><code>         Asia        Africa North America South America    Antarctica        Europe     Australia 
-        16988         11506          9390          6795          5500          3745          2968 </code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>1.21 Load the data set primes (UsingR). This is the set of prime numbers in [1,2003]. How many are there? How many in the range [1,100]? [100,1000]?</p>
+</div>
+<div id="load-the-data-set-primes-usingr.-this-is-the-set-of-prime-numbers-in-12003.-how-many-are-there-how-many-in-the-range-1100-1001000" class="section level3">
+<h3>1.21 Load the data set primes (UsingR). This is the set of prime numbers in [1,2003]. How many are there? How many in the range [1,100]? [100,1000]?</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShVc2luZ1IpXG5kYXRhKFwicHJpbWVzXCIpXG5cblxuYGBgIn0= -->
@@ -1787,86 +1784,41 @@ data(&quot;primes&quot;)
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcImhvdyBtYW55PyA6IFwiLCBsZW5ndGgocHJpbWVzKSlcbmBgYCJ9 -->
-<pre class="r"><code>message(&quot;how many? : &quot;, length(primes))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcImhvdyBtYW55PyA6IFwiLCBsZW5ndGgocHJpbWVzKSlcblxubWVzc2FnZShcImluIHJhbmdlIDE6MTAwOiAgXCIsIGxlbmd0aChwcmltZXNbcHJpbWVzIDw9IDEwMF0pKVxuXG5tZXNzYWdlKFwiaW4gcmFuZ2UgMTAwOjEwMDAgIFwiLCBsZW5ndGgocHJpbWVzWzEwMCA8PSBwcmltZXMgJiBwcmltZXMgPD0gMTAwMF0pKVxuXG5cbm1lc3NhZ2UoXCJpbiByYW5nZSAxOjEwMDogIFwiLCBsZW5ndGgocHJpbWVzW3ByaW1lcyAlaW4lIDE6MTAwXSkpXG5cbm1lc3NhZ2UoXCJpbiByYW5nZSAxMDA6MTAwMCAgXCIsIGxlbmd0aChwcmltZXNbcHJpbWVzICVpbiUgMTAwOjEwMDBdKSlcblxuYGBgIn0= -->
+<pre class="r"><code>message(&quot;how many? : &quot;, length(primes))
+
+message(&quot;in range 1:100:  &quot;, length(primes[primes &lt;= 100]))
+
+message(&quot;in range 100:1000  &quot;, length(primes[100 &lt;= primes &amp; primes &lt;= 1000]))
+
+
+message(&quot;in range 1:100:  &quot;, length(primes[primes %in% 1:100]))
+
+message(&quot;in range 100:1000  &quot;, length(primes[primes %in% 100:1000]))
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiaG93IG1hbnk/IDogMzA0XG4ifQ== -->
-<pre><code>how many? : 304</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcImluIHJhbmdlIDE6MTAwOiAgXCIsIGxlbmd0aChwcmltZXNbcHJpbWVzIDw9IDEwMF0pKVxuYGBgIn0= -->
-<pre class="r"><code>message(&quot;in range 1:100:  &quot;, length(primes[primes &lt;= 100]))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiaW4gcmFuZ2UgMToxMDA6ICAyNVxuIn0= -->
-<pre><code>in range 1:100:  25</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcImluIHJhbmdlIDEwMDoxMDAwICBcIiwgbGVuZ3RoKHByaW1lc1sxMDAgPD0gcHJpbWVzICYgcHJpbWVzIDw9IDEwMDBdKSlcbmBgYCJ9 -->
-<pre class="r"><code>message(&quot;in range 100:1000  &quot;, length(primes[100 &lt;= primes &amp; primes &lt;= 1000]))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiaW4gcmFuZ2UgMTAwOjEwMDAgIDE0M1xuIn0= -->
-<pre><code>in range 100:1000  143</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcImluIHJhbmdlIDE6MTAwOiAgXCIsIGxlbmd0aChwcmltZXNbcHJpbWVzICVpbiUgMToxMDBdKSlcbmBgYCJ9 -->
-<pre class="r"><code>message(&quot;in range 1:100:  &quot;, length(primes[primes %in% 1:100]))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiaW4gcmFuZ2UgMToxMDA6ICAyNVxuIn0= -->
-<pre><code>in range 1:100:  25</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcImluIHJhbmdlIDEwMDoxMDAwICBcIiwgbGVuZ3RoKHByaW1lc1twcmltZXMgJWluJSAxMDA6MTAwMF0pKVxuYGBgIn0= -->
-<pre class="r"><code>message(&quot;in range 100:1000  &quot;, length(primes[primes %in% 100:1000]))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiaW4gcmFuZ2UgMTAwOjEwMDAgIDE0M1xuIn0= -->
-<pre><code>in range 100:1000  143</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>1.22 Load the data set primes (UsingR). We wish to find all the twin primes. These are numbers p and p+2, where both are prime. 1. Explain what primes[−1] returns.</p>
+</div>
+<div id="load-the-data-set-primes-usingr.-we-wish-to-find-all-the-twin-primes.-these-are-numbers-p-and-p2-where-both-are-prime." class="section level3">
+<h3>1.22 Load the data set primes (UsingR). We wish to find all the twin primes. These are numbers p and p+2, where both are prime.</h3>
+<div id="explain-what-primes1-returns." class="section level4">
+<h4>1. Explain what primes[−1] returns.</h4>
 <ul>
 <li>a negative subscript “removes” or gives everything “but” what is negated.</li>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbWVzWy0xXVxuYGBgIn0= -->
-<pre class="r"><code>primes[-1]</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbWVzWy0xXVxucHJpbWVzWy0oMToxMDApXVxuXG5gYGAifQ== -->
+<pre class="r"><code>primes[-1]
+primes[-(1:100)]
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICBbMV0gICAgMyAgICA1ICAgIDcgICAxMSAgIDEzICAgMTcgICAxOSAgIDIzICAgMjkgICAzMSAgIDM3ICAgNDEgICA0MyAgIDQ3ICAgNTMgICA1OSAgIDYxICAgNjcgICA3MSAgIDczXG4gWzIxXSAgIDc5ICAgODMgICA4OSAgIDk3ICAxMDEgIDEwMyAgMTA3ICAxMDkgIDExMyAgMTI3ICAxMzEgIDEzNyAgMTM5ICAxNDkgIDE1MSAgMTU3ICAxNjMgIDE2NyAgMTczICAxNzlcbiBbNDFdICAxODEgIDE5MSAgMTkzICAxOTcgIDE5OSAgMjExICAyMjMgIDIyNyAgMjI5ICAyMzMgIDIzOSAgMjQxICAyNTEgIDI1NyAgMjYzICAyNjkgIDI3MSAgMjc3ICAyODEgIDI4M1xuIFs2MV0gIDI5MyAgMzA3ICAzMTEgIDMxMyAgMzE3ICAzMzEgIDMzNyAgMzQ3ICAzNDkgIDM1MyAgMzU5ICAzNjcgIDM3MyAgMzc5ICAzODMgIDM4OSAgMzk3ICA0MDEgIDQwOSAgNDE5XG4gWzgxXSAgNDIxICA0MzEgIDQzMyAgNDM5ICA0NDMgIDQ0OSAgNDU3ICA0NjEgIDQ2MyAgNDY3ICA0NzkgIDQ4NyAgNDkxICA0OTkgIDUwMyAgNTA5ICA1MjEgIDUyMyAgNTQxICA1NDdcblsxMDFdICA1NTcgIDU2MyAgNTY5ICA1NzEgIDU3NyAgNTg3ICA1OTMgIDU5OSAgNjAxICA2MDcgIDYxMyAgNjE3ICA2MTkgIDYzMSAgNjQxICA2NDMgIDY0NyAgNjUzICA2NTkgIDY2MVxuWzEyMV0gIDY3MyAgNjc3ICA2ODMgIDY5MSAgNzAxICA3MDkgIDcxOSAgNzI3ICA3MzMgIDczOSAgNzQzICA3NTEgIDc1NyAgNzYxICA3NjkgIDc3MyAgNzg3ICA3OTcgIDgwOSAgODExXG5bMTQxXSAgODIxICA4MjMgIDgyNyAgODI5ICA4MzkgIDg1MyAgODU3ICA4NTkgIDg2MyAgODc3ICA4ODEgIDg4MyAgODg3ICA5MDcgIDkxMSAgOTE5ICA5MjkgIDkzNyAgOTQxICA5NDdcblsxNjFdICA5NTMgIDk2NyAgOTcxICA5NzcgIDk4MyAgOTkxICA5OTcgMTAwOSAxMDEzIDEwMTkgMTAyMSAxMDMxIDEwMzMgMTAzOSAxMDQ5IDEwNTEgMTA2MSAxMDYzIDEwNjkgMTA4N1xuWzE4MV0gMTA5MSAxMDkzIDEwOTcgMTEwMyAxMTA5IDExMTcgMTEyMyAxMTI5IDExNTEgMTE1MyAxMTYzIDExNzEgMTE4MSAxMTg3IDExOTMgMTIwMSAxMjEzIDEyMTcgMTIyMyAxMjI5XG5bMjAxXSAxMjMxIDEyMzcgMTI0OSAxMjU5IDEyNzcgMTI3OSAxMjgzIDEyODkgMTI5MSAxMjk3IDEzMDEgMTMwMyAxMzA3IDEzMTkgMTMyMSAxMzI3IDEzNjEgMTM2NyAxMzczIDEzODFcblsyMjFdIDEzOTkgMTQwOSAxNDIzIDE0MjcgMTQyOSAxNDMzIDE0MzkgMTQ0NyAxNDUxIDE0NTMgMTQ1OSAxNDcxIDE0ODEgMTQ4MyAxNDg3IDE0ODkgMTQ5MyAxNDk5IDE1MTEgMTUyM1xuWzI0MV0gMTUzMSAxNTQzIDE1NDkgMTU1MyAxNTU5IDE1NjcgMTU3MSAxNTc5IDE1ODMgMTU5NyAxNjAxIDE2MDcgMTYwOSAxNjEzIDE2MTkgMTYyMSAxNjI3IDE2MzcgMTY1NyAxNjYzXG5bMjYxXSAxNjY3IDE2NjkgMTY5MyAxNjk3IDE2OTkgMTcwOSAxNzIxIDE3MjMgMTczMyAxNzQxIDE3NDcgMTc1MyAxNzU5IDE3NzcgMTc4MyAxNzg3IDE3ODkgMTgwMSAxODExIDE4MjNcblsyODFdIDE4MzEgMTg0NyAxODYxIDE4NjcgMTg3MSAxODczIDE4NzcgMTg3OSAxODg5IDE5MDEgMTkwNyAxOTEzIDE5MzEgMTkzMyAxOTQ5IDE5NTEgMTk3MyAxOTc5IDE5ODcgMTk5M1xuWzMwMV0gMTk5NyAxOTk5IDIwMDNcbiJ9 -->
-<pre><code>  [1]    3    5    7   11   13   17   19   23   29   31   37   41   43   47   53   59   61   67   71   73
- [21]   79   83   89   97  101  103  107  109  113  127  131  137  139  149  151  157  163  167  173  179
- [41]  181  191  193  197  199  211  223  227  229  233  239  241  251  257  263  269  271  277  281  283
- [61]  293  307  311  313  317  331  337  347  349  353  359  367  373  379  383  389  397  401  409  419
- [81]  421  431  433  439  443  449  457  461  463  467  479  487  491  499  503  509  521  523  541  547
-[101]  557  563  569  571  577  587  593  599  601  607  613  617  619  631  641  643  647  653  659  661
-[121]  673  677  683  691  701  709  719  727  733  739  743  751  757  761  769  773  787  797  809  811
-[141]  821  823  827  829  839  853  857  859  863  877  881  883  887  907  911  919  929  937  941  947
-[161]  953  967  971  977  983  991  997 1009 1013 1019 1021 1031 1033 1039 1049 1051 1061 1063 1069 1087
-[181] 1091 1093 1097 1103 1109 1117 1123 1129 1151 1153 1163 1171 1181 1187 1193 1201 1213 1217 1223 1229
-[201] 1231 1237 1249 1259 1277 1279 1283 1289 1291 1297 1301 1303 1307 1319 1321 1327 1361 1367 1373 1381
-[221] 1399 1409 1423 1427 1429 1433 1439 1447 1451 1453 1459 1471 1481 1483 1487 1489 1493 1499 1511 1523
-[241] 1531 1543 1549 1553 1559 1567 1571 1579 1583 1597 1601 1607 1609 1613 1619 1621 1627 1637 1657 1663
-[261] 1667 1669 1693 1697 1699 1709 1721 1723 1733 1741 1747 1753 1759 1777 1783 1787 1789 1801 1811 1823
-[281] 1831 1847 1861 1867 1871 1873 1877 1879 1889 1901 1907 1913 1931 1933 1949 1951 1973 1979 1987 1993
-[301] 1997 1999 2003</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbWVzWy0oMToxMDApXVxuYGBgIn0= -->
-<pre class="r"><code>primes[-(1:100)]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICBbMV0gIDU0NyAgNTU3ICA1NjMgIDU2OSAgNTcxICA1NzcgIDU4NyAgNTkzICA1OTkgIDYwMSAgNjA3ICA2MTMgIDYxNyAgNjE5ICA2MzEgIDY0MSAgNjQzICA2NDcgIDY1MyAgNjU5XG4gWzIxXSAgNjYxICA2NzMgIDY3NyAgNjgzICA2OTEgIDcwMSAgNzA5ICA3MTkgIDcyNyAgNzMzICA3MzkgIDc0MyAgNzUxICA3NTcgIDc2MSAgNzY5ICA3NzMgIDc4NyAgNzk3ICA4MDlcbiBbNDFdICA4MTEgIDgyMSAgODIzICA4MjcgIDgyOSAgODM5ICA4NTMgIDg1NyAgODU5ICA4NjMgIDg3NyAgODgxICA4ODMgIDg4NyAgOTA3ICA5MTEgIDkxOSAgOTI5ICA5MzcgIDk0MVxuIFs2MV0gIDk0NyAgOTUzICA5NjcgIDk3MSAgOTc3ICA5ODMgIDk5MSAgOTk3IDEwMDkgMTAxMyAxMDE5IDEwMjEgMTAzMSAxMDMzIDEwMzkgMTA0OSAxMDUxIDEwNjEgMTA2MyAxMDY5XG4gWzgxXSAxMDg3IDEwOTEgMTA5MyAxMDk3IDExMDMgMTEwOSAxMTE3IDExMjMgMTEyOSAxMTUxIDExNTMgMTE2MyAxMTcxIDExODEgMTE4NyAxMTkzIDEyMDEgMTIxMyAxMjE3IDEyMjNcblsxMDFdIDEyMjkgMTIzMSAxMjM3IDEyNDkgMTI1OSAxMjc3IDEyNzkgMTI4MyAxMjg5IDEyOTEgMTI5NyAxMzAxIDEzMDMgMTMwNyAxMzE5IDEzMjEgMTMyNyAxMzYxIDEzNjcgMTM3M1xuWzEyMV0gMTM4MSAxMzk5IDE0MDkgMTQyMyAxNDI3IDE0MjkgMTQzMyAxNDM5IDE0NDcgMTQ1MSAxNDUzIDE0NTkgMTQ3MSAxNDgxIDE0ODMgMTQ4NyAxNDg5IDE0OTMgMTQ5OSAxNTExXG5bMTQxXSAxNTIzIDE1MzEgMTU0MyAxNTQ5IDE1NTMgMTU1OSAxNTY3IDE1NzEgMTU3OSAxNTgzIDE1OTcgMTYwMSAxNjA3IDE2MDkgMTYxMyAxNjE5IDE2MjEgMTYyNyAxNjM3IDE2NTdcblsxNjFdIDE2NjMgMTY2NyAxNjY5IDE2OTMgMTY5NyAxNjk5IDE3MDkgMTcyMSAxNzIzIDE3MzMgMTc0MSAxNzQ3IDE3NTMgMTc1OSAxNzc3IDE3ODMgMTc4NyAxNzg5IDE4MDEgMTgxMVxuWzE4MV0gMTgyMyAxODMxIDE4NDcgMTg2MSAxODY3IDE4NzEgMTg3MyAxODc3IDE4NzkgMTg4OSAxOTAxIDE5MDcgMTkxMyAxOTMxIDE5MzMgMTk0OSAxOTUxIDE5NzMgMTk3OSAxOTg3XG5bMjAxXSAxOTkzIDE5OTcgMTk5OSAyMDAzXG4ifQ== -->
-<pre><code>  [1]  547  557  563  569  571  577  587  593  599  601  607  613  617  619  631  641  643  647  653  659
- [21]  661  673  677  683  691  701  709  719  727  733  739  743  751  757  761  769  773  787  797  809
- [41]  811  821  823  827  829  839  853  857  859  863  877  881  883  887  907  911  919  929  937  941
- [61]  947  953  967  971  977  983  991  997 1009 1013 1019 1021 1031 1033 1039 1049 1051 1061 1063 1069
- [81] 1087 1091 1093 1097 1103 1109 1117 1123 1129 1151 1153 1163 1171 1181 1187 1193 1201 1213 1217 1223
-[101] 1229 1231 1237 1249 1259 1277 1279 1283 1289 1291 1297 1301 1303 1307 1319 1321 1327 1361 1367 1373
-[121] 1381 1399 1409 1423 1427 1429 1433 1439 1447 1451 1453 1459 1471 1481 1483 1487 1489 1493 1499 1511
-[141] 1523 1531 1543 1549 1553 1559 1567 1571 1579 1583 1597 1601 1607 1609 1613 1619 1621 1627 1637 1657
-[161] 1663 1667 1669 1693 1697 1699 1709 1721 1723 1733 1741 1747 1753 1759 1777 1783 1787 1789 1801 1811
-[181] 1823 1831 1847 1861 1867 1871 1873 1877 1879 1889 1901 1907 1913 1931 1933 1949 1951 1973 1979 1987
-[201] 1993 1997 1999 2003</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="2" style="list-style-type: decimal">
-<li>If you set n=length (primes), explain what primes[−n] returns.</li>
-</ol>
+</div>
+<div id="if-you-set-nlength-primes-explain-what-primesn-returns." class="section level4">
+<h4>2. If you set n=length (primes), explain what primes[−n] returns.</h4>
 <ul>
 <li>since n becomes the length or “last” scalar in the vector, the returned vector is all but the last item.</li>
 </ul>
@@ -1876,360 +1828,257 @@ data(&quot;primes&quot;)
 <pre class="r"><code>n &lt;- length(primes)
 primes[-n]</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICBbMV0gICAgMiAgICAzICAgIDUgICAgNyAgIDExICAgMTMgICAxNyAgIDE5ICAgMjMgICAyOSAgIDMxICAgMzcgICA0MSAgIDQzICAgNDcgICA1MyAgIDU5ICAgNjEgICA2NyAgIDcxXG4gWzIxXSAgIDczICAgNzkgICA4MyAgIDg5ICAgOTcgIDEwMSAgMTAzICAxMDcgIDEwOSAgMTEzICAxMjcgIDEzMSAgMTM3ICAxMzkgIDE0OSAgMTUxICAxNTcgIDE2MyAgMTY3ICAxNzNcbiBbNDFdICAxNzkgIDE4MSAgMTkxICAxOTMgIDE5NyAgMTk5ICAyMTEgIDIyMyAgMjI3ICAyMjkgIDIzMyAgMjM5ICAyNDEgIDI1MSAgMjU3ICAyNjMgIDI2OSAgMjcxICAyNzcgIDI4MVxuIFs2MV0gIDI4MyAgMjkzICAzMDcgIDMxMSAgMzEzICAzMTcgIDMzMSAgMzM3ICAzNDcgIDM0OSAgMzUzICAzNTkgIDM2NyAgMzczICAzNzkgIDM4MyAgMzg5ICAzOTcgIDQwMSAgNDA5XG4gWzgxXSAgNDE5ICA0MjEgIDQzMSAgNDMzICA0MzkgIDQ0MyAgNDQ5ICA0NTcgIDQ2MSAgNDYzICA0NjcgIDQ3OSAgNDg3ICA0OTEgIDQ5OSAgNTAzICA1MDkgIDUyMSAgNTIzICA1NDFcblsxMDFdICA1NDcgIDU1NyAgNTYzICA1NjkgIDU3MSAgNTc3ICA1ODcgIDU5MyAgNTk5ICA2MDEgIDYwNyAgNjEzICA2MTcgIDYxOSAgNjMxICA2NDEgIDY0MyAgNjQ3ICA2NTMgIDY1OVxuWzEyMV0gIDY2MSAgNjczICA2NzcgIDY4MyAgNjkxICA3MDEgIDcwOSAgNzE5ICA3MjcgIDczMyAgNzM5ICA3NDMgIDc1MSAgNzU3ICA3NjEgIDc2OSAgNzczICA3ODcgIDc5NyAgODA5XG5bMTQxXSAgODExICA4MjEgIDgyMyAgODI3ICA4MjkgIDgzOSAgODUzICA4NTcgIDg1OSAgODYzICA4NzcgIDg4MSAgODgzICA4ODcgIDkwNyAgOTExICA5MTkgIDkyOSAgOTM3ICA5NDFcblsxNjFdICA5NDcgIDk1MyAgOTY3ICA5NzEgIDk3NyAgOTgzICA5OTEgIDk5NyAxMDA5IDEwMTMgMTAxOSAxMDIxIDEwMzEgMTAzMyAxMDM5IDEwNDkgMTA1MSAxMDYxIDEwNjMgMTA2OVxuWzE4MV0gMTA4NyAxMDkxIDEwOTMgMTA5NyAxMTAzIDExMDkgMTExNyAxMTIzIDExMjkgMTE1MSAxMTUzIDExNjMgMTE3MSAxMTgxIDExODcgMTE5MyAxMjAxIDEyMTMgMTIxNyAxMjIzXG5bMjAxXSAxMjI5IDEyMzEgMTIzNyAxMjQ5IDEyNTkgMTI3NyAxMjc5IDEyODMgMTI4OSAxMjkxIDEyOTcgMTMwMSAxMzAzIDEzMDcgMTMxOSAxMzIxIDEzMjcgMTM2MSAxMzY3IDEzNzNcblsyMjFdIDEzODEgMTM5OSAxNDA5IDE0MjMgMTQyNyAxNDI5IDE0MzMgMTQzOSAxNDQ3IDE0NTEgMTQ1MyAxNDU5IDE0NzEgMTQ4MSAxNDgzIDE0ODcgMTQ4OSAxNDkzIDE0OTkgMTUxMVxuWzI0MV0gMTUyMyAxNTMxIDE1NDMgMTU0OSAxNTUzIDE1NTkgMTU2NyAxNTcxIDE1NzkgMTU4MyAxNTk3IDE2MDEgMTYwNyAxNjA5IDE2MTMgMTYxOSAxNjIxIDE2MjcgMTYzNyAxNjU3XG5bMjYxXSAxNjYzIDE2NjcgMTY2OSAxNjkzIDE2OTcgMTY5OSAxNzA5IDE3MjEgMTcyMyAxNzMzIDE3NDEgMTc0NyAxNzUzIDE3NTkgMTc3NyAxNzgzIDE3ODcgMTc4OSAxODAxIDE4MTFcblsyODFdIDE4MjMgMTgzMSAxODQ3IDE4NjEgMTg2NyAxODcxIDE4NzMgMTg3NyAxODc5IDE4ODkgMTkwMSAxOTA3IDE5MTMgMTkzMSAxOTMzIDE5NDkgMTk1MSAxOTczIDE5NzkgMTk4N1xuWzMwMV0gMTk5MyAxOTk3IDE5OTlcbiJ9 -->
-<pre><code>  [1]    2    3    5    7   11   13   17   19   23   29   31   37   41   43   47   53   59   61   67   71
- [21]   73   79   83   89   97  101  103  107  109  113  127  131  137  139  149  151  157  163  167  173
- [41]  179  181  191  193  197  199  211  223  227  229  233  239  241  251  257  263  269  271  277  281
- [61]  283  293  307  311  313  317  331  337  347  349  353  359  367  373  379  383  389  397  401  409
- [81]  419  421  431  433  439  443  449  457  461  463  467  479  487  491  499  503  509  521  523  541
-[101]  547  557  563  569  571  577  587  593  599  601  607  613  617  619  631  641  643  647  653  659
-[121]  661  673  677  683  691  701  709  719  727  733  739  743  751  757  761  769  773  787  797  809
-[141]  811  821  823  827  829  839  853  857  859  863  877  881  883  887  907  911  919  929  937  941
-[161]  947  953  967  971  977  983  991  997 1009 1013 1019 1021 1031 1033 1039 1049 1051 1061 1063 1069
-[181] 1087 1091 1093 1097 1103 1109 1117 1123 1129 1151 1153 1163 1171 1181 1187 1193 1201 1213 1217 1223
-[201] 1229 1231 1237 1249 1259 1277 1279 1283 1289 1291 1297 1301 1303 1307 1319 1321 1327 1361 1367 1373
-[221] 1381 1399 1409 1423 1427 1429 1433 1439 1447 1451 1453 1459 1471 1481 1483 1487 1489 1493 1499 1511
-[241] 1523 1531 1543 1549 1553 1559 1567 1571 1579 1583 1597 1601 1607 1609 1613 1619 1621 1627 1637 1657
-[261] 1663 1667 1669 1693 1697 1699 1709 1721 1723 1733 1741 1747 1753 1759 1777 1783 1787 1789 1801 1811
-[281] 1823 1831 1847 1861 1867 1871 1873 1877 1879 1889 1901 1907 1913 1931 1933 1949 1951 1973 1979 1987
-[301] 1993 1997 1999</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: decimal">
-<li>Why might primes [−1]—primes [−n] give clues as to what the twin primes are? How many twin primes are there in the data set?</li>
-</ol>
+</div>
+<div id="why-might-primes-1primes-n-give-clues-as-to-what-the-twin-primes-are" class="section level4">
+<h4>3. Why might primes [−1]—primes [−n] give clues as to what the twin primes are?</h4>
+<p>How many twin primes are there in the data set?</p>
 <ul>
 <li>primes[-1] “shifts” the vector left, while primes[-n] shifts right – essentially lining up each of the prime numbers with</li>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubiA8LSBsZW5ndGgocHJpbWVzKVxuXG5cbnByaW1lc1viiJIxXSAtIHByaW1lc1viiJJuXVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubiA8LSBsZW5ndGgocHJpbWVzKVxucHJpbWVzW+KIkjFdIC0gcHJpbWVzW+KIkm5dXG5gYGAifQ== -->
 <pre class="r"><code>n &lt;- length(primes)
-
-
 primes[−1] - primes[−n]</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICBbMV0gIDEgIDIgIDIgIDQgIDIgIDQgIDIgIDQgIDYgIDIgIDYgIDQgIDIgIDQgIDYgIDYgIDIgIDYgIDQgIDIgIDYgIDQgIDYgIDggIDQgIDIgIDQgIDIgIDQgMTQgIDQgIDYgIDJcbiBbMzRdIDEwICAyICA2ICA2ICA0ICA2ICA2ICAyIDEwICAyICA0ICAyIDEyIDEyICA0ICAyICA0ICA2ICAyIDEwICA2ICA2ICA2ICAyICA2ICA0ICAyIDEwIDE0ICA0ICAyICA0IDE0XG4gWzY3XSAgNiAxMCAgMiAgNCAgNiAgOCAgNiAgNiAgNCAgNiAgOCAgNCAgOCAxMCAgMiAxMCAgMiAgNiAgNCAgNiAgOCAgNCAgMiAgNCAxMiAgOCAgNCAgOCAgNCAgNiAxMiAgMiAxOFxuWzEwMF0gIDYgMTAgIDYgIDYgIDIgIDYgMTAgIDYgIDYgIDIgIDYgIDYgIDQgIDIgMTIgMTAgIDIgIDQgIDYgIDYgIDIgMTIgIDQgIDYgIDggMTAgIDggMTAgIDggIDYgIDYgIDQgIDhcblsxMzNdICA2ICA0ICA4ICA0IDE0IDEwIDEyICAyIDEwICAyICA0ICAyIDEwIDE0ICA0ICAyICA0IDE0ICA0ICAyICA0IDIwICA0ICA4IDEwICA4ICA0ICA2ICA2IDE0ICA0ICA2ICA2XG5bMTY2XSAgOCAgNiAxMiAgNCAgNiAgMiAxMCAgMiAgNiAxMCAgMiAxMCAgMiAgNiAxOCAgNCAgMiAgNCAgNiAgNiAgOCAgNiAgNiAyMiAgMiAxMCAgOCAxMCAgNiAgNiAgOCAxMiAgNFxuWzE5OV0gIDYgIDYgIDIgIDYgMTIgMTAgMTggIDIgIDQgIDYgIDIgIDYgIDQgIDIgIDQgMTIgIDIgIDYgMzQgIDYgIDYgIDggMTggMTAgMTQgIDQgIDIgIDQgIDYgIDggIDQgIDIgIDZcblsyMzJdIDEyIDEwICAyICA0ICAyICA0ICA2IDEyIDEyICA4IDEyICA2ICA0ICA2ICA4ICA0ICA4ICA0IDE0ICA0ICA2ICAyICA0ICA2ICAyICA2IDEwIDIwICA2ICA0ICAyIDI0ICA0XG5bMjY1XSAgMiAxMCAxMiAgMiAxMCAgOCAgNiAgNiAgNiAxOCAgNiAgNCAgMiAxMiAxMCAxMiAgOCAxNiAxNCAgNiAgNCAgMiAgNCAgMiAxMCAxMiAgNiAgNiAxOCAgMiAxNiAgMiAyMlxuWzI5OF0gIDYgIDggIDYgIDQgIDIgIDRcbiJ9 -->
-<pre><code>  [1]  1  2  2  4  2  4  2  4  6  2  6  4  2  4  6  6  2  6  4  2  6  4  6  8  4  2  4  2  4 14  4  6  2
- [34] 10  2  6  6  4  6  6  2 10  2  4  2 12 12  4  2  4  6  2 10  6  6  6  2  6  4  2 10 14  4  2  4 14
- [67]  6 10  2  4  6  8  6  6  4  6  8  4  8 10  2 10  2  6  4  6  8  4  2  4 12  8  4  8  4  6 12  2 18
-[100]  6 10  6  6  2  6 10  6  6  2  6  6  4  2 12 10  2  4  6  6  2 12  4  6  8 10  8 10  8  6  6  4  8
-[133]  6  4  8  4 14 10 12  2 10  2  4  2 10 14  4  2  4 14  4  2  4 20  4  8 10  8  4  6  6 14  4  6  6
-[166]  8  6 12  4  6  2 10  2  6 10  2 10  2  6 18  4  2  4  6  6  8  6  6 22  2 10  8 10  6  6  8 12  4
-[199]  6  6  2  6 12 10 18  2  4  6  2  6  4  2  4 12  2  6 34  6  6  8 18 10 14  4  2  4  6  8  4  2  6
-[232] 12 10  2  4  2  4  6 12 12  8 12  6  4  6  8  4  8  4 14  4  6  2  4  6  2  6 10 20  6  4  2 24  4
-[265]  2 10 12  2 10  8  6  6  6 18  6  4  2 12 10 12  8 16 14  6  4  2  4  2 10 12  6  6 18  2 16  2 22
-[298]  6  8  6  4  2  4</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG50d2luX3ByaW1lcyA8LSBwcmltZXNbIHByaW1lc1stMV0gLSBwcmltZXNbLWxlbmd0aChwcmltZXMpXSA9PSAyXVxubWVzc2FnZShcInR3aW4gcHJpbWVzXCIpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG50d2luX3ByaW1lcyA8LSBwcmltZXNbIHByaW1lc1stMV0gLSBwcmltZXNbLWxlbmd0aChwcmltZXMpXSA9PSAyXVxubWVzc2FnZShcInR3aW4gcHJpbWVzXCIpXG50d2luX3ByaW1lc1xubWVzc2FnZShcInR3aW4gcHJpbWVzIGxlbmd0aDogIFwiLCBsZW5ndGgodHdpbl9wcmltZXMpKVxuYGBgIn0= -->
 <pre class="r"><code>
 twin_primes &lt;- primes[ primes[-1] - primes[-length(primes)] == 2]
-message(&quot;twin primes&quot;)</code></pre>
+message(&quot;twin primes&quot;)
+twin_primes
+message(&quot;twin primes length:  &quot;, length(twin_primes))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoidHdpbiBwcmltZXNcbiJ9 -->
-<pre><code>twin primes</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHdpbl9wcmltZXNcbmBgYCJ9 -->
-<pre class="r"><code>twin_primes</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAgICAzICAgIDUgICAxMSAgIDE3ICAgMjkgICA0MSAgIDU5ICAgNzEgIDEwMSAgMTA3ICAxMzcgIDE0OSAgMTc5ICAxOTEgIDE5NyAgMjI3ICAyMzkgIDI2OSAgMjgxICAzMTFcblsyMV0gIDM0NyAgNDE5ICA0MzEgIDQ2MSAgNTIxICA1NjkgIDU5OSAgNjE3ICA2NDEgIDY1OSAgODA5ICA4MjEgIDgyNyAgODU3ICA4ODEgMTAxOSAxMDMxIDEwNDkgMTA2MSAxMDkxXG5bNDFdIDExNTEgMTIyOSAxMjc3IDEyODkgMTMwMSAxMzE5IDE0MjcgMTQ1MSAxNDgxIDE0ODcgMTYwNyAxNjE5IDE2NjcgMTY5NyAxNzIxIDE3ODcgMTg3MSAxODc3IDE5MzEgMTk0OVxuWzYxXSAxOTk3XG4ifQ== -->
-<pre><code> [1]    3    5   11   17   29   41   59   71  101  107  137  149  179  191  197  227  239  269  281  311
-[21]  347  419  431  461  521  569  599  617  641  659  809  821  827  857  881 1019 1031 1049 1061 1091
-[41] 1151 1229 1277 1289 1301 1319 1427 1451 1481 1487 1607 1619 1667 1697 1721 1787 1871 1877 1931 1949
-[61] 1997</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcInR3aW4gcHJpbWVzIGxlbmd0aDogIFwiLCBsZW5ndGgodHdpbl9wcmltZXMpKVxuYGBgIn0= -->
-<pre class="r"><code>message(&quot;twin primes length:  &quot;, length(twin_primes))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoidHdpbiBwcmltZXMgbGVuZ3RoOiAgNjFcbiJ9 -->
-<pre><code>twin primes length:  61</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>1.23 For the data set treering, which contains tree-ring widths in dimension-less units, use an R function to answer the following: 1. How many observations are there?</p>
+</div>
+</div>
+<div id="for-the-data-set-treering-which-contains-tree-ring-widths-in-dimension-less-units-use-an-r-function-to-answer-the-following" class="section level3">
+<h3>1.23 For the data set treering, which contains tree-ring widths in dimension-less units, use an R function to answer the following:</h3>
+<div id="how-many-observations-are-there" class="section level4">
+<h4>1. How many observations are there?</h4>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcInRyZWVyaW5nXCIpXG5zdHIodHJlZXJpbmcpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcInRyZWVyaW5nXCIpXG5zdHIodHJlZXJpbmcpXG5tZXNzYWdlKFwidG90YWwgb2JzZXJ2YXRpb25zOiBcIiwgbGVuZ3RoKHRyZWVyaW5nKSlcblxubWVzc2FnZShcImNoZWNrIGlmIGFueSBOQTogIFwiLCBsZW5ndGgodHJlZXJpbmdbIWlzLm5hKHRyZWVyaW5nKV0pKVxuXG5gYGAifQ== -->
 <pre class="r"><code>data(&quot;treering&quot;)
-str(treering)</code></pre>
+str(treering)
+message(&quot;total observations: &quot;, length(treering))
+
+message(&quot;check if any NA:  &quot;, length(treering[!is.na(treering)]))
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFRpbWUtU2VyaWVzIFsxOjc5ODBdIGZyb20gLTYwMDAgdG8gMTk3OTogMS4zNCAxLjA4IDEuNTQgMS4zMiAxLjQxIC4uLlxuIn0= -->
-<pre><code> Time-Series [1:7980] from -6000 to 1979: 1.34 1.08 1.54 1.32 1.41 ...</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcInRvdGFsIG9ic2VydmF0aW9uczogXCIsIGxlbmd0aCh0cmVlcmluZykpXG5gYGAifQ== -->
-<pre class="r"><code>message(&quot;total observations: &quot;, length(treering))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoidG90YWwgb2JzZXJ2YXRpb25zOiA3OTgwXG4ifQ== -->
-<pre><code>total observations: 7980</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGVuZ3RoKHRyZWVyaW5nWyFpcy5uYSh0cmVlcmluZyldKVxuYGBgIn0= -->
-<pre class="r"><code>length(treering[!is.na(treering)])</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDc5ODBcbiJ9 -->
-<pre><code>[1] 7980</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="2" style="list-style-type: decimal">
-<li>Find the smallest observation.</li>
-</ol>
+</div>
+<div id="find-the-smallest-observation." class="section level4">
+<h4>2. Find the smallest observation.</h4>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWluKHRyZWVyaW5nKVxuYGBgIn0= -->
-<pre class="r"><code>min(treering)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWluKHRyZWVyaW5nKVxubWVzc2FnZShcInNtYWFsbGVzdCBvYnNlcnZhdGlvbjogIFwiLCBtaW4odHJlZXJpbmcsIG5hLnJtID0gVCkpXG5cbmhlYWQoc29ydCh0cmVlcmluZywgZGVjcmVhc2luZyA9IEYpKVxuY2xhc3ModHJlZXJpbmcpXG5cbmBgYCJ9 -->
+<pre class="r"><code>min(treering)
+message(&quot;smaallest observation:  &quot;, min(treering, na.rm = T))
+
+head(sort(treering, decreasing = F))
+class(treering)
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDBcbiJ9 -->
-<pre><code>[1] 0</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcInNtYWFsbGVzdCBvYnNlcnZhdGlvbjogIFwiLCBtaW4odHJlZXJpbmcsIG5hLnJtID0gVCkpXG5gYGAifQ== -->
-<pre class="r"><code>message(&quot;smaallest observation:  &quot;, min(treering, na.rm = T))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoic21hYWxsZXN0IG9ic2VydmF0aW9uOiAgMFxuIn0= -->
-<pre><code>smaallest observation:  0</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChzb3J0KHRyZWVyaW5nLCBkZWNyZWFzaW5nID0gRikpXG5gYGAifQ== -->
-<pre class="r"><code>head(sort(treering, decreasing = F))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDAwIDAuMDAyIDAuMDAzIDAuMDA3IDAuMDEyIDAuMDEzXG4ifQ== -->
-<pre><code>[1] 0.000 0.002 0.003 0.007 0.012 0.013</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3ModHJlZXJpbmcpXG5gYGAifQ== -->
-<pre class="r"><code>class(treering)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwidHNcIlxuIn0= -->
-<pre><code>[1] &quot;ts&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: decimal">
-<li>Find the largest observation.</li>
-</ol>
+</div>
+<div id="find-the-largest-observation." class="section level4">
+<h4>3. Find the largest observation.</h4>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWF4KHRyZWVyaW5nKVxuYGBgIn0= -->
-<pre class="r"><code>max(treering)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWF4KHRyZWVyaW5nKVxubWVzc2FnZShcImxhcmdlc3Qgb2JzZXJ2YXRpb246ICBcIiwgbWF4KHRyZWVyaW5nLCBuYS5ybSA9IFQpKVxuXG5oZWFkKHNvcnQodHJlZXJpbmcsIGRlY3JlYXNpbmcgPSBUKSlcbmNsYXNzKHRyZWVyaW5nKVxuYGBgIn0= -->
+<pre class="r"><code>max(treering)
+message(&quot;largest observation:  &quot;, max(treering, na.rm = T))
+
+head(sort(treering, decreasing = T))
+class(treering)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuOTA4XG4ifQ== -->
-<pre><code>[1] 1.908</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcInNtYWFsbGVzdCBvYnNlcnZhdGlvbjogIFwiLCBtYXgodHJlZXJpbmcsIG5hLnJtID0gVCkpXG5gYGAifQ== -->
-<pre class="r"><code>message(&quot;smaallest observation:  &quot;, max(treering, na.rm = T))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoic21hYWxsZXN0IG9ic2VydmF0aW9uOiAgMS45MDhcbiJ9 -->
-<pre><code>smaallest observation:  1.908</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChzb3J0KHRyZWVyaW5nLCBkZWNyZWFzaW5nID0gVCkpXG5gYGAifQ== -->
-<pre class="r"><code>head(sort(treering, decreasing = T))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuOTA4IDEuODg0IDEuODU2IDEuODUwIDEuODQ0IDEuODI2XG4ifQ== -->
-<pre><code>[1] 1.908 1.884 1.856 1.850 1.844 1.826</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3ModHJlZXJpbmcpXG5gYGAifQ== -->
-<pre class="r"><code>class(treering)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwidHNcIlxuIn0= -->
-<pre><code>[1] &quot;ts&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="4" style="list-style-type: decimal">
-<li>How many are bigger than 1.5?</li>
-</ol>
+</div>
+<div id="how-many-are-bigger-than-1.5" class="section level4">
+<h4>4. How many are bigger than 1.5?</h4>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcImNvdW50IG9mID4gIDEuNTogICBcIiwgbGVuZ3RoKHRyZWVyaW5nW3RyZWVyaW5nID4gMS41XSkpXG5gYGAifQ== -->
 <pre class="r"><code>message(&quot;count of &gt;  1.5:   &quot;, length(treering[treering &gt; 1.5]))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiY291bnQgb2YgPiAgMS41OiAgIDIxOVxuIn0= -->
-<pre><code>count of &gt;  1.5:   219</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>1.24 The data set mandms (UsingR) contains the targeted color distribution in a bag of M&amp;Ms as percentages for varies types of packaging. Answer these questions. 1. Which packaging is missing one of the six colors?</p>
+</div>
+</div>
+<div id="the-data-set-mandms-usingr-contains-the-targeted-color-distribution-in-a-bag-of-mms-as-percentages-for-varies-types-of-packaging.-answer-these-questions." class="section level3">
+<h3>1.24 The data set mandms (UsingR) contains the targeted color distribution in a bag of M&amp;Ms as percentages for varies types of packaging. Answer these questions.</h3>
+<div id="which-packaging-is-missing-one-of-the-six-colors" class="section level4">
+<h4>1. Which packaging is missing one of the six colors?</h4>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcIm1hbmRtc1wiKVxuXG5tYW5kbXNfdCA8LSBhcy5kYXRhLmZyYW1lKHQobWFuZG1zKSlcbm5hbWVzKG1hbmRtc190KVt3aGljaChtYW5kbXNfdCA9PSAwLCBhcnIuaW5kID0gVClbICwgXCJjb2xcIl1dXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcIm1hbmRtc1wiKVxuXG5tYW5kbXNfdCA8LSBhcy5kYXRhLmZyYW1lKHQobWFuZG1zKSlcbm5hbWVzKG1hbmRtc190KVt3aGljaChtYW5kbXNfdCA9PSAwLCBhcnIuaW5kID0gVClbICwgXCJjb2xcIl1dXG5cbmBgYCJ9 -->
 <pre class="r"><code>data(&quot;mandms&quot;)
 
 mandms_t &lt;- as.data.frame(t(mandms))
-names(mandms_t)[which(mandms_t == 0, arr.ind = T)[ , &quot;col&quot;]]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUGVhbnV0IEJ1dHRlclwiXG4ifQ== -->
-<pre><code>[1] &quot;Peanut Butter&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="2" style="list-style-type: decimal">
-<li>Which types of packaging have an equal distribution of colors?</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBUT0RPXG5gYGAifQ== -->
-<pre class="r"><code># TODO</code></pre>
+names(mandms_t)[which(mandms_t == 0, arr.ind = T)[ , &quot;col&quot;]]
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: decimal">
-<li>Which packaging has a single color that is more likely than all the others? What color is this?</li>
-</ol>
+</div>
+<div id="which-types-of-packaging-have-an-equal-distribution-of-colors" class="section level4">
+<h4>2. Which types of packaging have an equal distribution of colors?</h4>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBUT0RPXG5gYGAifQ== -->
-<pre class="r"><code># TODO</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBUT0RPXG54IDwtIG1hbmRtc1xueFt3aGljaCh4WywxXSA9PSB4WywyXSAmIHhbLDFdID09IHhbLDNdICYgeFssMV0gPT0geFssNF0gJiB4WywxXSA9PSB4Wyw1XSAmIHhbLDFdID09IHhbLDZdKSxdWywwXVxuXG5cbmBgYCJ9 -->
+<pre class="r"><code># TODO
+x &lt;- mandms
+x[which(x[,1] == x[,2] &amp; x[,1] == x[,3] &amp; x[,1] == x[,4] &amp; x[,1] == x[,5] &amp; x[,1] == x[,6]),][,0]
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>1.25 The times variable in the data set nym.2002 (UsingR) contains the time to finish for several participants in the 2002 New York City Marathon. Answer these questions. 1. How many times are stored in the data set?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcIm55bS4yMDAyXCIpXG5tZXNzYWdlKFwibnVtYmVyIG9mIHRpbWVzOiAgXCIsIG5yb3cobnltLjIwMDIpKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cbmxpYnJhcnkodGliYmxlKSAgIyBhZGQgcm93bmFtZXNfdG9fY29sdW1uXG54ICU+JSByb3duYW1lc190b19jb2x1bW4odmFyID0gXCJpdGVtXCIpICU+JSBmaWx0ZXIoIHhbLDFdID09IHhbLDJdICYgeFssMV0gPT0geFssM10gJiB4WywxXSA9PSB4Wyw0XSAmIHhbLDFdID09IHhbLDVdICYgeFssMV0gPT0geFssNl0pXG5cbmBgYCJ9 -->
+<pre class="r"><code>
+
+library(tibble)  # add rownames_to_column
+x %&gt;% rownames_to_column(var = &quot;item&quot;) %&gt;% filter( x[,1] == x[,2] &amp; x[,1] == x[,3] &amp; x[,1] == x[,4] &amp; x[,1] == x[,5] &amp; x[,1] == x[,6])
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="which-packaging-has-a-single-color-that-is-more-likely-than-all-the-others-what-color-is-this" class="section level4">
+<h4>3. Which packaging has a single color that is more likely than all the others? What color is this?</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBUT0RPXG5cbnggPC0gbWFuZG1zXG54JG1heHBrZzwtYXBwbHkoeCwgMSwgbWF4KVxueFt4JG1heHBrZyA9PSBtYXgoeCRtYXhwa2cpLF1cblxuYGBgIn0= -->
+<pre class="r"><code># TODO
+
+x &lt;- mandms
+x$maxpkg&lt;-apply(x, 1, max)
+x[x$maxpkg == max(x$maxpkg),]
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="the-times-variable-in-the-data-set-nym.2002-usingr-contains-the-time-to-finish-for-several-participants-in-the-2002-new-york-city-marathon.-answer-these-questions." class="section level3">
+<h3>1.25 The times variable in the data set nym.2002 (UsingR) contains the time to finish for several participants in the 2002 New York City Marathon. Answer these questions.</h3>
+<div id="how-many-times-are-stored-in-the-data-set" class="section level4">
+<h4>1. How many times are stored in the data set?</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcIm55bS4yMDAyXCIpXG5tZXNzYWdlKFwibnVtYmVyIG9mIHRpbWVzOiAgXCIsIG5yb3cobnltLjIwMDIpKVxubWVzc2FnZShcImRpbSBvZiA6ICBcIiwgZGltKG55bS4yMDAyKSlcbm5hbWVzKG55bS4yMDAyKVxuYGBgIn0= -->
 <pre class="r"><code>data(&quot;nym.2002&quot;)
-message(&quot;number of times:  &quot;, nrow(nym.2002))</code></pre>
+message(&quot;number of times:  &quot;, nrow(nym.2002))
+message(&quot;dim of :  &quot;, dim(nym.2002))
+names(nym.2002)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoibnVtYmVyIG9mIHRpbWVzOiAgMTAwMFxuIn0= -->
-<pre><code>number of times:  1000</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcImRpbSBvZiA6ICBcIiwgZGltKG55bS4yMDAyKSlcbmBgYCJ9 -->
-<pre class="r"><code>message(&quot;dim of :  &quot;, dim(nym.2002))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiZGltIG9mIDogIDEwMDA1XG4ifQ== -->
-<pre><code>dim of :  10005</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmFtZXMobnltLjIwMDIpXG5gYGAifQ== -->
-<pre class="r"><code>names(nym.2002)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicGxhY2VcIiAgXCJnZW5kZXJcIiBcImFnZVwiICAgIFwiaG9tZVwiICAgXCJ0aW1lXCIgIFxuIn0= -->
-<pre><code>[1] &quot;place&quot;  &quot;gender&quot; &quot;age&quot;    &quot;home&quot;   &quot;time&quot;  </code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="2" style="list-style-type: decimal">
-<li>What was the fastest time in minutes? Convert this into hours and minutes using R.</li>
-</ol>
+</div>
+<div id="what-was-the-fastest-time-in-minutes-convert-this-into-hours-and-minutes-using-r." class="section level4">
+<h4>2. What was the fastest time in minutes? Convert this into hours and minutes using R.</h4>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zb3VyY2UoXCIuLi9mdW5jdGlvbnMuUlwiKVxubWF4X3RpbWUgPC0gbWF4KG55bS4yMDAyJHRpbWUpXG50b19ob3Vyc19taW51dGVzKG1heF90aW1lKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zb3VyY2UoXCIuLi9mdW5jdGlvbnMuUlwiKVxubWF4X3RpbWUgPC0gbWF4KG55bS4yMDAyJHRpbWUpXG50b19ob3Vyc19taW51dGVzKG1heF90aW1lKVxuXG5gYGAifQ== -->
 <pre class="r"><code>
 source(&quot;../functions.R&quot;)
 max_time &lt;- max(nym.2002$time)
-to_hours_minutes(max_time)</code></pre>
+to_hours_minutes(max_time)
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiSG91cnMgYW5kIE1pbnV0ZXM6OToyN1wiXG4ifQ== -->
-<pre><code>[1] &quot;Hours and Minutes:9:27&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: decimal">
-<li>What was the slowest time in minutes? Convert this into hours and minutes using R.</li>
-</ol>
+</div>
+<div id="what-was-the-slowest-time-in-minutes-convert-this-into-hours-and-minutes-using-r." class="section level4">
+<h4>3. What was the slowest time in minutes? Convert this into hours and minutes using R.</h4>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5taW5fdGltZSA8LSBtYXgobnltLjIwMDIkdGltZSlcbnByaW50KHRvX2hvdXJzX21pbnV0ZXMobWluX3RpbWUpKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5taW5fdGltZSA8LSBtYXgobnltLjIwMDIkdGltZSlcbnRvX2hvdXJzX21pbnV0ZXMobWluX3RpbWUpXG5cbmBgYCJ9 -->
 <pre class="r"><code>
 min_time &lt;- max(nym.2002$time)
-print(to_hours_minutes(min_time))</code></pre>
+to_hours_minutes(min_time)
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiSG91cnMgYW5kIE1pbnV0ZXM6OToyN1wiXG4ifQ== -->
-<pre><code>[1] &quot;Hours and Minutes:9:27&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>1.26 For the data set rivers, which is the longest river? The shortest?</p>
+</div>
+</div>
+<div id="for-the-data-set-rivers-which-is-the-longest-river-the-shortest" class="section level3">
+<h3>1.26 For the data set rivers, which is the longest river? The shortest?</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcInJpdmVyc1wiKVxuXG5tZXNzYWdlKFwibG9uZ2VzdCByaXZlcjogXCIsIG1heChyaXZlcnMpKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcInJpdmVyc1wiKVxuXG5tZXNzYWdlKFwibG9uZ2VzdCByaXZlcjogXCIsIG1heChyaXZlcnMpKVxuXG5tZXNzYWdlKFwic2hvcnRlc3Qgcml2ZXI6IFwiLCBtaW4ocml2ZXJzKSlcblxuYGBgIn0= -->
 <pre class="r"><code>data(&quot;rivers&quot;)
 
-message(&quot;longest river: &quot;, max(rivers))</code></pre>
+message(&quot;longest river: &quot;, max(rivers))
+
+message(&quot;shortest river: &quot;, min(rivers))
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoibG9uZ2VzdCByaXZlcjogMzcxMFxuIn0= -->
-<pre><code>longest river: 3710</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVzc2FnZShcInNob3J0ZXN0IHJpdmVyOiBcIiwgbWluKHJpdmVycykpXG5gYGAifQ== -->
-<pre class="r"><code>message(&quot;shortest river: &quot;, min(rivers))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoic2hvcnRlc3Qgcml2ZXI6IDEzNVxuIn0= -->
-<pre><code>shortest river: 135</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>1.27 The data set uspop contains decade-by-decade population figures for the United States from 1790 to 1970. 1. Use names() and seq() to add the year names to the data vector.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcInVzcG9wXCIpXG5kZiA8LSBkYXRhLmZyYW1lKHNlcSgxNzkwLDE5NzAsMTApLCB4KVxubmFtZXMoZGYpWzE6Ml0gPC0gYyhcInllYXJcIiwgXCJwb3B1bGF0aW9uXCIpXG5kZlxuYGBgIn0= -->
-<pre class="r"><code>data(&quot;uspop&quot;)
-df &lt;- data.frame(seq(1790,1970,10), x)
-names(df)[1:2] &lt;- c(&quot;year&quot;, &quot;population&quot;)
-df</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6MTl9LCJyZGYiOiJINHNJQUFBQUFBQUFCZ3R5aVREbWl1QmlZR0JnWm1CbVkySmdaZ1V5R2RpY0F3eU5USTBZR0ZpWWdEeEdCaFlHVGhCZEFWUWxER1NBQlBtQVdOaGg5ZytRY2dhSE9RcFEyZ05LRjBEcEdWRDZBSlIrQWFIbkNrQnBDeWlkQUtVN29QUUdLSDBEUXM5amdOSWFVRG9BU2xkQTZRVlErZ1FERkVEY3gxK3crRHFYYmFHRHFDMlk0U0R6OVZCL2pNWTNCMlgzZFNKVkR6MGNOTStBd0ZrSFE4bVpRRERMd2R3WURCenMwOERBd2ZrWmhQYUV5dnNYUStTRG9lNEpoOUpST1JCejRqWkQ1QlBLSVBxU1hrTDBwV1ZDNkV5SXVXZ0J5NXFYbUp0YURHUUlnQU1YSXNoU21acFlCR1Z6RmVRWGxPWWtsbVRtNTZGcDVTektMOWVEYWVjRmFXK0FPRWtZM1k3a25NUmltQjB3UWE2VXhKSkV2YlFpb0g0Zzd4K2FGdmI4QXBDTlFFMU1vRmhuUmRQTVdJUW13RithQjNKSmltNXlSbWxldHE0aHlBS3dOQVR3UXRuQ1NHd21pSlZNLzZGR3NVS05Za3ZOUzgvTVM0VzVQU2N4S1RVSHl1RUQraGpzWWIyQ29zeThFcGhQZ0tMRmVpWDVKWWt3ZFZ6SitUa3dFYkRmR1A0QkFQdnphanJ0QWdBQSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"1790","2":"3.93"},{"1":"1800","2":"5.31"},{"1":"1810","2":"7.24"},{"1":"1820","2":"9.64"},{"1":"1830","2":"12.90"},{"1":"1840","2":"17.10"},{"1":"1850","2":"23.20"},{"1":"1860","2":"31.40"},{"1":"1870","2":"39.80"},{"1":"1880","2":"50.20"},{"1":"1890","2":"62.90"},{"1":"1900","2":"76.00"},{"1":"1910","2":"92.00"},{"1":"1920","2":"105.70"},{"1":"1930","2":"122.80"},{"1":"1940","2":"131.70"},{"1":"1950","2":"151.30"},{"1":"1960","2":"179.30"},{"1":"1970","2":"203.20"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[19]},"pages":{}}}
-  </script>
 </div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
-<pre class="r"><code>NA</code></pre>
+<div id="the-data-set-uspop-contains-decade-by-decade-population-figures-for-the-united-states-from-1790-to-1970." class="section level3">
+<h3>1.27 The data set uspop contains decade-by-decade population figures for the United States from 1790 to 1970.</h3>
+<div id="use-names-and-seq-to-add-the-year-names-to-the-data-vector." class="section level4">
+<h4>1. Use names() and seq() to add the year names to the data vector.</h4>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShcInVzcG9wXCIpXG5kZiA8LSBkYXRhLmZyYW1lKHNlcSgxNzkwLDE5NzAsMTApLCB1c3BvcClcbm5hbWVzKGRmKVsxOjJdIDwtIGMoXCJ5ZWFyXCIsIFwicG9wdWxhdGlvblwiKVxuZGZcblxuYGBgIn0= -->
+<pre class="r"><code>data(&quot;uspop&quot;)
+df &lt;- data.frame(seq(1790,1970,10), uspop)
+names(df)[1:2] &lt;- c(&quot;year&quot;, &quot;population&quot;)
+df
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="2" style="list-style-type: decimal">
-<li>Use diff() to find the inter-decade differences. Which decade had the greatest increase?</li>
-</ol>
+</div>
+<div id="use-diff-to-find-the-inter-decade-differences.-which-decade-had-the-greatest-increase" class="section level4">
+<h4>2. Use diff() to find the inter-decade differences. Which decade had the greatest increase?</h4>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kZjIgPC0gZGF0YS5mcmFtZShkZiwgYyggYygwKSwgZGlmZihkZiRwb3B1bGF0aW9uKSkpXG5uYW1lcyhkZjIpWzNdIDwtIFwiaW5jcmVhc2VcIlxuaGVhZChkZjIsIG4gPSBucm93KGRmMikpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kZjIgPC0gZGF0YS5mcmFtZShkZiwgYyggYygwKSwgZGlmZihkZiRwb3B1bGF0aW9uKSkpXG5uYW1lcyhkZjIpWzNdIDwtIFwiaW5jcmVhc2VcIlxuaGVhZChkZjIsIG4gPSBucm93KGRmMikpXG5cbmBgYCJ9 -->
 <pre class="r"><code>
 df2 &lt;- data.frame(df, c( c(0), diff(df$population)))
 names(df2)[3] &lt;- &quot;increase&quot;
-head(df2, n = nrow(df2))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6MTl9LCJyZGYiOiJINHNJQUFBQUFBQUFCbDJSejBzYlFSVEh4OTBrNm9JMkdBV0ZIaUx0UVNzR1k1UjRVUEpBUVQxVjdLRlNTc21ZYkhSeDNWMTNOeG85OWRpYlYzL1VJdlF1aGY0RHBTY1BLdDdhcTFCSyt3ZFVla283OCtZTnlENFlQbS9lci9tKzNkV0Z0WksxWmpIR1RHWm1ER2FtaGNzeTh5dkZ5ZWxKeGxLR3VIV3dGT3VXYkltcUhKWXkxaXRPRGs3L3luSUc3L1BFSldKQVBDSitJZjVTUE1zU1o0aFY0anZpSitKM3hRK01PRUpjSWJhSTU4UkxScWIwUFFvK2ZyUG1kbUJnRGgxNC9PZnI0ZXVSZTNpeWVORi9jTGNFbzFmU3JxRTRkQ3pzQk1vbE5LZzAwR0QrcCtJeTVaOUhLditDOUx3a3ZuTFZuRGVmVmI2NnEvcldmNnUraHFQb3FMbGFueFpidVJkcUZpLzZLdTA3S2V3SG1EaG1DaXlNOTBNV2RkN0FJTGJYSVUvNjhoaS9ncWVJV3hpbC9EUHFueUI5WXhqZnBEMlBZQmpyTDZFa3I4Zm5NRXQxWmR5M212anhhWTl2MjVGd3N2anpWVEMxYi9PUWZDdndnNmJMWThmM0tOTGxlTFhRNXBHZEdOVWQrbnNGUGE1SEhPT3RlanFYZkxQbThraS9xWU5XbmNlODBBaEZ2N2kxRXkyZGZpQVZpQ1pEZnRsMG9ya2pUQVN5VFU4cXFZL1hOcHZlMW5oUmZpd0w4K3IwRUhNUGZGTzlhZnlqV1dtYWxiRzlEY2V6dFhpWHI5c3VYWHJGeXJoeElRZ2RMOWFyaUdoVWlQMlk2enFyNXJzNmdzdXg5bjlpM0RrbG5nTUFBQT09In0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["increase"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1790","2":"3.93","3":"0.00","_rn_":"1"},{"1":"1800","2":"5.31","3":"1.38","_rn_":"2"},{"1":"1810","2":"7.24","3":"1.93","_rn_":"3"},{"1":"1820","2":"9.64","3":"2.40","_rn_":"4"},{"1":"1830","2":"12.90","3":"3.26","_rn_":"5"},{"1":"1840","2":"17.10","3":"4.20","_rn_":"6"},{"1":"1850","2":"23.20","3":"6.10","_rn_":"7"},{"1":"1860","2":"31.40","3":"8.20","_rn_":"8"},{"1":"1870","2":"39.80","3":"8.40","_rn_":"9"},{"1":"1880","2":"50.20","3":"10.40","_rn_":"10"},{"1":"1890","2":"62.90","3":"12.70","_rn_":"11"},{"1":"1900","2":"76.00","3":"13.10","_rn_":"12"},{"1":"1910","2":"92.00","3":"16.00","_rn_":"13"},{"1":"1920","2":"105.70","3":"13.70","_rn_":"14"},{"1":"1930","2":"122.80","3":"17.10","_rn_":"15"},{"1":"1940","2":"131.70","3":"8.90","_rn_":"16"},{"1":"1950","2":"151.30","3":"19.60","_rn_":"17"},{"1":"1960","2":"179.30","3":"28.00","_rn_":"18"},{"1":"1970","2":"203.20","3":"23.90","_rn_":"19"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[19]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
-<pre class="r"><code>NA</code></pre>
+head(df2, n = nrow(df2))
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kZjJbIGRmMiRpbmNyZWFzZSA9PSBtYXgoZGYyJGluY3JlYXNlLCBuYS5ybSA9IFQpLF1cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kZjJbIGRmMiRpbmNyZWFzZSA9PSBtYXgoZGYyJGluY3JlYXNlLCBuYS5ybSA9IFQpLF1cblxuYGBgIn0= -->
 <pre class="r"><code>
-df2[ df2$increase == max(df2$increase, na.rm = T),]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6MX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVB5MDRETVF6MFBxR1JLQWkrb3l1MWlFTWxEa2p3QVloVHIrNDJoWWcwV1dXektud0tIQkJmV25DeUNTcnhKWjZKUGVONWVsaGRzeFVEZ0FLS09vZWlvaGJxKzhmNTRtWUJVT2FFTWloaDR0NDNtcnJ5b3dCVFI5eDlmVU9vRVcvRkI5WG5INzZOMy8rRUtvVTczbE56NGNWR3Nuem5hRUxQT3QwTkVxM1FLakNuUXJXR1k4OFRxWW5SK3liS25ma1BnTXZVcjVYWVI3OUlzZzFhYkxhR2Rna2RrcFVUM1RsM1dzcGQ0aXBaemt4Q25BL0tYYkdadFMrRGVwMHRuVUc0Smp1NjdMZ3ZSc3Y4SjBoVlFhcm02bGtvSG0rWHVPWXlnQ21sOVdHYnpnaGxZeEppKzhacWkzR090VnBHeG1lRHd5LzZ2ZVdGNlFFQUFBPT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["increase"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1960","2":"179.3","3":"28","_rn_":"18"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
-<pre class="r"><code>NA</code></pre>
+df2[ df2$increase == max(df2$increase, na.rm = T),]
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: decimal">
-<li>Explain why you could reasonably expect that the difference will always increase with each decade. Is this the case with the data?</li>
-</ol>
+</div>
+<div id="explain-why-you-could-reasonably-expect-that-the-difference-will-always-increase-with-each-decade.-is-this-the-case-with-the-data" class="section level4">
+<h4>3. Explain why you could reasonably expect that the difference will always increase with each decade. Is this the case with the data?</h4>
 <ul>
 <li>through normal population growth rate adding in immigration for the years covered.</li>
 <li>in the data, the population increase was always positive, however the rate of increase was not stable or increasing, or decreasing at a sustained rate.</li>
 </ul>
 <!-- rnb-text-end -->
+</div>
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiSG9tZXdvcmsgMSAtIFNoYXduIENpY29yaWEiCmRhdGU6ICJGZWJydWFyeSA4LCAyMDIwIgphdXRob3I6ICJTaGF3biBDaWNvcmlhIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgoxLjIwIFRoZSBidWlsdC1pbiBkYXRhIHNldCBpc2xhbmRzIGNvbnRhaW5zIHRoZSBzaXplIG9mIHRoZSB3b3JsZOKAmXMgbGFuZCBtYXNzZXMgdGhhdCBleGNlZWQgMTAsMDAwIHNxdWFyZSBtaWxlcy4gVXNlIHNvcnQoKSB3aXRoIHRoZSBhcmd1bWVudCBkZWNyZWFzaW5nPVRSVUUgdG8gZmluZCB0aGUgc2V2ZW4gbGFyZ2VzdCBsYW5kIG1hc3Nlcy4KRm9yIEV4YW1wbGUsIHRoZSBleHBlY3RlZCBzb2x1dGlvbiBpcwo+IHNvcnQoaXNsYW5kcywgZGVjcmVhc2luZz1UUlVFKVsxOjddCiAgICAgICAgIEFzaWEgICAgICAgIEFmcmljYSBOb3J0aCBBbWVyaWNhIFNvdXRoIEFtZXJpY2EgICAgQW50YXJjdGljYSAgICAgICAgRXVyb3BlICAgICBBdXN0cmFsaWEgCiAgICAgICAgMTY5ODggICAgICAgICAxMTUwNiAgICAgICAgICA5MzkwICAgICAgICAgIDY3OTUgICAgICAgICAgNTUwMCAgICAgICAgICAzNzQ1ICAgICAgICAgIDI5NjgKCgoKYGBge3J9CmRhdGEoImlzbGFuZHMiKQoKCmhlYWQoc29ydChpc2xhbmRzLCBkZWNyZWFzaW5nID0gVCksIG4gPSA3KQpzb3J0KGlzbGFuZHMsIGRlY3JlYXNpbmcgPSBUKVsxOjddCgpgYGAKCgoKMS4yMSBMb2FkIHRoZSBkYXRhIHNldCBwcmltZXMgKFVzaW5nUikuIFRoaXMgaXMgdGhlIHNldCBvZiBwcmltZSBudW1iZXJzIGluIFsxLDIwMDNdLiBIb3cgbWFueSBhcmUgdGhlcmU/IEhvdyBtYW55IGluIHRoZSByYW5nZSBbMSwxMDBdPyBbMTAwLDEwMDBdPwoKYGBge3IgbWVzc2FnZT1GfQpsaWJyYXJ5KFVzaW5nUikKZGF0YSgicHJpbWVzIikKCgpgYGAKCmBgYHtyfQptZXNzYWdlKCJob3cgbWFueT8gOiAiLCBsZW5ndGgocHJpbWVzKSkKCm1lc3NhZ2UoImluIHJhbmdlIDE6MTAwOiAgIiwgbGVuZ3RoKHByaW1lc1twcmltZXMgPD0gMTAwXSkpCgptZXNzYWdlKCJpbiByYW5nZSAxMDA6MTAwMCAgIiwgbGVuZ3RoKHByaW1lc1sxMDAgPD0gcHJpbWVzICYgcHJpbWVzIDw9IDEwMDBdKSkKCgptZXNzYWdlKCJpbiByYW5nZSAxOjEwMDogICIsIGxlbmd0aChwcmltZXNbcHJpbWVzICVpbiUgMToxMDBdKSkKCm1lc3NhZ2UoImluIHJhbmdlIDEwMDoxMDAwICAiLCBsZW5ndGgocHJpbWVzW3ByaW1lcyAlaW4lIDEwMDoxMDAwXSkpCgpgYGAKCgoxLjIyIExvYWQgdGhlIGRhdGEgc2V0IHByaW1lcyAoVXNpbmdSKS4gV2Ugd2lzaCB0byBmaW5kIGFsbCB0aGUgdHdpbiBwcmltZXMuIFRoZXNlIGFyZSBudW1iZXJzIHAgYW5kIHArMiwgd2hlcmUgYm90aCBhcmUgcHJpbWUuCjEuIEV4cGxhaW4gd2hhdCBwcmltZXNb4oiSMV0gcmV0dXJucy4KCi0gYSBuZWdhdGl2ZSBzdWJzY3JpcHQgInJlbW92ZXMiIG9yIGdpdmVzIGV2ZXJ5dGhpbmcgImJ1dCIgd2hhdCBpcyBuZWdhdGVkLgoKCmBgYHtyfQpwcmltZXNbLTFdCnByaW1lc1stKDE6MTAwKV0KCmBgYAoKMi4gSWYgeW91IHNldCBuPWxlbmd0aCAocHJpbWVzKSwgZXhwbGFpbiB3aGF0IHByaW1lc1viiJJuXSByZXR1cm5zLgoKLSBzaW5jZSBuIGJlY29tZXMgdGhlIGxlbmd0aCBvciAibGFzdCIgc2NhbGFyIGluIHRoZSB2ZWN0b3IsIHRoZSByZXR1cm5lZCB2ZWN0b3IgaXMgYWxsIGJ1dCB0aGUgbGFzdCBpdGVtLgoKYGBge3J9Cm4gPC0gbGVuZ3RoKHByaW1lcykKcHJpbWVzWy1uXQpgYGAKCgoKCjMuIFdoeSBtaWdodCBwcmltZXMgW+KIkjFd4oCUcHJpbWVzIFviiJJuXSBnaXZlIGNsdWVzIGFzIHRvIHdoYXQgdGhlIHR3aW4gcHJpbWVzIGFyZT8KSG93IG1hbnkgdHdpbiBwcmltZXMgYXJlIHRoZXJlIGluIHRoZSBkYXRhIHNldD8KCi0gcHJpbWVzWy0xXSAic2hpZnRzIiB0aGUgdmVjdG9yIGxlZnQsIHdoaWxlIHByaW1lc1stbl0gc2hpZnRzIHJpZ2h0IC0tIGVzc2VudGlhbGx5IGxpbmluZyB1cCBlYWNoIG9mIHRoZSBwcmltZSBudW1iZXJzIHdpdGggCgpgYGB7cn0KbiA8LSBsZW5ndGgocHJpbWVzKQpwcmltZXNb4oiSMV0gLSBwcmltZXNb4oiSbl0KYGBgCgpgYGB7cn0KCnR3aW5fcHJpbWVzIDwtIHByaW1lc1sgcHJpbWVzWy0xXSAtIHByaW1lc1stbGVuZ3RoKHByaW1lcyldID09IDJdCm1lc3NhZ2UoInR3aW4gcHJpbWVzIikKdHdpbl9wcmltZXMKbWVzc2FnZSgidHdpbiBwcmltZXMgbGVuZ3RoOiAgIiwgbGVuZ3RoKHR3aW5fcHJpbWVzKSkKYGBgCgoKMS4yMyBGb3IgdGhlIGRhdGEgc2V0IHRyZWVyaW5nLCB3aGljaCBjb250YWlucyB0cmVlLXJpbmcgd2lkdGhzIGluIGRpbWVuc2lvbi1sZXNzIHVuaXRzLCB1c2UgYW4gUiBmdW5jdGlvbiB0byBhbnN3ZXIgdGhlIGZvbGxvd2luZzoKMS4gSG93IG1hbnkgb2JzZXJ2YXRpb25zIGFyZSB0aGVyZT8KCmBgYHtyfQpkYXRhKCJ0cmVlcmluZyIpCnN0cih0cmVlcmluZykKbWVzc2FnZSgidG90YWwgb2JzZXJ2YXRpb25zOiAiLCBsZW5ndGgodHJlZXJpbmcpKQoKbWVzc2FnZSgiY2hlY2sgaWYgYW55IE5BOiAgIiwgbGVuZ3RoKHRyZWVyaW5nWyFpcy5uYSh0cmVlcmluZyldKSkKCmBgYAoKMi4gRmluZCB0aGUgc21hbGxlc3Qgb2JzZXJ2YXRpb24uCgpgYGB7cn0KbWluKHRyZWVyaW5nKQptZXNzYWdlKCJzbWFhbGxlc3Qgb2JzZXJ2YXRpb246ICAiLCBtaW4odHJlZXJpbmcsIG5hLnJtID0gVCkpCgpoZWFkKHNvcnQodHJlZXJpbmcsIGRlY3JlYXNpbmcgPSBGKSkKY2xhc3ModHJlZXJpbmcpCgpgYGAKCgozLiBGaW5kIHRoZSBsYXJnZXN0IG9ic2VydmF0aW9uLgpgYGB7cn0KbWF4KHRyZWVyaW5nKQptZXNzYWdlKCJsYXJnZXN0IG9ic2VydmF0aW9uOiAgIiwgbWF4KHRyZWVyaW5nLCBuYS5ybSA9IFQpKQoKaGVhZChzb3J0KHRyZWVyaW5nLCBkZWNyZWFzaW5nID0gVCkpCmNsYXNzKHRyZWVyaW5nKQpgYGAKCjQuIEhvdyBtYW55IGFyZSBiaWdnZXIgdGhhbiAxLjU/CgpgYGB7cn0KbWVzc2FnZSgiY291bnQgb2YgPiAgMS41OiAgICIsIGxlbmd0aCh0cmVlcmluZ1t0cmVlcmluZyA+IDEuNV0pKQpgYGAKCgoxLjI0IFRoZSBkYXRhIHNldCBtYW5kbXMgKFVzaW5nUikgY29udGFpbnMgdGhlIHRhcmdldGVkIGNvbG9yIGRpc3RyaWJ1dGlvbiBpbiBhIGJhZyBvZiBNJk1zIGFzIHBlcmNlbnRhZ2VzIGZvciB2YXJpZXMgdHlwZXMgb2YgcGFja2FnaW5nLiBBbnN3ZXIgdGhlc2UgcXVlc3Rpb25zLgoxLiBXaGljaCBwYWNrYWdpbmcgaXMgbWlzc2luZyBvbmUgb2YgdGhlIHNpeCBjb2xvcnM/CgpgYGB7cn0KZGF0YSgibWFuZG1zIikKCm1hbmRtc190IDwtIGFzLmRhdGEuZnJhbWUodChtYW5kbXMpKQpuYW1lcyhtYW5kbXNfdClbd2hpY2gobWFuZG1zX3QgPT0gMCwgYXJyLmluZCA9IFQpWyAsICJjb2wiXV0KCmBgYAoKMi4gV2hpY2ggdHlwZXMgb2YgcGFja2FnaW5nIGhhdmUgYW4gZXF1YWwgZGlzdHJpYnV0aW9uIG9mIGNvbG9ycz8KCmBgYHtyfQojIFRPRE8KYGBgCgoKMy4gV2hpY2ggcGFja2FnaW5nIGhhcyBhIHNpbmdsZSBjb2xvciB0aGF0IGlzIG1vcmUgbGlrZWx5IHRoYW4gYWxsIHRoZSBvdGhlcnM/IFdoYXQgY29sb3IgaXMgdGhpcz8KCmBgYHtyfQojIFRPRE8KYGBgCgoKMS4yNSBUaGUgdGltZXMgdmFyaWFibGUgaW4gdGhlIGRhdGEgc2V0IG55bS4yMDAyIChVc2luZ1IpIGNvbnRhaW5zIHRoZSB0aW1lIHRvIGZpbmlzaCBmb3Igc2V2ZXJhbCBwYXJ0aWNpcGFudHMgaW4gdGhlIDIwMDIgTmV3IFlvcmsgQ2l0eSBNYXJhdGhvbi4gQW5zd2VyIHRoZXNlIHF1ZXN0aW9ucy4KMS4gSG93IG1hbnkgdGltZXMgYXJlIHN0b3JlZCBpbiB0aGUgZGF0YSBzZXQ/CgpgYGB7cn0KZGF0YSgibnltLjIwMDIiKQptZXNzYWdlKCJudW1iZXIgb2YgdGltZXM6ICAiLCBucm93KG55bS4yMDAyKSkKbWVzc2FnZSgiZGltIG9mIDogICIsIGRpbShueW0uMjAwMikpCm5hbWVzKG55bS4yMDAyKQpgYGAKCjIuIFdoYXQgd2FzIHRoZSBmYXN0ZXN0IHRpbWUgaW4gbWludXRlcz8gQ29udmVydCB0aGlzIGludG8gaG91cnMgYW5kIG1pbnV0ZXMgdXNpbmcgUi4KCmBgYHtyfQoKc291cmNlKCIuLi9mdW5jdGlvbnMuUiIpCm1heF90aW1lIDwtIG1heChueW0uMjAwMiR0aW1lKQp0b19ob3Vyc19taW51dGVzKG1heF90aW1lKQoKYGBgCgozLiBXaGF0IHdhcyB0aGUgc2xvd2VzdCB0aW1lIGluIG1pbnV0ZXM/IENvbnZlcnQgdGhpcyBpbnRvIGhvdXJzIGFuZCBtaW51dGVzIHVzaW5nIFIuCgpgYGB7cn0KCm1pbl90aW1lIDwtIG1heChueW0uMjAwMiR0aW1lKQp0b19ob3Vyc19taW51dGVzKG1pbl90aW1lKQoKYGBgCgoKMS4yNiBGb3IgdGhlIGRhdGEgc2V0IHJpdmVycywgd2hpY2ggaXMgdGhlIGxvbmdlc3Qgcml2ZXI/IFRoZSBzaG9ydGVzdD8KCmBgYHtyfQpkYXRhKCJyaXZlcnMiKQoKbWVzc2FnZSgibG9uZ2VzdCByaXZlcjogIiwgbWF4KHJpdmVycykpCgptZXNzYWdlKCJzaG9ydGVzdCByaXZlcjogIiwgbWluKHJpdmVycykpCgpgYGAKCgoxLjI3IFRoZSBkYXRhIHNldCB1c3BvcCBjb250YWlucyBkZWNhZGUtYnktZGVjYWRlIHBvcHVsYXRpb24gZmlndXJlcyBmb3IgdGhlIFVuaXRlZCBTdGF0ZXMgZnJvbSAxNzkwIHRvIDE5NzAuCjEuIFVzZSBuYW1lcygpIGFuZCBzZXEoKSB0byBhZGQgdGhlIHllYXIgbmFtZXMgdG8gdGhlIGRhdGEgdmVjdG9yLgoKYGBge3J9CmRhdGEoInVzcG9wIikKZGYgPC0gZGF0YS5mcmFtZShzZXEoMTc5MCwxOTcwLDEwKSwgeCkKbmFtZXMoZGYpWzE6Ml0gPC0gYygieWVhciIsICJwb3B1bGF0aW9uIikKZGYKCmBgYAoKMi4gVXNlIGRpZmYoKSB0byBmaW5kIHRoZSBpbnRlci1kZWNhZGUgZGlmZmVyZW5jZXMuIFdoaWNoIGRlY2FkZSBoYWQgdGhlIGdyZWF0ZXN0IGluY3JlYXNlPwoKYGBge3J9CgpkZjIgPC0gZGF0YS5mcmFtZShkZiwgYyggYygwKSwgZGlmZihkZiRwb3B1bGF0aW9uKSkpCm5hbWVzKGRmMilbM10gPC0gImluY3JlYXNlIgpoZWFkKGRmMiwgbiA9IG5yb3coZGYyKSkKCmBgYAoKYGBge3J9CgpkZjJbIGRmMiRpbmNyZWFzZSA9PSBtYXgoZGYyJGluY3JlYXNlLCBuYS5ybSA9IFQpLF0KCmBgYAoKCgozLiBFeHBsYWluIHdoeSB5b3UgY291bGQgcmVhc29uYWJseSBleHBlY3QgdGhhdCB0aGUgZGlmZmVyZW5jZSB3aWxsIGFsd2F5cyBpbmNyZWFzZSB3aXRoIGVhY2ggZGVjYWRlLiBJcyB0aGlzIHRoZSBjYXNlIHdpdGggdGhlIGRhdGE/CgoKLSB0aHJvdWdoIG5vcm1hbCBwb3B1bGF0aW9uIGdyb3d0aCByYXRlIGFkZGluZyBpbiBpbW1pZ3JhdGlvbiBmb3IgdGhlIHllYXJzIGNvdmVyZWQuCi0gaW4gdGhlIGRhdGEsIHRoZSBwb3B1bGF0aW9uIGluY3JlYXNlIHdhcyBhbHdheXMgcG9zaXRpdmUsIGhvd2V2ZXIgdGhlIHJhdGUgb2YgaW5jcmVhc2Ugd2FzIG5vdCBzdGFibGUgb3IgaW5jcmVhc2luZywgb3IgZGVjcmVhc2luZyBhdCBhIHN1c3RhaW5lZCByYXRlLgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiSG9tZXdvcmsgMSAtIFNoYXduIENpY29yaWEiCmRhdGU6ICJGZWJydWFyeSA4LCAyMDIwIgphdXRob3I6ICJTaGF3biBDaWNvcmlhIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIyMgMS4yMCBUaGUgYnVpbHQtaW4gZGF0YSBzZXQgaXNsYW5kcyBjb250YWlucyB0aGUgc2l6ZSBvZiB0aGUgd29ybGTigJlzIGxhbmQgbWFzc2VzIHRoYXQgZXhjZWVkIDEwLDAwMCBzcXVhcmUgbWlsZXMuIFVzZSBzb3J0KCkgd2l0aCB0aGUgYXJndW1lbnQgZGVjcmVhc2luZz1UUlVFIHRvIGZpbmQgdGhlIHNldmVuIGxhcmdlc3QgbGFuZCBtYXNzZXMuCkZvciBFeGFtcGxlLCB0aGUgZXhwZWN0ZWQgc29sdXRpb24gaXMKYGBgCj4gc29ydChpc2xhbmRzLCBkZWNyZWFzaW5nPVRSVUUpWzE6N10KICAgICAgICAgQXNpYSAgICAgICAgQWZyaWNhIE5vcnRoIEFtZXJpY2EgU291dGggQW1lcmljYSAgICBBbnRhcmN0aWNhICAgICAgICBFdXJvcGUgICAgIEF1c3RyYWxpYSAKICAgICAgICAxNjk4OCAgICAgICAgIDExNTA2ICAgICAgICAgIDkzOTAgICAgICAgICAgNjc5NSAgICAgICAgICA1NTAwICAgICAgICAgIDM3NDUgICAgICAgICAgMjk2OAoKYGBgCgpgYGB7cn0KZGF0YSgiaXNsYW5kcyIpCmhlYWQoc29ydChpc2xhbmRzLCBkZWNyZWFzaW5nID0gVCksIG4gPSA3KQpzb3J0KGlzbGFuZHMsIGRlY3JlYXNpbmcgPSBUKVsxOjddCgpgYGAKCgojIyMgMS4yMSBMb2FkIHRoZSBkYXRhIHNldCBwcmltZXMgKFVzaW5nUikuIFRoaXMgaXMgdGhlIHNldCBvZiBwcmltZSBudW1iZXJzIGluIFsxLDIwMDNdLiBIb3cgbWFueSBhcmUgdGhlcmU/IEhvdyBtYW55IGluIHRoZSByYW5nZSBbMSwxMDBdPyBbMTAwLDEwMDBdPwoKYGBge3IgbWVzc2FnZT1GfQpsaWJyYXJ5KFVzaW5nUikKZGF0YSgicHJpbWVzIikKCgpgYGAKCmBgYHtyfQptZXNzYWdlKCJob3cgbWFueT8gOiAiLCBsZW5ndGgocHJpbWVzKSkKCm1lc3NhZ2UoImluIHJhbmdlIDE6MTAwOiAgIiwgbGVuZ3RoKHByaW1lc1twcmltZXMgPD0gMTAwXSkpCgptZXNzYWdlKCJpbiByYW5nZSAxMDA6MTAwMCAgIiwgbGVuZ3RoKHByaW1lc1sxMDAgPD0gcHJpbWVzICYgcHJpbWVzIDw9IDEwMDBdKSkKCgptZXNzYWdlKCJpbiByYW5nZSAxOjEwMDogICIsIGxlbmd0aChwcmltZXNbcHJpbWVzICVpbiUgMToxMDBdKSkKCm1lc3NhZ2UoImluIHJhbmdlIDEwMDoxMDAwICAiLCBsZW5ndGgocHJpbWVzW3ByaW1lcyAlaW4lIDEwMDoxMDAwXSkpCgpgYGAKCgojIyMgMS4yMiBMb2FkIHRoZSBkYXRhIHNldCBwcmltZXMgKFVzaW5nUikuIFdlIHdpc2ggdG8gZmluZCBhbGwgdGhlIHR3aW4gcHJpbWVzLiBUaGVzZSBhcmUgbnVtYmVycyBwIGFuZCBwKzIsIHdoZXJlIGJvdGggYXJlIHByaW1lLgojIyMjIDEuIEV4cGxhaW4gd2hhdCBwcmltZXNb4oiSMV0gcmV0dXJucy4KCi0gYSBuZWdhdGl2ZSBzdWJzY3JpcHQgInJlbW92ZXMiIG9yIGdpdmVzIGV2ZXJ5dGhpbmcgImJ1dCIgd2hhdCBpcyBuZWdhdGVkLgoKCmBgYHtyfQpwcmltZXNbLTFdCnByaW1lc1stKDE6MTAwKV0KCmBgYAoKIyMjIyAyLiBJZiB5b3Ugc2V0IG49bGVuZ3RoIChwcmltZXMpLCBleHBsYWluIHdoYXQgcHJpbWVzW+KIkm5dIHJldHVybnMuCgotIHNpbmNlIG4gYmVjb21lcyB0aGUgbGVuZ3RoIG9yICJsYXN0IiBzY2FsYXIgaW4gdGhlIHZlY3RvciwgdGhlIHJldHVybmVkIHZlY3RvciBpcyBhbGwgYnV0IHRoZSBsYXN0IGl0ZW0uCgpgYGB7cn0KbiA8LSBsZW5ndGgocHJpbWVzKQpwcmltZXNbLW5dCmBgYAoKCgoKIyMjIyAzLiBXaHkgbWlnaHQgcHJpbWVzIFviiJIxXeKAlHByaW1lcyBb4oiSbl0gZ2l2ZSBjbHVlcyBhcyB0byB3aGF0IHRoZSB0d2luIHByaW1lcyBhcmU/CkhvdyBtYW55IHR3aW4gcHJpbWVzIGFyZSB0aGVyZSBpbiB0aGUgZGF0YSBzZXQ/CgotIHByaW1lc1stMV0gInNoaWZ0cyIgdGhlIHZlY3RvciBsZWZ0LCB3aGlsZSBwcmltZXNbLW5dIHNoaWZ0cyByaWdodCAtLSBlc3NlbnRpYWxseSBsaW5pbmcgdXAgZWFjaCBvZiB0aGUgcHJpbWUgbnVtYmVycyB3aXRoIAoKYGBge3J9Cm4gPC0gbGVuZ3RoKHByaW1lcykKcHJpbWVzW+KIkjFdIC0gcHJpbWVzW+KIkm5dCmBgYAoKYGBge3J9Cgp0d2luX3ByaW1lcyA8LSBwcmltZXNbIHByaW1lc1stMV0gLSBwcmltZXNbLWxlbmd0aChwcmltZXMpXSA9PSAyXQptZXNzYWdlKCJ0d2luIHByaW1lcyIpCnR3aW5fcHJpbWVzCm1lc3NhZ2UoInR3aW4gcHJpbWVzIGxlbmd0aDogICIsIGxlbmd0aCh0d2luX3ByaW1lcykpCmBgYAoKCiMjIyAxLjIzIEZvciB0aGUgZGF0YSBzZXQgdHJlZXJpbmcsIHdoaWNoIGNvbnRhaW5zIHRyZWUtcmluZyB3aWR0aHMgaW4gZGltZW5zaW9uLWxlc3MgdW5pdHMsIHVzZSBhbiBSIGZ1bmN0aW9uIHRvIGFuc3dlciB0aGUgZm9sbG93aW5nOgojIyMjIDEuIEhvdyBtYW55IG9ic2VydmF0aW9ucyBhcmUgdGhlcmU/CgpgYGB7cn0KZGF0YSgidHJlZXJpbmciKQpzdHIodHJlZXJpbmcpCm1lc3NhZ2UoInRvdGFsIG9ic2VydmF0aW9uczogIiwgbGVuZ3RoKHRyZWVyaW5nKSkKCm1lc3NhZ2UoImNoZWNrIGlmIGFueSBOQTogICIsIGxlbmd0aCh0cmVlcmluZ1shaXMubmEodHJlZXJpbmcpXSkpCgpgYGAKCiMjIyMgMi4gRmluZCB0aGUgc21hbGxlc3Qgb2JzZXJ2YXRpb24uCgpgYGB7cn0KbWluKHRyZWVyaW5nKQptZXNzYWdlKCJzbWFhbGxlc3Qgb2JzZXJ2YXRpb246ICAiLCBtaW4odHJlZXJpbmcsIG5hLnJtID0gVCkpCgpoZWFkKHNvcnQodHJlZXJpbmcsIGRlY3JlYXNpbmcgPSBGKSkKY2xhc3ModHJlZXJpbmcpCgpgYGAKCgojIyMjIDMuIEZpbmQgdGhlIGxhcmdlc3Qgb2JzZXJ2YXRpb24uCgpgYGB7cn0KbWF4KHRyZWVyaW5nKQptZXNzYWdlKCJsYXJnZXN0IG9ic2VydmF0aW9uOiAgIiwgbWF4KHRyZWVyaW5nLCBuYS5ybSA9IFQpKQoKaGVhZChzb3J0KHRyZWVyaW5nLCBkZWNyZWFzaW5nID0gVCkpCmNsYXNzKHRyZWVyaW5nKQpgYGAKCiMjIyMgNC4gSG93IG1hbnkgYXJlIGJpZ2dlciB0aGFuIDEuNT8KCmBgYHtyfQptZXNzYWdlKCJjb3VudCBvZiA+ICAxLjU6ICAgIiwgbGVuZ3RoKHRyZWVyaW5nW3RyZWVyaW5nID4gMS41XSkpCmBgYAoKCiMjIyAxLjI0IFRoZSBkYXRhIHNldCBtYW5kbXMgKFVzaW5nUikgY29udGFpbnMgdGhlIHRhcmdldGVkIGNvbG9yIGRpc3RyaWJ1dGlvbiBpbiBhIGJhZyBvZiBNJk1zIGFzIHBlcmNlbnRhZ2VzIGZvciB2YXJpZXMgdHlwZXMgb2YgcGFja2FnaW5nLiBBbnN3ZXIgdGhlc2UgcXVlc3Rpb25zLgojIyMjIDEuIFdoaWNoIHBhY2thZ2luZyBpcyBtaXNzaW5nIG9uZSBvZiB0aGUgc2l4IGNvbG9ycz8KCmBgYHtyfQpkYXRhKCJtYW5kbXMiKQoKbWFuZG1zX3QgPC0gYXMuZGF0YS5mcmFtZSh0KG1hbmRtcykpCm5hbWVzKG1hbmRtc190KVt3aGljaChtYW5kbXNfdCA9PSAwLCBhcnIuaW5kID0gVClbICwgImNvbCJdXQoKYGBgCgojIyMjIDIuIFdoaWNoIHR5cGVzIG9mIHBhY2thZ2luZyBoYXZlIGFuIGVxdWFsIGRpc3RyaWJ1dGlvbiBvZiBjb2xvcnM/CgpgYGB7cn0KIyBUT0RPCnggPC0gbWFuZG1zCnhbd2hpY2goeFssMV0gPT0geFssMl0gJiB4WywxXSA9PSB4WywzXSAmIHhbLDFdID09IHhbLDRdICYgeFssMV0gPT0geFssNV0gJiB4WywxXSA9PSB4Wyw2XSksXVssMF0KCgpgYGAKCmBgYHtyfQoKCmxpYnJhcnkodGliYmxlKSAgIyBhZGQgcm93bmFtZXNfdG9fY29sdW1uCnggJT4lIHJvd25hbWVzX3RvX2NvbHVtbih2YXIgPSAiaXRlbSIpICU+JSBmaWx0ZXIoIHhbLDFdID09IHhbLDJdICYgeFssMV0gPT0geFssM10gJiB4WywxXSA9PSB4Wyw0XSAmIHhbLDFdID09IHhbLDVdICYgeFssMV0gPT0geFssNl0pCgpgYGAKCgojIyMjIDMuIFdoaWNoIHBhY2thZ2luZyBoYXMgYSBzaW5nbGUgY29sb3IgdGhhdCBpcyBtb3JlIGxpa2VseSB0aGFuIGFsbCB0aGUgb3RoZXJzPyBXaGF0IGNvbG9yIGlzIHRoaXM/CgpgYGB7cn0KIyBUT0RPCgp4IDwtIG1hbmRtcwp4JG1heHBrZzwtYXBwbHkoeCwgMSwgbWF4KQp4W3gkbWF4cGtnID09IG1heCh4JG1heHBrZyksXQoKYGBgCgoKIyMjIDEuMjUgVGhlIHRpbWVzIHZhcmlhYmxlIGluIHRoZSBkYXRhIHNldCBueW0uMjAwMiAoVXNpbmdSKSBjb250YWlucyB0aGUgdGltZSB0byBmaW5pc2ggZm9yIHNldmVyYWwgcGFydGljaXBhbnRzIGluIHRoZSAyMDAyIE5ldyBZb3JrIENpdHkgTWFyYXRob24uIEFuc3dlciB0aGVzZSBxdWVzdGlvbnMuCiMjIyMgMS4gSG93IG1hbnkgdGltZXMgYXJlIHN0b3JlZCBpbiB0aGUgZGF0YSBzZXQ/CgpgYGB7cn0KZGF0YSgibnltLjIwMDIiKQptZXNzYWdlKCJudW1iZXIgb2YgdGltZXM6ICAiLCBucm93KG55bS4yMDAyKSkKbWVzc2FnZSgiZGltIG9mIDogICIsIGRpbShueW0uMjAwMikpCm5hbWVzKG55bS4yMDAyKQpgYGAKCiMjIyMgMi4gV2hhdCB3YXMgdGhlIGZhc3Rlc3QgdGltZSBpbiBtaW51dGVzPyBDb252ZXJ0IHRoaXMgaW50byBob3VycyBhbmQgbWludXRlcyB1c2luZyBSLgoKYGBge3J9Cgpzb3VyY2UoIi4uL2Z1bmN0aW9ucy5SIikKbWF4X3RpbWUgPC0gbWF4KG55bS4yMDAyJHRpbWUpCnRvX2hvdXJzX21pbnV0ZXMobWF4X3RpbWUpCgpgYGAKCiMjIyMgMy4gV2hhdCB3YXMgdGhlIHNsb3dlc3QgdGltZSBpbiBtaW51dGVzPyBDb252ZXJ0IHRoaXMgaW50byBob3VycyBhbmQgbWludXRlcyB1c2luZyBSLgoKYGBge3J9CgptaW5fdGltZSA8LSBtYXgobnltLjIwMDIkdGltZSkKdG9faG91cnNfbWludXRlcyhtaW5fdGltZSkKCmBgYAoKCiMjIyAxLjI2IEZvciB0aGUgZGF0YSBzZXQgcml2ZXJzLCB3aGljaCBpcyB0aGUgbG9uZ2VzdCByaXZlcj8gVGhlIHNob3J0ZXN0PwoKYGBge3J9CmRhdGEoInJpdmVycyIpCgptZXNzYWdlKCJsb25nZXN0IHJpdmVyOiAiLCBtYXgocml2ZXJzKSkKCm1lc3NhZ2UoInNob3J0ZXN0IHJpdmVyOiAiLCBtaW4ocml2ZXJzKSkKCmBgYAoKCiMjIyAxLjI3IFRoZSBkYXRhIHNldCB1c3BvcCBjb250YWlucyBkZWNhZGUtYnktZGVjYWRlIHBvcHVsYXRpb24gZmlndXJlcyBmb3IgdGhlIFVuaXRlZCBTdGF0ZXMgZnJvbSAxNzkwIHRvIDE5NzAuCiMjIyMgMS4gVXNlIG5hbWVzKCkgYW5kIHNlcSgpIHRvIGFkZCB0aGUgeWVhciBuYW1lcyB0byB0aGUgZGF0YSB2ZWN0b3IuCgpgYGB7cn0KZGF0YSgidXNwb3AiKQpkZiA8LSBkYXRhLmZyYW1lKHNlcSgxNzkwLDE5NzAsMTApLCB1c3BvcCkKbmFtZXMoZGYpWzE6Ml0gPC0gYygieWVhciIsICJwb3B1bGF0aW9uIikKZGYKCmBgYAoKIyMjIyAyLiBVc2UgZGlmZigpIHRvIGZpbmQgdGhlIGludGVyLWRlY2FkZSBkaWZmZXJlbmNlcy4gV2hpY2ggZGVjYWRlIGhhZCB0aGUgZ3JlYXRlc3QgaW5jcmVhc2U/CgpgYGB7cn0KCmRmMiA8LSBkYXRhLmZyYW1lKGRmLCBjKCBjKDApLCBkaWZmKGRmJHBvcHVsYXRpb24pKSkKbmFtZXMoZGYyKVszXSA8LSAiaW5jcmVhc2UiCmhlYWQoZGYyLCBuID0gbnJvdyhkZjIpKQoKYGBgCgpgYGB7cn0KCmRmMlsgZGYyJGluY3JlYXNlID09IG1heChkZjIkaW5jcmVhc2UsIG5hLnJtID0gVCksXQoKYGBgCgoKCiMjIyMgMy4gRXhwbGFpbiB3aHkgeW91IGNvdWxkIHJlYXNvbmFibHkgZXhwZWN0IHRoYXQgdGhlIGRpZmZlcmVuY2Ugd2lsbCBhbHdheXMgaW5jcmVhc2Ugd2l0aCBlYWNoIGRlY2FkZS4gSXMgdGhpcyB0aGUgY2FzZSB3aXRoIHRoZSBkYXRhPwoKCi0gdGhyb3VnaCBub3JtYWwgcG9wdWxhdGlvbiBncm93dGggcmF0ZSBhZGRpbmcgaW4gaW1taWdyYXRpb24gZm9yIHRoZSB5ZWFycyBjb3ZlcmVkLgotIGluIHRoZSBkYXRhLCB0aGUgcG9wdWxhdGlvbiBpbmNyZWFzZSB3YXMgYWx3YXlzIHBvc2l0aXZlLCBob3dldmVyIHRoZSByYXRlIG9mIGluY3JlYXNlIHdhcyBub3Qgc3RhYmxlIG9yIGluY3JlYXNpbmcsIG9yIGRlY3JlYXNpbmcgYXQgYSBzdXN0YWluZWQgcmF0ZS4K</div>
 
 
 
