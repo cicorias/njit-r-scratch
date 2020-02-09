@@ -79,7 +79,7 @@ How many twin primes are there in the data set?
 n <- length(primes)
 
 
-primes[−1] — primes[−n] 
+primes[−1] - primes[−n]
 ```
 
 
