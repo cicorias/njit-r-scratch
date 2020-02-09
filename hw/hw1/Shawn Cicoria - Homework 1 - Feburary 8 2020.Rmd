@@ -75,33 +75,161 @@ primes[-n]
 3. Why might primes [−1]—primes [−n] give clues as to what the twin primes are?
 How many twin primes are there in the data set?
 
+- primes[-1] "shifts" the vector left, while primes[-n] shifts right -- essentially lining up each of the prime numbers with 
+
 ```{r}
 n <- length(primes)
-
-
 primes[−1] - primes[−n]
+```
+
+```{r}
+
+twin_primes <- primes[ primes[-1] - primes[-length(primes)] == 2]
+message("twin primes")
+twin_primes
+message("twin primes length:  ", length(twin_primes))
 ```
 
 
 1.23 For the data set treering, which contains tree-ring widths in dimension-less units, use an R function to answer the following:
 1. How many observations are there?
+
+```{r}
+data("treering")
+str(treering)
+message("total observations: ", length(treering))
+
+message("check if any NA:  ", length(treering[!is.na(treering)]))
+
+```
+
 2. Find the smallest observation.
+
+```{r}
+min(treering)
+message("smaallest observation:  ", min(treering, na.rm = T))
+
+head(sort(treering, decreasing = F))
+class(treering)
+
+```
+
+
 3. Find the largest observation.
+```{r}
+max(treering)
+message("largest observation:  ", max(treering, na.rm = T))
+
+head(sort(treering, decreasing = T))
+class(treering)
+```
+
 4. How many are bigger than 1.5?
+
+```{r}
+message("count of >  1.5:   ", length(treering[treering > 1.5]))
+```
+
 
 1.24 The data set mandms (UsingR) contains the targeted color distribution in a bag of M&Ms as percentages for varies types of packaging. Answer these questions.
 1. Which packaging is missing one of the six colors?
+
+```{r}
+data("mandms")
+
+mandms_t <- as.data.frame(t(mandms))
+names(mandms_t)[which(mandms_t == 0, arr.ind = T)[ , "col"]]
+
+```
+
 2. Which types of packaging have an equal distribution of colors?
+
+```{r}
+# TODO
+```
+
+
 3. Which packaging has a single color that is more likely than all the others? What color is this?
 
-1.25 The t imes variable in the data set nym. 2002 (UsingR) contains the time to finish for several participants in the 2002 New York City Marathon. Answer these questions.
+```{r}
+# TODO
+```
+
+
+1.25 The times variable in the data set nym.2002 (UsingR) contains the time to finish for several participants in the 2002 New York City Marathon. Answer these questions.
 1. How many times are stored in the data set?
+
+```{r}
+data("nym.2002")
+message("number of times:  ", nrow(nym.2002))
+message("dim of :  ", dim(nym.2002))
+names(nym.2002)
+```
+
 2. What was the fastest time in minutes? Convert this into hours and minutes using R.
+
+```{r}
+
+source("../functions.R")
+max_time <- max(nym.2002$time)
+to_hours_minutes(max_time)
+
+```
+
 3. What was the slowest time in minutes? Convert this into hours and minutes using R.
+
+```{r}
+
+min_time <- max(nym.2002$time)
+to_hours_minutes(min_time)
+
+```
+
 
 1.26 For the data set rivers, which is the longest river? The shortest?
 
+```{r}
+data("rivers")
+
+message("longest river: ", max(rivers))
+
+message("shortest river: ", min(rivers))
+
+```
+
+
 1.27 The data set uspop contains decade-by-decade population figures for the United States from 1790 to 1970.
 1. Use names() and seq() to add the year names to the data vector.
+
+```{r}
+data("uspop")
+df <- data.frame(seq(1790,1970,10), x)
+names(df)[1:2] <- c("year", "population")
+df
+
+```
+
 2. Use diff() to find the inter-decade differences. Which decade had the greatest increase?
+
+```{r}
+
+df2 <- data.frame(df, c( c(0), diff(df$population)))
+names(df2)[3] <- "increase"
+head(df2, n = nrow(df2))
+
+```
+
+```{r}
+
+df2[ df2$increase == max(df2$increase, na.rm = T),]
+
+```
+
+
+
 3. Explain why you could reasonably expect that the difference will always increase with each decade. Is this the case with the data?
+
+
+- through normal population growth rate adding in immigration for the years covered.
+- in the data, the population increase was always positive, however the rate of increase was not stable or increasing, or decreasing at a sustained rate.
+
