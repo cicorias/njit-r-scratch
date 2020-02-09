@@ -3,13 +3,11 @@ title: "Lab 2 Submission"
 author: "Shawn Cicoria"
 date: 2020-04-08
 output:
-  html_document:
-    df_print: paged
+  html_document: 
+    theme: readable
   html_notebook: default
   pdf_document: default
 ---
-
-
 
 ## Question 1
 
@@ -17,22 +15,18 @@ output:
 ### a) & f) result
 ```{r basereadcsv}
 
-skip_a = F  #used for quick skip of long running read
-
 rm(list = ls(pattern="^a_"))
 
-if (!skip_a) {
-  system.time({
-    message(getwd())
-    a_attributes <- read.csv(".data/attributes.csv")
-    a_prod_description <- read.csv(".data/product_descriptions.csv")
-    a_sample_submission <- read.csv(".data/sample_submission.csv")
-    a_test_data <- read.csv(".data/test.csv")
-    a_train_data <- read.csv(".data/train.csv")
-  })
-  
-  rm(list = ls(pattern="^a_"))
-}
+system.time({
+  message(getwd())
+  a_attributes <- read.csv(".data/attributes.csv")
+  a_prod_description <- read.csv(".data/product_descriptions.csv")
+  a_sample_submission <- read.csv(".data/sample_submission.csv")
+  a_test_data <- read.csv(".data/test.csv")
+  a_train_data <- read.csv(".data/train.csv")
+})
+
+rm(list = ls(pattern="^a_"))
 
 ```
 
@@ -173,10 +167,162 @@ df2
 
 (a) Select just the Sepal.Length and Species columns from the iris data set and save the result to a new
 data.frame named iris.2
+
+```{r}
+
+library(datasets)
+data("iris")
+summary(iris)
+colnames(iris)
+
+iris.2 <- iris[ , c("Sepal.Length", "Species")]
+
+colnames(iris.2)
+summary(iris.2)
+
+```
+
+
 (b) Calculate the mean of the Sepal.length column in iris.2
+
+```{r}
+mean(iris.2$Sepal.Length)
+```
+
 (c) Calculate the mean of sepal.length, but only for the setosa species
+
+```{r}
+
+iris.2.setosa <- iris.2 %>% filter(iris.2$Species == "setosa")
+mean(iris.2.setosa$Sepal.Length)
+
+head(iris.2.setosa)
+```
+
 (d) Calculate the number of sepal lengths that are more than one standard deviation below the average
 sepal length
+
+```{r}
+
+summary(iris.2)
+
+sl_mean <- mean(iris.2$Sepal.Length)
+sl_sd <- sd(iris.2$Sepal.Length)
+
+message("mean: ", sl_mean, "   std dev: ", sl_sd, "   boundary:", sl_mean - sl_sd)
+
+below_sd_mean <- iris.2 %>% filter(iris.2$Sepal.Length < sl_mean - sl_sd )
+
+nrow(below_sd_mean)
+
+
+```
+
+\pagebreak
+##Question 4
+
+4. Write R commands for the following questions
+(a) 1000, 1000, 998, 998, 996, 996, …… , 4, 4, 2, 
+```{r}
+skips <- rep(seq(1000,2, by = -2), each = 2)
+head(skips, n = 20)
+tail(skips, n = 20)
+```
+
+(b) Generate a sequence of 10 “a” and 5 “b”
+
+```{r}
+rep("a", each = 10)
+rep("b", each = 5)
+
+a_and_b <- c(rep("a", each = 10) , rep("b", each = 5))
+a_and_b
+
+```
+
+(c) Print reverse the order of (b)
+
+```{r}
+rev(a_and_b)
+```
+
+\pagebreak
+##Question 5
+. Find the row numbers in the iris data set, where the Petal.Length is larger than 5 and Petal.Width is
+less than 1.7. And print out this part of the iris data set.
+
+```{r}
+iris %>% filter(iris$Petal.Length > 5 & iris$Petal.Width < 1.7)
+```
+
+\pagebreak
+## Question 6
+
+Guess what the following matrix would look like and the results of the following commands and compare with the real results.
+
+x <- matrix(c(rep(6,3), seq(10,2,-3),c(NA,3,4), 6,1,10), 4, 3)
+
+- generates a 4x3 matrix using the vector generated as first argument - and will fill row by row, then to next column.
+
+
+```{r}
+x <- matrix(c(rep(6,3), seq(10,2,-3),c(NA,3,4), 6,1,10), 4, 3)
+x
+
+```
+
+print(x[,x[2,] > 4])
+
+- when x[2, ] values are greater than 4. Row 2 -- so - TRUE, FALSE, TRUE
+- then conditional print columns 1, and 3
+
+```{r}
+print(x[,x[2,] > 4])
+
+```
+
+print(x[,2] < 4)
+
+- if second column is < 4 , T or F. 
+```{r}
+print(x[,2] < 4)
+
+```
+
+print(x[x[,2] < 4,])
+- if 2nd column < 4, then print the row values for columns that match
+
+```{r}
+print(x[x[,2] < 4,])
+```
+
+sum(x[x > 6])
+- sum up all the values if the cell > 6
+```{r}
+sum(x[x > 6])
+
+
+```
+
+sum(x[x > 6],na.rm=T)
+- sum the values but exclude NA values (missing values)
+```{r}
+sum(x[x > 6],na.rm=T)
+```
+
+order(x[,3])
+- sort by the 3rd column return all rows
+```{r}
+x
+order(x[,3])
+```
+
+x[order(x[,3]),]
+- sort by 3rd column, but actually return the rows sorted.
+```{r}
+x[order(x[,3]),]
+```
+
 
 
 
@@ -226,6 +372,22 @@ myframe <- read.csv(".data/attributes.csv", sep = ",",
 
 # Extra R scripts
 
+```{r eval=F}
+get_last_row <- function(x) {
+  number_rows <- nrow(x)
+  number_cols <-  length(x)
+  rv <- list("number_rows" = number_rows, "number_columns" = number_cols)
+  return(rv)
+}
 
+
+get_last_value <- function(x) {
+  number_rows <- nrow(x)
+  number_cols <-  length(x)
+  rv <- x[number_rows, number_cols]
+  return(rv)
+}
+
+```
 
 
