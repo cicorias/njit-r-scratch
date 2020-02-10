@@ -65,16 +65,29 @@ count2(X, 3)
 ```
 
 
-
-
 4, Compare the results with R function: `table()`
+
+```{r}
+table(X$relevance)["3"]
+```
+
 
 5. Pi can be computed by adding the following terms
 
-$$\Large\pi = 4 \sum_{k=0}^{\infty} \frac{(-1)^k}{2k+1} = 4/1-4/3+4/5-4/7+4/9-4/11 ...$$
+$$\Large\pi = 4 \sum_{k=0}^{\infty} \frac{(-1)^k}{2k+1} = \frac{4}{1}-\frac{4}{3}+\frac{4}{5}-\frac{4}{7}+\frac{4}{9}-\frac{4}{11} ...$$
 
 
 (http://en.wikipedia.org/wiki/Pi):
 How many terms does it take to get the first 3 digits to be correct, 3.14? Write an R function
 getPi(N) to compute it, where N specifies the first N digits to be correct, and returns #terms.
+
+```{r}
+getPi <- function(n) {
+    
+}
+
+
+
+```
+
 
