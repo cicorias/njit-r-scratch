@@ -1,0 +1,80 @@
+---
+title: "Shawn Cicoria - Lab 3Notebook"
+date: "February 13 2020"
+autho: "Shawn Cicoria"
+email: "shawn@cicoria.com"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: readable
+---
+
+
+
+1, Please read the train.csv file into R and store the data in a variable called “X”.
+https://www.kaggle.com/c/home-depot-product-search-relevance/data
+
+```{r}
+X <- read.csv("../.data/train.csv", header = T, stringsAsFactors = F )
+str(X)
+
+```
+
+>Note: For Q2 and Q3, please do not use existing R packages or functions.
+
+2, Write a function, called “distinct_relevance”, to count how many distinct values are in the
+column `relevance` so when we call the function it returns the desired results:
+```
+distinct_relevance (vect = X$relevance);
+```
+
+```{r}
+distinct_relevance <- function(d, c) {
+  length(unique(d$relevance))
+}
+
+distinct_relevance(X)
+
+```
+
+```{r}
+library(dplyr)
+
+distinct_relevance2 <- function(d) {
+  nrow(distinct(d, relevance))
+}
+
+distinct_relevance2(X)
+```
+
+
+
+3, Write a function called `count` to count the number of appearances of a value, e.g. 3, in
+the column `relevance` so when we call the function it returns the desired results:
+```
+count(vect = X$relevance, value=3);
+```
+
+```{r}
+
+count2 <- function(d, v) {
+  length(d$relevance[ d$relevance == v ] )
+}
+
+count2(X, 3)
+```
+
+
+
+
+4, Compare the results with R function: `table()`
+
+5. Pi can be computed by adding the following terms
+
+$$\Large\pi = 4 \sum_{k=0}^{\infty} \frac{(-1)^k}{2k+1} = 4/1-4/3+4/5-4/7+4/9-4/11 ...$$
+
+
+(http://en.wikipedia.org/wiki/Pi):
+How many terms does it take to get the first 3 digits to be correct, 3.14? Write an R function
+getPi(N) to compute it, where N specifies the first N digits to be correct, and returns #terms.
+
