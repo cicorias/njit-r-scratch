@@ -86,8 +86,6 @@ getPi <- function(n) {
     
 }
 
-
-
 ```
 
 
