@@ -11,7 +11,8 @@ output:
 
 
 
-1, Please read the train.csv file into R and store the data in a variable called “X”.
+### 1. Please read the train.csv file into R and store the data in a variable called “X”.
+
 https://www.kaggle.com/c/home-depot-product-search-relevance/data
 
 ```{r}
@@ -22,14 +23,14 @@ str(X)
 
 >Note: For Q2 and Q3, please do not use existing R packages or functions.
 
-2, Write a function, called “distinct_relevance”, to count how many distinct values are in the
+### 2 Write a function, called “distinct_relevance”, to count how many distinct values are in the
 column `relevance` so when we call the function it returns the desired results:
 ```
 distinct_relevance (vect = X$relevance);
 ```
 
 ```{r}
-distinct_relevance <- function(d, c) {
+distinct_relevance <- function(vect) {
   length(unique(d$relevance))
 }
 
@@ -49,7 +50,7 @@ distinct_relevance2(X)
 
 
 
-3, Write a function called `count` to count the number of appearances of a value, e.g. 3, in
+### 3 Write a function called `count` to count the number of appearances of a value, e.g. 3, in
 the column `relevance` so when we call the function it returns the desired results:
 ```
 count(vect = X$relevance, value=3);
@@ -65,14 +66,14 @@ count2(X, 3)
 ```
 
 
-4, Compare the results with R function: `table()`
+### 4 Compare the results with R function: `table()`
 
 ```{r}
 table(X$relevance)["3"]
 ```
 
 
-5. Pi can be computed by adding the following terms
+### 5. Pi can be computed by adding the following terms
 
 $$\Large\pi = 4 \sum_{k=0}^{\infty} \frac{(-1)^k}{2k+1} = \frac{4}{1}-\frac{4}{3}+\frac{4}{5}-\frac{4}{7}+\frac{4}{9}-\frac{4}{11} ...$$
 
@@ -82,7 +83,13 @@ How many terms does it take to get the first 3 digits to be correct, 3.14? Write
 getPi(N) to compute it, where N specifies the first N digits to be correct, and returns #terms.
 
 ```{r}
-getPi <- function(n) {
+getPi <- function(n = 3) {
+  
+  l_pi <- 3.1415927
+  l_pi_calc <- 0
+  
+  while (l_pi_calc != l_pi)
+  
     
 }
 
