@@ -447,6 +447,7 @@ summary {
 ##  $ product_title: chr  &quot;Simpson Strong-Tie 12-Gauge Angle&quot; &quot;Simpson Strong-Tie 12-Gauge Angle&quot; &quot;BEHR Premium Textured DeckOver 1-gal. #SC-141 Tugboat Wood and Concrete Coating&quot; &quot;Delta Vero 1-Handle Shower Only Faucet Trim Kit in Chrome (Valve Not Included)&quot; ...
 ##  $ search_term  : chr  &quot;angle bracket&quot; &quot;l bracket&quot; &quot;deck over&quot; &quot;rain shower head&quot; ...
 ##  $ relevance    : num  3 2.5 3 2.33 2.67 3 2.67 3 2.67 3 ...</code></pre>
+<div style="page-break-after: always;"></div>
 <blockquote>
 <p>Note: For Q2 and Q3, please do not use existing R packages or functions.</p>
 </blockquote>
@@ -455,8 +456,8 @@ summary {
 <h3>2 Write a function, called “distinct_relevance”, to count how many distinct values are in the</h3>
 <p>column <code>relevance</code> so when we call the function it returns the desired results:</p>
 <pre><code>distinct_relevance (vect = X$relevance);</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">distinct_relevance &lt;-<span class="st"> </span><span class="cf">function</span>(d, c) {</a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="kw">length</span>(<span class="kw">unique</span>(d<span class="op">$</span>relevance))</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">distinct_relevance &lt;-<span class="st"> </span><span class="cf">function</span>(vect) {</a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="kw">length</span>(<span class="kw">unique</span>(vect<span class="op">$</span>relevance))</a>
 <a class="sourceLine" id="cb4-3" title="3">}</a>
 <a class="sourceLine" id="cb4-4" title="4"></a>
 <a class="sourceLine" id="cb4-5" title="5"><span class="kw">distinct_relevance</span>(X)</a></code></pre></div>
@@ -476,6 +477,7 @@ summary {
 <a class="sourceLine" id="cb10-4" title="4"></a>
 <a class="sourceLine" id="cb10-5" title="5"><span class="kw">distinct_relevance2</span>(X)</a></code></pre></div>
 <pre><code>## [1] 13</code></pre>
+<div style="page-break-after: always;"></div>
 </div>
 <div id="write-a-function-called-count-to-count-the-number-of-appearances-of-a-value-e.g.-3-in" class="section level3">
 <h3>3 Write a function called <code>count</code> to count the number of appearances of a value, e.g. 3, in</h3>
@@ -493,14 +495,209 @@ summary {
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">table</span>(X<span class="op">$</span>relevance)[<span class="st">&quot;3&quot;</span>]</a></code></pre></div>
 <pre><code>##     3 
 ## 19125</code></pre>
+<div style="page-break-after: always;"></div>
 </div>
 <div id="pi-can-be-computed-by-adding-the-following-terms" class="section level3">
 <h3>5. Pi can be computed by adding the following terms</h3>
 <p><span class="math display">\[\Large\pi = 4 \sum_{k=0}^{\infty} \frac{(-1)^k}{2k+1} = \frac{4}{1}-\frac{4}{3}+\frac{4}{5}-\frac{4}{7}+\frac{4}{9}-\frac{4}{11} ...\]</span></p>
 <p>(<a href="http://en.wikipedia.org/wiki/Pi" class="uri">http://en.wikipedia.org/wiki/Pi</a>): How many terms does it take to get the first 3 digits to be correct, 3.14? Write an R function getPi(N) to compute it, where N specifies the first N digits to be correct, and returns #terms.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">getPi &lt;-<span class="st"> </span><span class="cf">function</span>(n) {</a>
-<a class="sourceLine" id="cb17-2" title="2">    </a>
-<a class="sourceLine" id="cb17-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">library</span>(logging)</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="kw">getLogger</span>()</a></code></pre></div>
+<pre><code>## Reference class object of class &quot;Logger&quot;
+## Field &quot;name&quot;:
+## [1] &quot;&quot;
+## Field &quot;handlers&quot;:
+## $basic.stdout
+## &lt;environment: 0x000000001a2cf5c8&gt;
+## 
+## Field &quot;level&quot;:
+## INFO 
+##   20 
+## Field &quot;msg_composer&quot;:
+## function () 
+## NULL
+## &lt;bytecode: 0x00000000142243d8&gt;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">getPi &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">return_as_pi=</span><span class="ot">FALSE</span>) {</a>
+<a class="sourceLine" id="cb19-2" title="2"></a>
+<a class="sourceLine" id="cb19-3" title="3">  max_iterations &lt;-<span class="st"> </span><span class="dv">1000000</span></a>
+<a class="sourceLine" id="cb19-4" title="4">  l_pi_calc &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb19-5" title="5">  real_pi &lt;-<span class="st"> </span><span class="fl">3.1415927</span></a>
+<a class="sourceLine" id="cb19-6" title="6">  precision &lt;-<span class="st"> </span>n <span class="op">-</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb19-7" title="7">  target_pi =<span class="st"> </span><span class="kw">trunc2</span>(real_pi, <span class="dt">prec =</span> precision)</a>
+<a class="sourceLine" id="cb19-8" title="8"></a>
+<a class="sourceLine" id="cb19-9" title="9">  ic &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb19-10" title="10">  last_op =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb19-11" title="11">  denominator =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb19-12" title="12"></a>
+<a class="sourceLine" id="cb19-13" title="13">  <span class="cf">while</span>( target_pi <span class="op">!=</span><span class="st"> </span><span class="kw">trunc2</span>(l_pi_calc, <span class="dt">prec =</span> precision)) {</a>
+<a class="sourceLine" id="cb19-14" title="14">    <span class="cf">if</span> (ic <span class="op">==</span><span class="st"> </span>max_iterations) {</a>
+<a class="sourceLine" id="cb19-15" title="15">      <span class="kw">logerror</span>(<span class="st">&quot;exiting as we maxed iterations&quot;</span>)</a>
+<a class="sourceLine" id="cb19-16" title="16">      <span class="cf">break</span></a>
+<a class="sourceLine" id="cb19-17" title="17">    }</a>
+<a class="sourceLine" id="cb19-18" title="18"></a>
+<a class="sourceLine" id="cb19-19" title="19">    l_pi_calc =<span class="st"> </span>l_pi_calc <span class="op">+</span><span class="st"> </span>last_op <span class="op">*</span><span class="st"> </span>(<span class="dv">4</span> <span class="op">/</span><span class="st"> </span>denominator)</a>
+<a class="sourceLine" id="cb19-20" title="20"></a>
+<a class="sourceLine" id="cb19-21" title="21">    ic &lt;-<span class="st"> </span>ic <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb19-22" title="22">    denominator =<span class="st"> </span>denominator <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb19-23" title="23">    last_op =<span class="st"> </span>last_op <span class="op">*</span><span class="st"> </span><span class="dv">-1</span></a>
+<a class="sourceLine" id="cb19-24" title="24"></a>
+<a class="sourceLine" id="cb19-25" title="25">  }</a>
+<a class="sourceLine" id="cb19-26" title="26"></a>
+<a class="sourceLine" id="cb19-27" title="27">  rv =<span class="st">  </span><span class="kw">trunc2</span>(l_pi_calc, <span class="dt">prec =</span> precision)</a>
+<a class="sourceLine" id="cb19-28" title="28">  <span class="cf">if</span> (return_as_pi) {</a>
+<a class="sourceLine" id="cb19-29" title="29">    <span class="kw">return</span>(rv)</a>
+<a class="sourceLine" id="cb19-30" title="30">  }</a>
+<a class="sourceLine" id="cb19-31" title="31">  <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb19-32" title="32">    <span class="kw">return</span>(ic)</a>
+<a class="sourceLine" id="cb19-33" title="33">  }</a>
+<a class="sourceLine" id="cb19-34" title="34"></a>
+<a class="sourceLine" id="cb19-35" title="35">}</a>
+<a class="sourceLine" id="cb19-36" title="36"></a>
+<a class="sourceLine" id="cb19-37" title="37">trunc2 &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">prec =</span> <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb19-38" title="38">  base<span class="op">::</span><span class="kw">trunc</span>(x <span class="op">*</span><span class="st"> </span><span class="dv">10</span><span class="op">^</span>prec) <span class="op">/</span><span class="st"> </span><span class="dv">10</span><span class="op">^</span>prec</a>
+<a class="sourceLine" id="cb19-39" title="39">}</a></code></pre></div>
+</div>
+<div id="the-following-for-reference-the-test-script-for-the-above-function" class="section level3">
+<h3>The following for reference – the test script for the above function</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">source</span>(<span class="st">&quot;./lab3.R&quot;</span>)</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="kw">library</span>(logging)</a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="kw">basicConfig</span>(<span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="co">#setLevel(&quot;DEBUG&quot;)</span></a>
+<a class="sourceLine" id="cb20-5" title="5"></a>
+<a class="sourceLine" id="cb20-6" title="6"><span class="kw">library</span>(testthat)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;testthat&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     matches</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">l_pi &lt;-<span class="st"> </span><span class="fl">3.141593</span></a>
+<a class="sourceLine" id="cb23-2" title="2"></a>
+<a class="sourceLine" id="cb23-3" title="3"></a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="kw">test_that</span>(<span class="st">&quot;1 match&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-5" title="5">  expected &lt;-<span class="st"> </span><span class="fl">3.00</span></a>
+<a class="sourceLine" id="cb23-6" title="6"></a>
+<a class="sourceLine" id="cb23-7" title="7">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">return_as_pi =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb23-8" title="8"></a>
+<a class="sourceLine" id="cb23-9" title="9">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-10" title="10">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-11" title="11"></a>
+<a class="sourceLine" id="cb23-12" title="12">})</a>
+<a class="sourceLine" id="cb23-13" title="13"></a>
+<a class="sourceLine" id="cb23-14" title="14"><span class="kw">test_that</span>(<span class="st">&quot;2 match&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-15" title="15">  expected &lt;-<span class="st"> </span><span class="fl">3.1</span></a>
+<a class="sourceLine" id="cb23-16" title="16"></a>
+<a class="sourceLine" id="cb23-17" title="17">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">2</span>, <span class="dt">return_as_pi =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb23-18" title="18"></a>
+<a class="sourceLine" id="cb23-19" title="19">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-20" title="20">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-21" title="21"></a>
+<a class="sourceLine" id="cb23-22" title="22">})</a>
+<a class="sourceLine" id="cb23-23" title="23"></a>
+<a class="sourceLine" id="cb23-24" title="24"></a>
+<a class="sourceLine" id="cb23-25" title="25"><span class="kw">test_that</span>(<span class="st">&quot;3 match&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-26" title="26">  expected &lt;-<span class="st"> </span><span class="fl">3.14</span></a>
+<a class="sourceLine" id="cb23-27" title="27"></a>
+<a class="sourceLine" id="cb23-28" title="28">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">return_as_pi =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb23-29" title="29"></a>
+<a class="sourceLine" id="cb23-30" title="30">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-31" title="31">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-32" title="32"></a>
+<a class="sourceLine" id="cb23-33" title="33">})</a>
+<a class="sourceLine" id="cb23-34" title="34"></a>
+<a class="sourceLine" id="cb23-35" title="35"><span class="kw">test_that</span>(<span class="st">&quot;4 match&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-36" title="36">  expected &lt;-<span class="st"> </span><span class="fl">3.141</span></a>
+<a class="sourceLine" id="cb23-37" title="37"></a>
+<a class="sourceLine" id="cb23-38" title="38">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">4</span>, <span class="dt">return_as_pi =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb23-39" title="39"></a>
+<a class="sourceLine" id="cb23-40" title="40">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-41" title="41">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-42" title="42"></a>
+<a class="sourceLine" id="cb23-43" title="43">})</a>
+<a class="sourceLine" id="cb23-44" title="44"></a>
+<a class="sourceLine" id="cb23-45" title="45"></a>
+<a class="sourceLine" id="cb23-46" title="46"><span class="kw">test_that</span>(<span class="st">&quot;5 match&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-47" title="47">  expected &lt;-<span class="st"> </span><span class="fl">3.1415</span></a>
+<a class="sourceLine" id="cb23-48" title="48"></a>
+<a class="sourceLine" id="cb23-49" title="49">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">return_as_pi =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb23-50" title="50"></a>
+<a class="sourceLine" id="cb23-51" title="51">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-52" title="52">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-53" title="53"></a>
+<a class="sourceLine" id="cb23-54" title="54">})</a>
+<a class="sourceLine" id="cb23-55" title="55"></a>
+<a class="sourceLine" id="cb23-56" title="56"><span class="kw">test_that</span>(<span class="st">&quot;6 match&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-57" title="57">  expected &lt;-<span class="st"> </span><span class="fl">3.14159</span></a>
+<a class="sourceLine" id="cb23-58" title="58"></a>
+<a class="sourceLine" id="cb23-59" title="59">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">6</span>, <span class="dt">return_as_pi =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb23-60" title="60"></a>
+<a class="sourceLine" id="cb23-61" title="61">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-62" title="62">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-63" title="63"></a>
+<a class="sourceLine" id="cb23-64" title="64">})</a>
+<a class="sourceLine" id="cb23-65" title="65"></a>
+<a class="sourceLine" id="cb23-66" title="66"></a>
+<a class="sourceLine" id="cb23-67" title="67"></a>
+<a class="sourceLine" id="cb23-68" title="68"><span class="kw">test_that</span>(<span class="st">&quot;1 match terms?&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-69" title="69">  expected &lt;-<span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb23-70" title="70"></a>
+<a class="sourceLine" id="cb23-71" title="71">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb23-72" title="72"></a>
+<a class="sourceLine" id="cb23-73" title="73">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-74" title="74">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-75" title="75"></a>
+<a class="sourceLine" id="cb23-76" title="76">})</a>
+<a class="sourceLine" id="cb23-77" title="77"></a>
+<a class="sourceLine" id="cb23-78" title="78"><span class="kw">test_that</span>(<span class="st">&quot;2 match terns&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-79" title="79">  expected &lt;-<span class="st"> </span><span class="dv">20</span></a>
+<a class="sourceLine" id="cb23-80" title="80"></a>
+<a class="sourceLine" id="cb23-81" title="81">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb23-82" title="82"></a>
+<a class="sourceLine" id="cb23-83" title="83">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-84" title="84">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-85" title="85"></a>
+<a class="sourceLine" id="cb23-86" title="86">})</a>
+<a class="sourceLine" id="cb23-87" title="87"></a>
+<a class="sourceLine" id="cb23-88" title="88"></a>
+<a class="sourceLine" id="cb23-89" title="89"><span class="kw">test_that</span>(<span class="st">&quot;3 match terms&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-90" title="90">  expected &lt;-<span class="st"> </span><span class="dv">120</span></a>
+<a class="sourceLine" id="cb23-91" title="91"></a>
+<a class="sourceLine" id="cb23-92" title="92">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb23-93" title="93"></a>
+<a class="sourceLine" id="cb23-94" title="94">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-95" title="95">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-96" title="96"></a>
+<a class="sourceLine" id="cb23-97" title="97">})</a>
+<a class="sourceLine" id="cb23-98" title="98"></a>
+<a class="sourceLine" id="cb23-99" title="99"><span class="kw">test_that</span>(<span class="st">&quot;4 match terms&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-100" title="100">  expected &lt;-<span class="st"> </span><span class="dv">1689</span></a>
+<a class="sourceLine" id="cb23-101" title="101"></a>
+<a class="sourceLine" id="cb23-102" title="102">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb23-103" title="103"></a>
+<a class="sourceLine" id="cb23-104" title="104">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-105" title="105">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-106" title="106"></a>
+<a class="sourceLine" id="cb23-107" title="107">})</a>
+<a class="sourceLine" id="cb23-108" title="108"></a>
+<a class="sourceLine" id="cb23-109" title="109"></a>
+<a class="sourceLine" id="cb23-110" title="110"><span class="kw">test_that</span>(<span class="st">&quot;5 match terms&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-111" title="111">  expected &lt;-<span class="st"> </span><span class="dv">10795</span></a>
+<a class="sourceLine" id="cb23-112" title="112"></a>
+<a class="sourceLine" id="cb23-113" title="113">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb23-114" title="114"></a>
+<a class="sourceLine" id="cb23-115" title="115">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-116" title="116">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-117" title="117"></a>
+<a class="sourceLine" id="cb23-118" title="118">})</a>
+<a class="sourceLine" id="cb23-119" title="119"></a>
+<a class="sourceLine" id="cb23-120" title="120"><span class="kw">test_that</span>(<span class="st">&quot;6 match terms&quot;</span>, {</a>
+<a class="sourceLine" id="cb23-121" title="121">  expected &lt;-<span class="st"> </span><span class="dv">136122</span></a>
+<a class="sourceLine" id="cb23-122" title="122"></a>
+<a class="sourceLine" id="cb23-123" title="123">  actual &lt;-<span class="st"> </span><span class="kw">getPi</span>(<span class="dt">n =</span> <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb23-124" title="124"></a>
+<a class="sourceLine" id="cb23-125" title="125">  <span class="kw">logdebug</span>(<span class="st">&quot;expecting %s  and actual %s&quot;</span>, expected, actual)</a>
+<a class="sourceLine" id="cb23-126" title="126">  <span class="kw">expect_equal</span>(expected, actual)</a>
+<a class="sourceLine" id="cb23-127" title="127"></a>
+<a class="sourceLine" id="cb23-128" title="128">})</a></code></pre></div>
 </div>
 
 
