@@ -1,0 +1,221 @@
+---
+title: "Lab 4 - Shawn Cicoria"
+date: "February 20 2020"
+author: "Shawn Cicoria"
+output: html_notebook
+---
+
+## 1. For the iris data set:
+> (1) How many features are numerical data? And how many are categorical data
+
+Iris data set contains 4 numerical data features (Sepal Length & Width, Petal Length & Width) and the label/class or category of Species. 
+
+```{r}
+
+data("iris")
+str(iris)
+
+```
+
+
+> (2) Make histogram for the numerical features, to see how they distribute
+
+```{r}
+par(mfrow=c(2,2))
+hist(iris$Sepal.Length, main="Sepal Length", xlab = "cm")
+hist(iris$Sepal.Width, main="Sepal Width", xlab = "cm")
+hist(iris$Petal.Length, main="Petal Length", xlab = "cm")
+hist(iris$Petal.Width, main="Petal Width", xlab = "cm")
+```
+
+> (3) Make table for the categorical features, to see how they distribute
+
+Not entirely sure what is expected here given there is 1 category with 3 possible classes, so the barplot would be flat/equal for each species as there are 50 observations for each.
+
+```{r}
+species <- table(iris$Species)
+barplot(species)
+
+```
+```{r, fig.width=10, fig.height=4}
+#mar <- par("mar")
+#mar[3:4] <- 1
+par(mfrow=c(1, 2))
+
+plot(iris$Sepal.Length, iris$Petal.Length, col = iris$Species, 
+     main="Sepal vs Petal Length", xlab = "Sepal Length", ylab = "Petal Length")
+plot(iris$Sepal.Width, iris$Petal.Width, col = iris$Species,
+     main="Sepal vs Petal Width", xlab = "Sepal Width", ylab = "Petal Width")
+
+legend("topright",legend=levels(iris$Species),col=1:3, pch=1)
+
+```
+```{r}
+library(ggplot2)
+ggplot(iris,aes(Sepal.Length,Sepal.Width,colour=Species))+geom_point()
+```
+
+
+# 2.  The data set rivers contains the lengths (in miles) of 141 major rivers in North America
+
+> (1) What proportion are less than 500 miles long?
+
+```{r}
+data("rivers")
+#str(rivers)
+
+#nrow(rivers[rivers < 500])/nrow(rivers)
+length(rivers[rivers < 500]) / length(rivers)
+
+cat(sprintf("proportion rivers < 500 miles: %f", sum(rivers < 500)/ length(rivers)))
+
+```
+
+
+> (2) What proportion are less than the mean length?
+
+```{r}
+
+cat(sprintf("proportion rivers < mean of all rivers: %f",sum(rivers < mean(rivers)) / length(rivers)))
+```
+
+
+> (3) What is the 0.75 quantile?
+
+```{r}
+
+summary(rivers)
+
+summary(rivers)[[5]]
+
+
+cat(sprintf("\n0.75 quantile: %d ", summary(rivers)[["3rd Qu."]]))
+
+```
+
+
+## 3. Fit a density estimate to the data set pi2000 (UsingR). Compare with the appropriate histogram. Why might you want to add an argument like breaks =0:10-0.5 to hist()?
+
+Using the `break` of `0:10-.5` shifts the x-axis so the bar is centered over `0` in addition to creating 10 bins -- offset by `-0.5`
+
+
+```{r}
+#data("UsingR::pi2000")
+
+pi_data <- UsingR::pi2000
+
+#par(mfrow=c(1,2))
+
+# freq = FALSE is opposite of probability = TRUE
+hist(pi_data, freq = FALSE, breaks = 0:10-.5)
+lines(density(pi_data))
+
+
+```
+
+
+## 4. The data set DDT (MASS) contains independent measurements of the pesticide
+DDT on kale. Make a histogram and a boxplot of the data. From these, estimate the mean and standard deviation. Check your answers with the appropriate functions.
+
+```{r, fig.width=10, fig.height=6}
+
+par(mfrow=c(1,2))
+ddt <- MASS::DDT
+
+hist(ddt, main="DDT in Kale")
+boxplot(ddt, main="DDT in Kale boxplot", ylim = c(2.5,4.8))
+grid(nx=NA, ny=NULL) 
+```
+
+
+#### Mean and SD guess
+
+The mean from the boxplot is somewhere just north of `3.25` as the middle of the boxplot is the `50%` (median) and there are outliers.
+
+For the SD guess, we have an IQR of `3.3 -  3.1 = 0.2`. Normally we can guess that the `75%` of that IQR is the SD. So, the guess is `SD = 0.15`
+
+> From https://handbook-5-1.cochrane.org/chapter_7/7_7_3_5_mediansand_interquartile_ranges.htm  -- where they use `1/1.35` which is approx `75%`
+
+Clearly, this guess didn't work.
+
+
+```{r}
+ddt_mean=mean(ddt)
+ddt_sd=sd(ddt)
+cat(sprintf("mean: %f   and standard deviation %f\n\n", ddt_mean, ddt_sd))
+summary(ddt)
+IQR(ddt)
+```
+
+
+
+
+## 5. It can be illuminating to view two different graphics of the same data set at once.
+A simple way to stack graphics is to specify that a figure will contain two graphics by using the command
+```
+> par(mfrow=c(2,1) # 2 rows, 1 column for graphic figures
+```
+Then, if x is the data set, the commands
+
+```
+> hist(x)
+> boxplot(x, horizontal=TRUE)
+
+```
+
+### will produce stacked graphics. (The graphics device will remain divided until you change it back with a command such as par (mfrow=c(1, 1)) or close the device.) 
+
+### For the data set lawsuits (UsingR), make stacked graphics of lawsuits and log (lawsuits). Could you have guessed where the middle 50% of the data would have been without the help of the boxplot?
+
+
+In general, it would be impossible without using a logarithmec transformation of the data in order to bring it to a normal distribution
+
+```{r, fig.width=10}
+
+law_suites <- UsingR::lawsuits
+
+par(mfrow=c(2,2))
+
+hist(law_suites, main="Histogram Lawsuits")
+boxplot(law_suites, main="boxplot Lawsuites")
+
+hist(log(law_suites), main="Histogram log(lawsuites)")
+boxplot(log(law_suites), main="Boxplot log(Lawsuits")
+
+```
+
+
+
+## 6. Let sex = c(1,1,1,1,2,2,2,2,2,2); smoking = c(1,0,1,0,1,0,0,0,1,1); age=c(31:40) in R. A data frame is constructed as zz = data.frame(sex, smoking, age). Give the results of following R commands:
+
+> 1)	apply(zz[-1,], 2, min)
+
+for all but first row (subset), find the minimum of each column
+
+
+> 2)	zz[zz[,3]>35,]
+
+where the third column is greater than 35, print subset that item, and return all columns.
+
+> 3)	zz[order(zz["smoking"], zz["age"]),  ]
+
+sort zz by smoking, then age, then return all rows, columns 
+
+> 4)	subset(zz, zz["sex"]==1)
+
+slice out (subset) only rows where sex == 1, return all columns
+
+> 5)	tapply(zz$age, zz$smoking, max)
+
+find the max of both age and smoking, then return as single row all columns
+
+**i got this wrong as it just returns the max of the two columns and that's it**
+
+
+> 6)	apply(zz[,-3], 1, function(x){ sum(x) })
+
+dropping the `age` column (index 3), then on each row (MARGIN=1), sum each column left - so sum sex and smoking 
+
+**i got this wrong, as MARGIN=2 would've done what I expressed. Instead this sums each row across for just sex and smoking -- so a way to aggregate rows cross columns**
+
+
