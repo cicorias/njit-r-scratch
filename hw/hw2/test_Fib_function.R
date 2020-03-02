@@ -1,4 +1,4 @@
-source("./hw1_functions.R")
+source("./Fib.R")
 
 
 library(logging)
@@ -40,6 +40,11 @@ test_that("3 gets 2", {
   expect_equal(actual, expect)
 })
 
+test_that("4 gets 3", {
+  expect <- 3
+  actual <- Fib(4)
+  expect_equal(actual, expect)
+})
 
 test_that("8 gets 21", {
   expect <- 21

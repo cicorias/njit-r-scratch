@@ -1,4 +1,4 @@
-source("./hw1_functions.R")
+source("./Partition.R")
 
 
 library(logging)
