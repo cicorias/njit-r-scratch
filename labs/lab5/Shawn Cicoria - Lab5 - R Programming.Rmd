@@ -1,0 +1,205 @@
+---
+title: "Shawn Cicoria - Lab 5 - R Programming"
+author: "Shawn Cicoria"
+date: "March 2 2020"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+# Question 1 - How many of each cause of Homicide?
+
+> Function `count`
+
+```{r}
+library(logging)
+getLogger()
+
+count <- function(cause = NULL, file_name = 'homicides.txt') {
+
+  valid_cause <- c("asphyxiation", "blunt force", "other", "shooting", "stabbing", "unknown")
+
+  if ( is.null(cause)) {
+    stop('argument for parameter cause is NULL')
+  }
+
+  if (  !(cause %in% valid_cause)) {
+    stop('invalid cause provided')
+  }
+
+  if ( !(file.exists(file_name))) {
+    stop('cannot find file: ' + file_name)
+  }
+
+  s2 <- CapStr(cause)
+
+  homicides <- readLines(file_name)
+  pattern <- paste("[cC]ause:", s2)
+
+  logdebug("pattern is: %s", pattern)
+
+  g <- grep(pattern, homicides, )
+
+  rv <- length(g)
+  logdebug("length is %d", rv)
+  return(rv)
+
+
+}
+
+
+# from https://rstudio-pubs-static.s3.amazonaws.com/408658_512da947714740b99253228f084a08a9.html
+CapStr <- function(y) {
+  c <- strsplit(y, " ")[[1]]
+
+  c_both = paste("[", tolower(substring(c, 1,1)),
+                 toupper(substring(c, 1,1)),
+                 "]", substring(c, 2),
+                 sep="", collapse=" ")
+
+}
+
+
+```
+
+
+#### Some example output
+```{r}
+count("other")
+
+count("unknown")
+
+try(count(), silent = F) # throws exception / stop
+
+```
+
+\pagebreak
+# Question 2 - Age of homicide victims?
+
+> Function `agecount`
+
+
+```{r}
+library(logging)
+getLogger()
+
+agecount <- function(age = NULL, file_name = 'homicides.txt') {
+
+  if ( is.null(age)) {
+    stop('argument for parameter age is NULL')
+  }
+
+  if ( !(file.exists(file_name))) {
+    stop('cannot find file: ' + file_name)
+  }
+
+  homicides <- readLines(file_name)
+
+  pattern <- "([0-9]+) years old</dd>"
+
+  r <- regexec(pattern, homicides)
+  m <-regmatches(homicides, r)
+
+  ages <- sapply(m, function(x) x[2])
+
+  f <- ages[ !is.na(ages) & ages == age]
+  return(length(f))
+
+}
+
+
+```
+
+#### Some example output
+
+```{r}
+
+agecount(3)
+agecount(21)
+agecount(17)
+agecount(20)
+
+try(agecount(), silent = FALSE)
+
+```
+
+
+\pagebreak
+## Appendix: Test Scripts using `testthat` library
+
+
+```{r}
+source("./count.R")
+source("./agecount.R")
+
+library(logging)
+basicConfig(20)
+setLevel("DEBUG")
+
+library(testthat)
+
+#agecount test
+
+test_that("agecount 17 year olds", {
+  expect <- 37
+  actual <- agecount(age = 17, file_name = 'homicides.txt')
+  expect_equal(actual, expect)
+})
+
+test_that("agecount 20 year olds", {
+  expect <- 58
+  actual <- agecount(age = 20, file_name = 'homicides.txt')
+  expect_equal(actual, expect)
+})
+
+
+
+test_that("null throws error", {
+  expect_error(agecount())
+})
+
+test_that("null throws error", {
+  expect_error(agecount(age = NULL))
+})
+
+
+test_that("invalid file", {
+  expect_error(agecount(age = 17, file_name = 'foobar.txt'))
+})
+
+
+#count tests
+test_that("null throws error", {
+  expect_error(count())
+})
+
+test_that("null throws error", {
+  expect_error(count(cause = NULL))
+})
+
+
+test_that("invalid file", {
+  expect_error(count(cause = 'other', file_name = 'foobar.txt'))
+})
+
+test_that("count 'shooting' causes", {
+  expect <- 1003
+  actual <- count(cause = 'shooting', file_name = 'homicides.txt')
+  expect_equal(actual, expect)
+})
+
+test_that("count 'other' causes", {
+  expect <- 6
+  actual <- count(cause = 'other', file_name = 'homicides.txt')
+  expect_equal(actual, expect)
+})
+
+test_that("count 'unknown' causes", {
+  expect <- 10
+  actual <- count(cause = 'unknown', file_name = 'homicides.txt')
+  expect_equal(actual, expect)
+})
+
+```
+
