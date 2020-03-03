@@ -28,8 +28,6 @@ test_that("pivot at 6", {
     expected1 <- c(1,5,3,6,4,2)
     expected2 <- c(7, 9, 10, 8)
     actual <- Partition(p, t)
-
-    
     expect_equal(expected1, actual[[1]])
     expect_equal(expected2, actual[[2]])
 })

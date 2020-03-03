@@ -52,3 +52,9 @@ test_that("8 gets 21", {
   expect_equal(actual, expect)
 })
 
+test_that("100 gets 354224848179261915075", {
+  expect <- 354224848179261915075
+  actual <- Fib(100)
+  expect_equal(actual, expect)
+})
+

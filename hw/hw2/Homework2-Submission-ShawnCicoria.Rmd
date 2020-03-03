@@ -1,0 +1,430 @@
+---
+title: "Shawn Cicoria - Homework 2 - R Programming"
+author: "Shawn Cicoria"
+date: "March 3 2020"
+output:
+  html_document:
+    df_print: paged
+email: sc2443@njit.edu
+---
+
+## Question 1 - function F(x)
+
+Implement the following:
+
+
+
+$$f(x)= \begin{cases}
+    \frac{5}{(x-1)^2},& \text{if } x\lt 1\\
+    2,                & \text{if } x= 1\\
+    \frac{5}{(x-1)^3},& \text{if } x\gt 1\\
+\end{cases}
+$$
+
+
+```{r}
+library(logging)
+getLogger()
+
+F <- function(x) {
+
+  if (x < 1) {
+    rv <- 5 / (x - 1)^2
+    return(rv)
+  }
+
+  if (x == 1) {
+    return(2)
+  }
+
+  if (x > 1) {
+    rv <- 5 / (x - 1)^3
+    return(rv)
+  }
+
+
+}
+
+```
+
+
+### Sample Test output
+
+```{r}
+F(1)
+F(10)
+F(0.3)
+```
+
+
+\pagebreak
+
+## Question 2 - Implement Fibonacci generator
+
+
+```{r}
+library(logging)
+getLogger()
+
+
+# more efficient using memoization
+Fib <- function(x) {
+
+  if (x < 1) {
+    stop("x value must be integer, or greater than equal to 1")
+  }
+  mem <- c()
+  for(i in 1:x) {
+    if (i == 0) {
+      mem[i] <- 0
+    }
+    else if (i <= 2) {
+      mem[i] = 1
+    }
+    else {
+      mem[i] = mem[i - 1] + mem[i - 2]
+    }
+  }
+
+  return(mem[x])
+}
+
+
+Fib2 <- function(x) {
+
+  #horribly ineficient - dynamic programming would be better
+  if (x < 1) {
+    stop("x value must be integer, or greater than equal to 1")
+  }
+
+  if (x <= 2) return(1)
+
+  rv <- Fib(x - 1) + Fib(x - 2)
+  return(rv)
+}
+```
+
+### Test Fib() output
+
+
+
+```{r}
+Fib(1)
+Fib(2)
+Fib(100)
+
+```
+
+\pagebreak
+
+## Question 3 - Merge vectors in order
+
+```{r}
+library(logging)
+getLogger()
+
+Merge <- function(s1, s2) {
+  # if (length(s1) != length(s2)) {
+  #     stop("vectors are not of equal length")
+  # }
+
+  ctr <- 0
+  # make some large max ctr for circuit breaking
+  max_loop <- (length(s1) + length(s2)) * 2
+  lhs <- rhs <- 1
+  lhs_length <- length(s1)
+  rhs_length <- length(s2)
+
+  rv <- c()
+
+  repeat {
+    if (s1[lhs] <= s2[rhs]) {
+      rv <- c(rv, s1[lhs])
+      lhs <- lhs + 1
+    }
+    else {
+      rv <- c(rv, s2[rhs])
+      rhs <- rhs + 1
+    }
+
+    if (lhs > lhs_length || rhs > rhs_length){
+      # we have ran out on either lhs or rhs
+      break
+    }
+
+    #circuit breaker
+    ctr <- ctr + 1
+    if (ctr > max_loop){
+      stop("we hit the circuit breaker")
+    }
+  }
+
+
+  # lingering items in LHS (s1)
+  if(lhs <= lhs_length) {
+    rv <- c(rv, s1[lhs:lhs_length])
+  }
+
+
+  # lingering items in RHS (s2)
+  if(rhs <= rhs_length) {
+    rv <- c(rv, s2[rhs:rhs_length])
+  }
+  
+  return(rv)
+}
+
+```
+
+
+### Merge sample output
+
+```{r}
+Merge(seq(1, 50, by=3), seq(2, 30, by=2))
+
+```
+
+\pagebreak
+
+## Question 4 - Partition function
+
+```{r}
+library(logging)
+getLogger()
+
+Partition <- function(pivot, vect) {
+  s1 <- vect[vect <= pivot]
+  s2 <- vect[vect > pivot]
+
+  return(list(s1, s2))
+}
+
+#naive non idiomatic R implementation
+Partition1 <- function(pivot, vect) {
+  
+  s1 <- c()
+  s2 <- c()
+  
+  for(i in 1:length(vect)) {
+    logdebug("i is: %s", i)
+    logdebug("vect[i]: %s", vect[i])
+    if (vect[i] <= pivot) {
+      s1 <- c(s1, c(vect[i]))
+    }
+    else {
+      s2 <- c(s2, c(vect[i]))
+    }
+  }
+
+
+  logdebug("s1: %s", s1)
+  logdebug("s2: %s", s2)
+  rv <- list(s1, s2)
+  return(rv)
+}
+
+
+```
+
+### Partition sample output
+
+```{r}
+Partition(50, sample(1:100, 100, replace = FALSE ) )
+```
+
+
+
+## Appendix - source for Test Scripts
+
+### F() tests
+
+```
+source("./F.R")
+
+
+library(logging)
+basicConfig(20)
+setLevel("DEBUG")
+
+library(testthat)
+
+# F tests
+
+test_that("zero gets 5", {
+  expect <- 5
+  actual <- F(0)
+  expect_equal(actual, expect)
+})
+
+test_that("1 gets 2", {
+  expect <- 2
+  actual <- F(1)
+  expect_equal(actual, expect)
+})
+
+
+test_that("2 gets 5", {
+  expect <- 5
+  actual <- F(2)
+  expect_equal(actual, expect)
+})
+
+
+test_that("3 gets 5/8", {
+  expect <- 5/8
+  actual <- F(3)
+  expect_equal(actual, expect)
+})
+
+
+```
+
+### Fib() tests
+
+```
+source("./Fib.R")
+
+
+library(logging)
+basicConfig(20)
+setLevel("DEBUG")
+
+library(testthat)
+
+# The Fibonacci sequence 1, 1, 2, 3, 5, 8, 13, 21…… starts with two 1s, and each term
+# afterwards is the sum of its two predecessors. Please write a function, Fib(n), which
+# takes n as the input parameter. It will return the n-th number in the Fibonacci
+# sequence.
+# Fib tests
+
+test_that("zero gets STOP", {
+  expect_error(Fib(0))
+})
+
+
+test_that("-1 gets STOP", {
+  expect_error(Fib(-1))
+})
+
+test_that("1 gets 1", {
+  expect <- 1
+  actual <- Fib(1)
+  expect_equal(actual, expect)
+})
+
+test_that("2 gets 1", {
+  expect <- 1
+  actual <- Fib(2)
+  expect_equal(actual, expect)
+})
+
+test_that("3 gets 2", {
+  expect <- 2
+  actual <- Fib(3)
+  expect_equal(actual, expect)
+})
+
+test_that("4 gets 3", {
+  expect <- 3
+  actual <- Fib(4)
+  expect_equal(actual, expect)
+})
+
+test_that("8 gets 21", {
+  expect <- 21
+  actual <- Fib(8)
+  expect_equal(actual, expect)
+})
+
+test_that("100 gets 354224848179261915075", {
+  expect <- 354224848179261915075
+  actual <- Fib(100)
+  expect_equal(actual, expect)
+})
+
+
+```
+
+### Merge() tests
+
+```
+source("./Merge.R")
+
+
+library(logging)
+basicConfig(20)
+setLevel("DEBUG")
+
+library(testthat)
+
+test_that("merge s1 s2", {
+
+    s1 <- c(1,3,5,7)
+    s2 <- c(2,4,6,10)
+
+    expected <- c(1,2,3,4,5,6,7,10)
+    actual <- Merge(s1, s2)
+
+    
+    expect_equal(expected, actual)
+})
+
+
+# test_that("unequal lengths throws stop errors", {
+
+#     s1 <- c(1,3,5,7)
+#     s2 <- c(2,4,6,8,10)
+
+#     expect_error(Merge(s1, s2))
+# })
+
+test_that("merge s1 s2 diff lengths", {
+
+    s1 <- c(1,3,5,7)
+    s2 <- c(2,4,6,8, 10)
+
+    expected <- c(1,2,3,4,5,6,7,8, 10)
+    actual <- Merge(s1, s2)
+
+    expect_equal(expected, actual)
+})
+
+test_that("merge s1 s2 lots of extra in s1", {
+
+    s1 <- c(1,3,5,7, 9, 11, 13, 14)
+    s2 <- c(2,4,6,8,10)
+
+    expected <- c(1,2,3,4,5,6,7,8,9,10,11,13,14)
+    actual <- Merge(s1, s2)
+
+    expect_equal(expected, actual)
+})
+
+```
+
+### Partition() tests
+
+```
+source("./Partition.R")
+
+
+library(logging)
+basicConfig(20)
+setLevel("DEBUG")
+
+library(testthat)
+
+
+
+test_that("pivot at 6", {
+
+    t <-  c(1, 5, 3, 7, 9, 6, 4, 2, 10, 8)
+    p <- 6
+
+    expected1 <- c(1,5,3,6,4,2)
+    expected2 <- c(7, 9, 10, 8)
+    actual <- Partition(p, t)
+    expect_equal(expected1, actual[[1]])
+    expect_equal(expected2, actual[[2]])
+})
+```

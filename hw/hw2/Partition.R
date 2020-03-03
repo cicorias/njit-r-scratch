@@ -1,9 +1,7 @@
 library(logging)
 getLogger()
 
-
-
-Parition <- function(pivot, vect) {
+Partition <- function(pivot, vect) {
   s1 <- vect[vect <= pivot]
   s2 <- vect[vect > pivot]
 
