@@ -32,29 +32,22 @@ Merge <- function(s1, s2) {
 
     #circuit breaker
     ctr <- ctr + 1
-    if (ctr > max_loop) break
+    if (ctr > max_loop){
+      stop("we hit the circuit breaker")
+    }
   }
 
 
-  logdebug("lhs: %d   lhs_length: %s", lhs, lhs_length)
-  logdebug("rhs: %d   rhs_length: %s", rhs, rhs_length)
-
   # lingering items in LHS (s1)
   if(lhs <= lhs_length) {
-    logdebug("draining lhs: %s", s1[lhs:lhs_length])
     rv <- c(rv, s1[lhs:lhs_length])
   }
 
 
   # lingering items in RHS (s2)
   if(rhs <= rhs_length) {
-    logdebug("draining rhs: %s", s2[rhs:rhs_length])
     rv <- c(rv, s2[rhs:rhs_length])
   }
-
-  logdebug("final thing %s", rv)
-
+  
   return(rv)
-
-
 }

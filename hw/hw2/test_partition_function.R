@@ -18,3 +18,17 @@ library(testthat)
 # List = Partition(Pivot, Vect);
 # List[[1]] is c(1,5,3,4,2, 6) and List[[2]] is c(7, 9, 10, 8).
 # Note that Partition returns a list.
+
+
+test_that("pivot at 6", {
+
+    t <-  c(1, 5, 3, 7, 9, 6, 4, 2, 10, 8)
+    p <- 6
+
+    expected1 <- c(1,5,3,4,2, 6)
+    expected2 <- c(7, 9, 10, 8)
+    actual <- Partition(p, t)
+
+    
+    expect_equal(expected1, actual[[1]])
+})
