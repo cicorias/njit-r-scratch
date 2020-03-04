@@ -1,34 +1,26 @@
 library(logging)
 getLogger()
 
-Partition <- function(pivot, vect) {
-  s1 <- vect[vect <= pivot]
-  s2 <- vect[vect > pivot]
 
-  return(list(s1, s2))
-}
+Partition <- function(pivot, vect)
+{
 
-#naive non idiomatic R implementation
-Partition1 <- function(pivot, vect) {
-  
-  s1 <- c()
-  s2 <- c()
-  
-  for(i in 1:length(vect)) {
-    logdebug("i is: %s", i)
-    logdebug("vect[i]: %s", vect[i])
-    if (vect[i] <= pivot) {
-      s1 <- c(s1, c(vect[i]))
-    }
-    else {
-      s2 <- c(s2, c(vect[i]))
-    }
+  pivot_element <- vect[pivot]
+  all_other <- vect[-pivot]
+
+  if ( anyNA(pivot_element)) {
+    stop("invalid pivot")
   }
 
+  if ( anyNA(all_other)) {
+    stop("invalid vector or pivot")
+  }
+    
+  lhs <- all_other[all_other < pivot_element]
+  rhs <- all_other[all_other >= pivot_element]
+  rv <- list( c(lhs, pivot_element), rhs)
 
-  logdebug("s1: %s", s1)
-  logdebug("s2: %s", s2)
-  rv <- list(s1, s2)
   return(rv)
+
 }
 
