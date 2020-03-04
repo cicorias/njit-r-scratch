@@ -1656,7 +1656,7 @@ getLogger()</code></pre>
 ## [1] &quot;&quot;
 ## Field &quot;handlers&quot;:
 ## $basic.stdout
-## &lt;environment: 0x00000000139bb9f8&gt;
+## &lt;environment: 0x0000000013de0b38&gt;
 ## 
 ## Field &quot;level&quot;:
 ## INFO 
@@ -1664,7 +1664,7 @@ getLogger()</code></pre>
 ## Field &quot;msg_composer&quot;:
 ## function () 
 ## NULL
-## &lt;bytecode: 0x0000000014a243d8&gt;</code></pre>
+## &lt;bytecode: 0x0000000014234500&gt;</code></pre>
 <pre class="r"><code>F &lt;- function(x) {
 
   if (x &lt; 1) {
@@ -1703,7 +1703,7 @@ getLogger()</code></pre>
 ## [1] &quot;&quot;
 ## Field &quot;handlers&quot;:
 ## $basic.stdout
-## &lt;environment: 0x00000000139bb9f8&gt;
+## &lt;environment: 0x0000000013de0b38&gt;
 ## 
 ## Field &quot;level&quot;:
 ## INFO 
@@ -1711,7 +1711,7 @@ getLogger()</code></pre>
 ## Field &quot;msg_composer&quot;:
 ## function () 
 ## NULL
-## &lt;bytecode: 0x0000000014a243d8&gt;</code></pre>
+## &lt;bytecode: 0x0000000014234500&gt;</code></pre>
 <pre class="r"><code># more efficient using memoization
 Fib &lt;- function(x) {
 
@@ -1767,7 +1767,7 @@ getLogger()</code></pre>
 ## [1] &quot;&quot;
 ## Field &quot;handlers&quot;:
 ## $basic.stdout
-## &lt;environment: 0x00000000139bb9f8&gt;
+## &lt;environment: 0x0000000013de0b38&gt;
 ## 
 ## Field &quot;level&quot;:
 ## INFO 
@@ -1775,7 +1775,7 @@ getLogger()</code></pre>
 ## Field &quot;msg_composer&quot;:
 ## function () 
 ## NULL
-## &lt;bytecode: 0x0000000014a243d8&gt;</code></pre>
+## &lt;bytecode: 0x0000000014234500&gt;</code></pre>
 <pre class="r"><code>Merge &lt;- function(s1, s2) {
   # if (length(s1) != length(s2)) {
   #     stop(&quot;vectors are not of equal length&quot;)
@@ -1843,7 +1843,7 @@ getLogger()</code></pre>
 ## [1] &quot;&quot;
 ## Field &quot;handlers&quot;:
 ## $basic.stdout
-## &lt;environment: 0x00000000139bb9f8&gt;
+## &lt;environment: 0x0000000013de0b38&gt;
 ## 
 ## Field &quot;level&quot;:
 ## INFO 
@@ -1851,48 +1851,46 @@ getLogger()</code></pre>
 ## Field &quot;msg_composer&quot;:
 ## function () 
 ## NULL
-## &lt;bytecode: 0x0000000014a243d8&gt;</code></pre>
-<pre class="r"><code>Partition &lt;- function(pivot, vect) {
-  s1 &lt;- vect[vect &lt;= pivot]
-  s2 &lt;- vect[vect &gt; pivot]
+## &lt;bytecode: 0x0000000014234500&gt;</code></pre>
+<pre class="r"><code>Partition &lt;- function(pivot, vect)
+{
 
-  return(list(s1, s2))
-}
+  pivot_element &lt;- vect[pivot]
+  all_other &lt;- vect[-pivot]
 
-#naive non idiomatic R implementation
-Partition1 &lt;- function(pivot, vect) {
-  
-  s1 &lt;- c()
-  s2 &lt;- c()
-  
-  for(i in 1:length(vect)) {
-    logdebug(&quot;i is: %s&quot;, i)
-    logdebug(&quot;vect[i]: %s&quot;, vect[i])
-    if (vect[i] &lt;= pivot) {
-      s1 &lt;- c(s1, c(vect[i]))
-    }
-    else {
-      s2 &lt;- c(s2, c(vect[i]))
-    }
+  if ( anyNA(pivot_element)) {
+    stop(&quot;invalid pivot&quot;)
   }
 
+  if ( anyNA(all_other)) {
+    stop(&quot;invalid vector or pivot&quot;)
+  }
+    
+  lhs &lt;- all_other[all_other &lt; pivot_element]
+  rhs &lt;- all_other[all_other &gt;= pivot_element]
+  rv &lt;- list( c(lhs, pivot_element), rhs)
 
-  logdebug(&quot;s1: %s&quot;, s1)
-  logdebug(&quot;s2: %s&quot;, s2)
-  rv &lt;- list(s1, s2)
   return(rv)
+
 }</code></pre>
 <div id="partition-sample-output" class="section level3">
 <h3>Partition sample output</h3>
-<pre class="r"><code>Partition(50, sample(1:100, 100, replace = FALSE ) )</code></pre>
+<pre class="r"><code>Partition(6, c(1, 5, 3, 7, 9, 6, 4, 2, 10, 8))</code></pre>
 <pre><code>## [[1]]
-##  [1] 39 20 19 23 15 40 12 17 38  4 37 44 32 18 14 30 10  9 45  3  2  7 43 31 41
-## [26] 50  5  1 25 11 42 36 34 16 33 22 24 21  6 47 29 35 26 48 28 46 27 13  8 49
+## [1] 1 5 3 4 2 6
 ## 
 ## [[2]]
-##  [1]  63  75  95  90  93  55  72  69  68  87  74  71  80  78  66  96  89  62  54
-## [20]  91  70  64  99  92  56  98  65  58  51  57  97  84  77  94  81  85  53  52
-## [39]  73  61  76  83  82  88  79  67 100  59  60  86</code></pre>
+## [1]  7  9 10  8</code></pre>
+<pre class="r"><code>Partition(50, sample(1:100, 100, replace = FALSE ) )</code></pre>
+<pre><code>## [[1]]
+##  [1]  9  5 15 12  4 10 14  6 11  7 13  2  3  8  1 16
+## 
+## [[2]]
+##  [1]  47  92  41  66  85  58  24  81  38  64  67  43  59  26  75  74  48  72  36
+## [20]  70  22  42  61  44 100  63  21  32  31  78  82  39  65  84  46  98  57  23
+## [39]  33  79  83  80  53  35  73  60  50  28  49  93  86  71  87  94  25  27  97
+## [58]  88  37  19  99  91  68  56  34  89  96  90  77  54  76  69  51  52  30  18
+## [77]  17  95  55  20  40  62  45  29</code></pre>
 </div>
 </div>
 <div id="appendix---source-for-test-scripts" class="section level2">
@@ -2061,26 +2059,36 @@ test_that(&quot;merge s1 s2 lots of extra in s1&quot;, {
 <h3>Partition() tests</h3>
 <pre><code>source(&quot;./Partition.R&quot;)
 
-
 library(logging)
 basicConfig(20)
 setLevel(&quot;DEBUG&quot;)
 
 library(testthat)
 
-
-
 test_that(&quot;pivot at 6&quot;, {
 
-    t &lt;-  c(1, 5, 3, 7, 9, 6, 4, 2, 10, 8)
+    t &lt;- c(1, 5, 3, 7, 9, 6, 4, 2, 10, 8)
     p &lt;- 6
 
-    expected1 &lt;- c(1,5,3,6,4,2)
+    expected1 &lt;- c(1,5,3,4,2, 6)
     expected2 &lt;- c(7, 9, 10, 8)
-    actual &lt;- Partition(p, t)
+    actual &lt;- Partition(6, c(1, 5, 3, 7, 9, 6, 4, 2, 10, 8) )
+
+    # logdebug(&quot;actual: %s&quot;, actual)
     expect_equal(expected1, actual[[1]])
     expect_equal(expected2, actual[[2]])
-})</code></pre>
+})
+
+
+test_that(&quot;1 item vector6&quot;, {
+
+    t &lt;- c(9)
+    p &lt;- 3
+
+    expect_error(Partition(p, t))
+})
+
+</code></pre>
 </div>
 </div>
 

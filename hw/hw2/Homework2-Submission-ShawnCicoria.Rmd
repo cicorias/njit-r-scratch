@@ -189,46 +189,41 @@ Merge(seq(1, 50, by=3), seq(2, 30, by=2))
 ## Question 4 - Partition function
 
 ```{r}
+
 library(logging)
 getLogger()
 
-Partition <- function(pivot, vect) {
-  s1 <- vect[vect <= pivot]
-  s2 <- vect[vect > pivot]
 
-  return(list(s1, s2))
-}
+Partition <- function(pivot, vect)
+{
 
-#naive non idiomatic R implementation
-Partition1 <- function(pivot, vect) {
-  
-  s1 <- c()
-  s2 <- c()
-  
-  for(i in 1:length(vect)) {
-    logdebug("i is: %s", i)
-    logdebug("vect[i]: %s", vect[i])
-    if (vect[i] <= pivot) {
-      s1 <- c(s1, c(vect[i]))
-    }
-    else {
-      s2 <- c(s2, c(vect[i]))
-    }
+  pivot_element <- vect[pivot]
+  all_other <- vect[-pivot]
+
+  if ( anyNA(pivot_element)) {
+    stop("invalid pivot")
   }
 
+  if ( anyNA(all_other)) {
+    stop("invalid vector or pivot")
+  }
+    
+  lhs <- all_other[all_other < pivot_element]
+  rhs <- all_other[all_other >= pivot_element]
+  rv <- list( c(lhs, pivot_element), rhs)
 
-  logdebug("s1: %s", s1)
-  logdebug("s2: %s", s2)
-  rv <- list(s1, s2)
   return(rv)
-}
 
+}
 
 ```
 
 ### Partition sample output
 
 ```{r}
+
+Partition(6, c(1, 5, 3, 7, 9, 6, 4, 2, 10, 8))
+
 Partition(50, sample(1:100, 100, replace = FALSE ) )
 ```
 
@@ -407,24 +402,34 @@ test_that("merge s1 s2 lots of extra in s1", {
 ```
 source("./Partition.R")
 
-
 library(logging)
 basicConfig(20)
 setLevel("DEBUG")
 
 library(testthat)
 
-
-
 test_that("pivot at 6", {
 
-    t <-  c(1, 5, 3, 7, 9, 6, 4, 2, 10, 8)
+    t <- c(1, 5, 3, 7, 9, 6, 4, 2, 10, 8)
     p <- 6
 
-    expected1 <- c(1,5,3,6,4,2)
+    expected1 <- c(1,5,3,4,2, 6)
     expected2 <- c(7, 9, 10, 8)
-    actual <- Partition(p, t)
+    actual <- Partition(6, c(1, 5, 3, 7, 9, 6, 4, 2, 10, 8) )
+
+    # logdebug("actual: %s", actual)
     expect_equal(expected1, actual[[1]])
     expect_equal(expected2, actual[[2]])
 })
+
+
+test_that("1 item vector6", {
+
+    t <- c(9)
+    p <- 3
+
+    expect_error(Partition(p, t))
+})
+
+
 ```

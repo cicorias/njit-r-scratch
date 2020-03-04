@@ -21,12 +21,10 @@ test_that("pivot at 6", {
 })
 
 
+test_that("1 item vector6", {
 
+    t <- c(9)
+    p <- 3
 
-# test_that("1 item vector6", {
-
-#     t <- c(9)
-#     p <- 3
-
-#     expect_error(Partition(p, t))
-# })
+    expect_error(Partition(p, t))
+})
