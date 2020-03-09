@@ -1,0 +1,62 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+$ P(AFR|CC)  = \frac{P(AFR \cap CC)}{P(CC)}$
+
+
+https://districtdatalabs.silvrback.com/conditional-probability-with-r
+
+https://campus.datacamp.com/courses/helsinki-social-statistics/subsets-and-conditions?ex=7
+
+
+
+
+
+```{r}
+
+dice <- function(no_of_rolls=1){
+  x <- sample(1:6, size=no_of_rolls, replace=TRUE)
+  y <- sample(1:6, size=no_of_rolls, replace=TRUE)
+  return(cbind(x,y))
+}
+
+set.seed(20485)
+rolls <- as.data.frame(dice(100000))
+
+library(plyr)
+freq_table <- ddply(rolls, ~x, summarize,
+                    y1=sum(y==1), y2=sum(y==2), y3= sum(y==3),
+                    y4 = sum(y==4), y5=sum(y==5), y6=sum(y==6))
+
+row.names(freq_table) <- paste0('x',1:6)
+prob_table <- freq_table[,-1]/100000
+prob_table
+
+
+```
+
+
+```{r}
+
+prob_x <- table(rolls$x)/100000
+prob_y <- table(rolls$y)/100000
+
+prob_table_indep <- outer(prob_x,prob_y,'*')
+row.names(prob_table_indep) <- paste0('x',1:6)
+colnames(prob_table_indep) <- paste0('y',1:6)
+prob_table_indep
+
+
+```
+
+
+
+```{r}
+chisq.test(rolls$x, rolls$y)
+
+```
+
