@@ -4,7 +4,7 @@ getLogger()
 library(httr)
 library(xml2)
 
-nih_site_base <- "https://www.ncbi.nlm.nih.gov" 
+nih_site_base <- "https://www.ncbi.nlm.nih.gov"
 nih_site_url <- "https://www.ncbi.nlm.nih.gov/pmc/journals/1440/"
 
 # entry point for script / program
@@ -24,10 +24,10 @@ get_articles <- function(start_year = 2019) {
 
 find_issue_path <- function(issues, start_year) {
   # result from find_all_issues is used
-  tmp <- lapply(issues, 
+  tmp <- lapply(issues,
       function(x)
         if(grepl(start_year, x)) paste(nih_site_base, attr(x[["a"]], 'href'), sep = "") )
-      
+
   rv0 <- unlist(tmp)
   return( rv0 )
 }

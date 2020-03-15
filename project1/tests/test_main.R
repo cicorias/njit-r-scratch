@@ -1,4 +1,4 @@
-source("./main.R")
+source("../main.R")
 
 library(logging)
 basicConfig(level = 10)
@@ -35,7 +35,7 @@ test_that("get all issues", {
   #print(result$output)
 
   issues_to_scrape <- find_issue_path(s2, 2010)
-  print(issues_to_scrape)
+  #print(issues_to_scrape)
   expect_equal(length(issues_to_scrape), 4)
 
 })

@@ -2,6 +2,7 @@
 # Check if packages installed:
 
  c("rvest", "xml2") %in% rownames(installed.packages())
+
  
 
 
