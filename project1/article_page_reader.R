@@ -5,7 +5,12 @@ library('rvest')
 library('xml2')
 
 
-get_issue_articles <-function(url = 'https://www.ncbi.nlm.nih.gov/pmc/issues/341378/') {
+get_issue_articles <-function(url = NULL) {
+
+  if (is.null(url)) {
+   stop("invalid url provided")
+  }
+
   article_xml <- read_html(url)
 
   xpath <- '//*[contains(concat( " ", @class, " " ), concat( " ", "links", " " ))]'
@@ -26,7 +31,11 @@ find_article_path <- function(articles) {
 }
 
 
-read_article_page <- function(url = 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6726162/?report=classic') {
+read_article_page <- function(url = NULL) {
+  if (is.null(url)) {
+    stop("url not provided")
+  }
+
   a2 <- read_html(url)
 
   title <- a2 %>%
