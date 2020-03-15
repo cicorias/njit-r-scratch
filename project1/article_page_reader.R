@@ -74,6 +74,19 @@ read_article_page <- function(url = NULL) {
   abstract <- full_text[1]
   rest_of_text <- full_text[-1]
 
-  return(keyword_text)
+
+  rv <- data.frame(
+    url = url,
+    title = title,
+    authors = paste(authors, collapse = '|'),
+    author_affiliations = paste(author_affiliations, collapse = '|'),
+    correspondence = paste(corr_author, collapse = '|'),
+    correspondence_email = paste(corr_author_email, collapse = '|'),
+    publish_date = publish_date,
+    full_text = paste(full_text, collapse = '|'),
+    keywords = paste(keyword_text, collapse = '|')
+  )
+
+  return(rv)
 
 }

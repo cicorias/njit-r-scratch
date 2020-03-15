@@ -7,12 +7,12 @@ basicConfig(level = 10)
 library(testthat)
 
 test_that("year < 1998 gets STOP", {
-  expect_error(get_articles(start_year = 0))
+  expect_error(get_issues(start_year = 0))
 })
 
 
 test_that("year < 1998 gets STOP no parm ID", {
-  expect_error(get_articles(0))
+  expect_error(get_issues(0))
 })
 
 test_that("invalid page not 200", {

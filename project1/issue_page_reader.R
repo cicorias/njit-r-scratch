@@ -8,7 +8,7 @@ nih_site_base <- "https://www.ncbi.nlm.nih.gov"
 nih_site_url <- "https://www.ncbi.nlm.nih.gov/pmc/journals/1440/"
 
 # entry point for script / program
-get_articles <- function(start_year = 2019) {
+get_issues <- function(start_year = 2019) {
   # top level entry point
   if (start_year < 1998) {
     stop('invalid year - must be 1998 - 2019')
