@@ -30,8 +30,12 @@ test_that("get all issues", {
 
   expect_gte(length(s2), 49)
 
-  result <- evaluate_promise(parse_all_issues(s2), print = TRUE)
-  print(result$message)
-  print(result$output)
+  #result <- evaluate_promise(parse_all_issues(s2, 2010), print = TRUE)
+  #print(result$message)
+  #print(result$output)
+
+  issues_to_scrape <- find_issue_path(s2, 2010)
+  print(issues_to_scrape)
+  expect_equal(length(issues_to_scrape), 4)
 
 })

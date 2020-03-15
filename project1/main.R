@@ -4,30 +4,12 @@ getLogger()
 library(httr)
 library(xml2)
 
-# functions that based upon a YEAR parameter -- retrieves
-# articles from a pre-determined website.
+nih_site_base <- "https://www.ncbi.nlm.nih.gov" 
+nih_site_url <- "https://www.ncbi.nlm.nih.gov/pmc/journals/1440/"
 
-# Given an input year, yourobjective is to extract all articles
-# published in/after that year from your selected journal.
-#
-# As astartpoint, you are required  to  extract  the
-# following 9 fields for each article:
-# Title,  Authors,  Author  Affiliations, Correspondence
-# Author, Correspondence Author's Email, Publish Date,
-# Abstract, Keywords, Full Paper (Text format)
-
-# https://www.ncbi.nlm.nih.gov/pmc/journals/1440/
-  #http://xpather.com/
-
-#  http://xpather.com/HLuFhCgv
-#  //*[contains(concat( " ", @class, " " ), concat( " ", "issues-cell", " " ))]
-
-## better
-# //*[contains(concat( " ", @class, " " ), concat( " ", "iss-cell", " " ))]
-
-
+# entry point for script / program
 get_articles <- function(start_year = 2019) {
-
+  # top level entry point
   if (start_year < 1998) {
     stop('invalid year - must be 1998 - 2019')
   }
@@ -35,40 +17,29 @@ get_articles <- function(start_year = 2019) {
   main_results <- parse_main_page()
   issues <- find_all_issue(main_results)
 
-  parse_all_issues(issues)
+  issues_to_scrape <- find_issue_path(issues, start_year)
 
-
-  return(0)
+  return(issues_to_scrape)
 }
 
-parse_all_issues <- function(issues) {
-
-  for(i in 1:49) {# length(issues)) {
-
-    ele <- issues[[i]][["a"]]
-    print(ele[[4]])
-    print(attr(ele, 'href'))
-    #ele <- issues[[i]]$a[[4]] 
-    #print()
-    #attr(d, 'href')
-  }
-
+find_issue_path <- function(issues, start_year) {
+  # result from find_all_issues is used
+  tmp <- lapply(issues, 
+      function(x)
+        if(grepl(start_year, x)) paste(nih_site_base, attr(x[["a"]], 'href'), sep = "") )
+      
+  rv0 <- unlist(tmp)
+  return( rv0 )
 }
 
 
 find_all_issue <- function(xml_thing) {
-  #expecting -- this is output from parse_main_page below
-  #> class(ro)
-  #[1] "xml_document" "xml_node"
-
+  # result from parse_main_page is used.
   rv <- xml_find_all(xml_thing, '//*[contains(concat( " ", @class, " " ), concat( " ", "iss-cell", " " ))]')
-
-  #rv <- xml_find_all(xml_thing, '//*[contains(concat( " ", @class, " " ), concat( " ", "arc-issue", " " ))]')
   return(as_list(rv))
-
 }
 
-parse_main_page <- function(uri = "https://www.ncbi.nlm.nih.gov/pmc/journals/1440/" ) {
+parse_main_page <- function(uri = nih_site_url ) {
 
   r <- GET(uri)
 
