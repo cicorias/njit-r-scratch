@@ -1,4 +1,4 @@
-source("../main.R")
+source("../issue_page_reader.R")
 
 library(logging)
 basicConfig(level = 10)
