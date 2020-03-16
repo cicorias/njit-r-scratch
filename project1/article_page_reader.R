@@ -77,15 +77,15 @@ read_article_page <- function(url = NULL) {
 
   rv <- data.frame(
     url = url,
-    title = title,
-    authors = paste(authors, collapse = '|'),
-    author_affiliations = paste(author_affiliations, collapse = '|'),
-    correspondence = paste(corr_author, collapse = '|'),
-    correspondence_email = paste(corr_author_email, collapse = '|'),
-    publish_date = publish_date,
-    abstract = paste(abstract, collapse = '|'),
-    full_text = paste(rest_of_text, collapse = '|'),
-    keywords = paste(keyword_text, collapse = '|'),
+    title = gsub('\n', ' ', title),
+    authors =  gsub('\n', ' ', paste(authors, collapse = '|')),
+    author_affiliations = gsub('\n', ' ', paste(author_affiliations, collapse = '|')),
+    correspondence = gsub('\n', ' ', paste(corr_author, collapse = '|')),
+    correspondence_email = gsub('\n', ' ', paste(corr_author_email, collapse = '|')),
+    publish_date = gsub('\n', ' ', publish_date),
+    abstract  = gsub('\n', '  ', paste(abstract, collapse = '|')),
+    full_text = gsub('\n', '  ', paste(rest_of_text, collapse = '|')),
+    keywords = gsub('\n', ' ', paste(keyword_text, collapse = '|')),
     stringsAsFactors=FALSE
   )
 
