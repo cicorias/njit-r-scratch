@@ -3,6 +3,7 @@ getLogger()
 
 library('rvest')
 library('xml2')
+library('stringr')
 
 
 get_issue_articles <-function(url = NULL) {
@@ -75,20 +76,46 @@ read_article_page <- function(url = NULL) {
   rest_of_text <- full_text[-1]
 
 
+  clean_string <- function(s) {
+
+    str_rv <- "#### COULD NOT CLEAN ####"
+
+    separator = ';'
+    crlf = '[\r\n]'
+    replacement = ' '
+
+    #try2 ({
+      str_rv <- str_replace_all(paste(s, collapse = ';'), '[\r\n]', ' ')
+    #})
+
+    return(str_rv)
+
+  }
+
+
   rv <- data.frame(
     url = url,
-    title = gsub('\n', ' ', title),
-    authors =  gsub('\n', ' ', paste(authors, collapse = '|')),
-    author_affiliations = gsub('\n', ' ', paste(author_affiliations, collapse = '|')),
-    correspondence = gsub('\n', ' ', paste(corr_author, collapse = '|')),
-    correspondence_email = gsub('\n', ' ', paste(corr_author_email, collapse = '|')),
-    publish_date = gsub('\n', ' ', publish_date),
-    abstract  = gsub('\n', '  ', paste(abstract, collapse = '|')),
-    full_text = gsub('\n', '  ', paste(rest_of_text, collapse = '|')),
-    keywords = gsub('\n', ' ', paste(keyword_text, collapse = '|')),
+    title = clean_string(title),
+    authors =  clean_string(authors),
+    author_affiliations = clean_string(author_affiliations),
+    correspondence = clean_string(corr_author),
+    correspondence_email = clean_string(corr_author_email),
+    publish_date = clean_string(publish_date),
+    keywords = clean_string(keyword_text),
+    abstract  = clean_string(abstract),
+    full_text = clean_string(rest_of_text),
+
     stringsAsFactors=FALSE
   )
 
   return(rv)
 
+}
+
+try2 <- function(code, silent = FALSE) {
+  tryCatch(code, error = function(c) {
+    msg <- conditionMessage(c)
+    if (!silent) message(c)
+    invisible(structure(msg, class = "try-error"))
+  })
 }

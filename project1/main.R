@@ -1,3 +1,17 @@
+# Main entry point for script.
+
+## Run with just a 4 digit year as a parameter, and file
+
+
+
+# a precheck on required packages outside normal R core
+needed_packages <- c("logging", "xml2", "httr", "rvest", "stringr")
+packages_installed <- needed_packages %in% rownames(installed.packages())
+
+if (!all(packages_installed))
+  stop(paste('missing some needed packages check if all installed: ', paste(needed_packages,packages_installed, collapse = ';')))
+
+
 library(logging)
 getLogger()
 
@@ -13,7 +27,7 @@ nih_site_url <- "https://www.ncbi.nlm.nih.gov/pmc/journals/1440/"
 
 
 
-retrieve_all_content <- function(year = NULL) {
+retrieve_all_content <- function(year = NULL, file_path = './articles.csv') {
   if (is.null(year)) {
     stop("invalid year")
   }
@@ -35,32 +49,33 @@ retrieve_all_content <- function(year = NULL) {
                    keywords  = character(),
                    stringsAsFactors=FALSE)
 
+
+  max_items <- 5
+  ctr <- 0
+
   for (i in 1:length(issues)) {
-    current_url <- issues[1]
+    current_url <- issues[i]
     issue_articles <- get_issue_articles(url = current_url)
 
     azzz <- find_article_path(issue_articles)
 
     for(a in 1:length(azzz)) {
-      #print(azzz[a])
       df1 <- read_article_page(url = azzz[a])
 
-      #print(df1)
-
       rv <- rbind(rv, df1)
-      #rv <- df1
 
-      #break
-      #write.csv2(df1, file = 'foobar.csv', append = T)
-      # using rbind instead?
-      #merge(rv, df1)
+      #if (ctr > max_items) break
+      ctr <- ctr + 1
     }
-    #break
+
   }
 
 
-  return(rv)
+  if (!is.null(file_path)) {
+    write.table(rv, file_path, row.names = FALSE, sep = '|')
+  }
 
+  return(rv)
 
 }
 
