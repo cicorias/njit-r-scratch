@@ -83,8 +83,10 @@ read_article_page <- function(url = NULL) {
     correspondence = paste(corr_author, collapse = '|'),
     correspondence_email = paste(corr_author_email, collapse = '|'),
     publish_date = publish_date,
-    full_text = paste(full_text, collapse = '|'),
-    keywords = paste(keyword_text, collapse = '|')
+    abstract = paste(abstract, collapse = '|'),
+    full_text = paste(rest_of_text, collapse = '|'),
+    keywords = paste(keyword_text, collapse = '|'),
+    stringsAsFactors=FALSE
   )
 
   return(rv)

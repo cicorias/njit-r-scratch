@@ -24,7 +24,16 @@ retrieve_all_content <- function(year = NULL) {
 
   issues <- get_issues(year)
 
-  rv <- data.frame()
+  rv <- data.frame(url     = character(),
+                   title   = character(),
+                   authors = character(),
+                   author_affiliations = character(),
+                   correspondence = character(),
+                   correspondence_email = character(),
+                   publish_date = character(),
+                   full_text = character(),
+                   keywords  = character(),
+                   stringsAsFactors=FALSE)
 
   for (i in 1:length(issues)) {
     current_url <- issues[1]
@@ -36,16 +45,21 @@ retrieve_all_content <- function(year = NULL) {
       #print(azzz[a])
       df1 <- read_article_page(url = azzz[a])
 
-      print(df1)
+      #print(df1)
 
+      rv <- rbind(rv, df1)
+      #rv <- df1
+
+      #break
       #write.csv2(df1, file = 'foobar.csv', append = T)
       # using rbind instead?
       #merge(rv, df1)
     }
+    #break
   }
 
 
-
+  return(rv)
 
 
 }
