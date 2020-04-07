@@ -1,15 +1,166 @@
 ---
-title: "R Notebook"
-output: html_notebook
+title: "Shawn Cicoria - Lab 6 - R Programming"
+author: "Shawn Cicoria"
+date: "April 5 2020"
+output:
+  html_document:
+    df_print: paged
 ---
+
 
 Download the Allstate Claims Severity training data file from kaggle. 
 
-1. Do hierarchical clustering of the samples using the numeric features, and retrieve the two largest clusters. Then for each of these two clusters, find out how many samples with `loss > the median loss`; and how many with `loss < the median loss`.
-2. Do `k-means` clustering of the samples using the numeric features, by setting `k=2`. Then for each of these two clusters, find out how many samples with `loss > the median loss`; and how many with `loss < the median loss`.
-3. Do `PCA` of the datausing the numeric features and use the first two `PCs` to represent a sample and re-do Question 1 and Question 2. Also generate barplot of the variance of the **first five PCs**. Hint: use prcomp function in R
+# Question 1
+> Do hierarchical clustering of the samples using the numeric features, and retrieve the two largest clusters. Then for each of these two clusters, find out how many samples with `loss > the median loss`; and how many with `loss < the median loss`.
+
+
+```{r}
+getwd()
+```
+
+
+```{r}
+
+normalize <- function(x) {
+  (x - min(x)) / (max(x) - min(x))
+}
+
+
+getwd()
+library(readr)
+#the following masks hclust from stats package.
+library(fastcluster)
+
+#claims_train <- read_csv("./data/train.csv")
+
+claims_train <- read.csv('./data/train.csv')
+
+# sanity check for missing values:
+
+any(is.na(claims_train))
+
+## obtain continuous numeric features
+
+claims_train_numeric_flags <- unlist(lapply(claims_train, is.numeric))
+claims_train_numeric_flags['id'] <- FALSE
+claims_train_numeric_flags['loss'] <- FALSE
+
+#JUST the numeric features.
+claims_train_cont <- claims_train[claims_train_numeric_flags]
+
+
+### BTW, this does not work...
+claims_scaled <- scale(claims_train_cont)
+#claims_normal <- normalize(claims_train_cont)
+
+# grab the labels for convenience
+claims_labels <- claims_train$loss
+
+```
+
+
+```
+# fastcluster::hclust.vector does the same as this:
+
+dist_mat <- dist(x, method = 'euclidean')
+   hclust(dist_mat, method = 'single')
+```
+
+
+```{r}
+
+
+#system.time(
+# {claims_hclust <- hclust.vector(claims_scaled)}
+#)
+
+#save(claims_hclust, './hclust.dat')
+
+getwd()
+load('./hclust.dat')
 
 
 
+```
 
+```{r}
+
+library(dplyr)
+groups <- cutree(claims_hclust, k = 2)
+loss_median <- median(claims_labels)
+
+with_labels <- data.frame(claims_labels, groups)
+
+group_1_less <- with_labels %>% filter( with_labels$groups == 1 & with_labels$claims_labels < loss_median )
+group_1_more <- with_labels %>% filter( with_labels$groups == 1 & with_labels$claims_labels > loss_median )
+group_2_more <- with_labels %>% filter( with_labels$groups == 2 & with_labels$claims_labels > loss_median )
+group_2_less <- with_labels %>% filter( with_labels$groups == 2 & with_labels$claims_labels < loss_median )
+
+
+```
+
+```{r}
+
+print(paste("median loss: ", loss_median))
+
+print(paste("group 1 less: ", nrow(group_1_less)))
+print(paste("group 1 more: ", nrow(group_1_more)))
+print(paste("group 2 less: ", nrow(group_2_less)))
+print(paste("group 2 more: ", nrow(group_2_more)))
+```
+
+\newpage
+
+# Question 2
+> Do `k-means` clustering of the samples using the numeric features, by setting `k=2`. Then for each of these two clusters, find out how many samples with `loss > the median loss`; and how many with `loss < the median loss`.
+
+
+```{r}
+
+
+claims_kclust <- kmeans(claims_scaled, 2)
+
+
+
+library(dplyr)
+
+loss_median <- median(claims_labels)
+
+with_labels2 <- data.frame(claims_labels, claims_kclust$cluster)
+
+group_1_less2 <- with_labels2 %>% filter( with_labels2$claims_kclust.cluster == 1 & with_labels$claims_labels < loss_median )
+group_1_more2 <- with_labels2 %>% filter( with_labels2$claims_kclust.cluster == 1 & with_labels$claims_labels > loss_median )
+group_2_more2 <- with_labels2 %>% filter( with_labels2$claims_kclust.cluster == 2 & with_labels$claims_labels > loss_median )
+group_2_less2 <- with_labels2 %>% filter( with_labels2$claims_kclust.cluster == 2 & with_labels$claims_labels < loss_median )
+
+
+print(paste("median loss: ", loss_median))
+
+print(paste("group 1 less: ", nrow(group_1_less2)))
+print(paste("group 1 more: ", nrow(group_1_more2)))
+print(paste("group 2 less: ", nrow(group_2_less2)))
+print(paste("group 2 more: ", nrow(group_2_more2)))
+```
+
+\pagebreak
+
+# Question 3
+> Do `PCA` of the data using the numeric features and use the first two `PCs` to represent a sample and re-do Question 1 and Question 2. Also generate barplot of the variance of the **first five PCs**. Hint: use prcomp function in R
+
+```{r}
+
+pca_res <- prcomp(claims_train_cont, scale=TRUE)
+
+summary(pca_res)
+
+```
+
+
+```{r}
+
+var_explained_proportion <- pca_res$sdev^2 /sum(pca_res$sdev^2)
+
+#barplot(pca_res$sdev[1:5], main="Standard Deviation", sub = "First 5 PCA", xlab="std dev", ylab = "pca")
+barplot(var_explained_proportion[1:5], main="var_explained_proportion", sub = "First 5 PCA", xlab="std dev", ylab = "pca")
+```
 
