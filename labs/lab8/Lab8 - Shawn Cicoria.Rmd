@@ -1,0 +1,29 @@
+---
+title: "Lab 8 - Shawn Cicoria"
+date: "April 14 2020"
+author: "Shawn Cicoria"
+output: html_notebook
+---
+
+## Setup
+Download the winequality-red_binary.csv file from Canvas
+
+## Classification
+### Question 1 
+- Use the first half of the training data (rows) to train a Logistic Regression model to make prediction for the independent variable “quality_bin”, and then
+- Test on the second half of the training data
+
+> Q: What is the classification error you obtain? 
+
+> Q: What is the AUC of the testing? 
+
+- Make a ROC curve of it.
+
+### Question 2
+- Conduct 5-fold cross-validation using the entire training data to estimate the classification error
+> Q: Is it larger or smaller than the classification error you obtain in (1)? 
+
+> Q: Which one will be closer to the true classification error of your classifier do you think?
+
+
+
