@@ -48,8 +48,8 @@ if(!file.exists(data_file)){
 
 
 wine_red <- read_csv("./winequality-red_binary.csv", 
-    col_types = cols(quality_bin = col_integer(),
-                     row = col_skip()))
+    col_types = cols(row = col_skip(),
+                     quality_bin = col_factor(levels = c("0", "1"))))
 
 
 ```
@@ -78,16 +78,19 @@ for(i in 1:11) {
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(corrplot)
 # i add back in quality_bin to see what features are 
 # highly correlated to quality.
-correlations <- cor(wine_red[,1:12])
+
+corr_set <- wine_red[,-12]
+corr_set$quality_bin <- as.numeric(as.character(wine_red$quality_bin))
+correlations <- cor(corr_set)
 corrplot(correlations, method="circle")
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ##pairs(wine_red, col=wine_red$quality_bin)
 library(dplyr)
 
@@ -150,7 +153,7 @@ summary(trained_model)
 ```{r}
 p_out_prob <- predict(trained_model, test_data[,-12], type = "response")
 
-summary(p_out)
+summary(p_out_prob)
 ```
 
 ```{r}
@@ -159,17 +162,20 @@ summary(p_out)
 # this is a vector of prediction probability
 p_out_prob <- predict(trained_model, test_data, type = "response")
 
-summary(p_out)
+summary(p_out_prob)
 ```
 
 
 ```{r}
+library(dplyr)
 p_out <- data.frame(prediction = if_else(p_out_prob < 0.5, 0, 1), quality_bin = test_data[,12])
 
 
 p_out$correct <- p_out$prediction == p_out$quality_bin
 head(p_out)
 ```
+
+## Classification Errors:
 
 ```{r}
 # classification error:
@@ -183,17 +189,91 @@ cat('\n\nConfusion matrix....\n')
 table(p_out$prediction, test_data$quality_bin)
 ```
 
-```{r}
+
+## Area Under Curve (AUC)
+
+```{r message=FALSE, warning=FALSE}
+library(ROCR)
 pred_2 <- predict(trained_model, test_data, type = "response")
 pred_3 <- prediction(pred_2, test_data$quality_bin)
 
-roc_perf <- performance(pred_3, measure = "tpr", x.measure = "fpr")
-plot(roc_perf, colorize = TRUE)
-abline(a=0, b= 1)
-
 auc_perf <- performance(pred_3, measure = "auc")
 
-#print("AUC: ", auc_perf@y.values)
+title_s <- paste("AUC: ", auc_perf@y.name, ":", auc_perf@y.values[[1]])
+
+roc_perf <- performance(pred_3, measure = "tpr", x.measure = "fpr")
+
+
+plot(roc_perf, colorize = TRUE)
+abline(a=0, b= 1)
+title('Receiver operating characteristic (ROC)')
+#mtext(title_s, side=1)
+s_s <- round(auc_perf@y.values[[1]],5)
+legend("center", legend = s_s, pch=1, title= "AUC")
+
+```
+
+
+### Question 2
+- Conduct 5-fold cross-validation using the entire training data to estimate the classification error
+> Q: Is it larger or smaller than the classification error you obtain in (1)? 
+
+### Response: Turns out that it was "larger" classificatin error with the 5 folds using entire dataset. What I had noticed first however is if I justed the exact same train_data set and then same test_data set I ended up with the same classification error.
+
+> Q: Which one will be closer to the true classification error of your classifier do you think?
+
+#### I would think that the 5 fold would be closer.
+
+
+```{r}
+
+library(caret)
+
+
+trained_model_cross_5 <- train(
+                          quality_bin ~ .,
+                          data = wine_red, 
+                          method = 'glm', 
+                          family = binomial, 
+                          trControl = trainControl(method = 'cv', number = 5))
+
+summary(trained_model_cross_5)
+
+```
+
+
+```{r}
+
+## OK, so with this trained model, normally it outputs a 2 column data.frame
+## with columns of each possible outcome (class) -- but, I only need the probabilty 
+## of "class == 1" as that was my factors 0 or 1.  So, the 2nd column
+## this is nuances and differences in the R ecosystem amongst different libraries as well.
+p_out_prob_cross <- predict(trained_model_cross_5, wine_red, type = "prob")[,2]
+
+summary(p_out_prob_cross)
+
+p_out_cross <- data.frame(prediction = if_else(p_out_prob_cross < 0.5, 0, 1), quality_bin = wine_red[,12])
+
+
+p_out_cross$correct <- p_out_cross$prediction == p_out_cross$quality_bin
+head(p_out_cross)
+
+```
+
+
+
+```{r}
+
+
+# classification error:
+
+cat('classification error: ', 1 - sum(p_out_cross$correct) / (sum(p_out_cross$correct) + sum(!p_out_cross$correct) ))
+
+cat('\nclassification error: ', mean(p_out_cross$prediction != p_out_cross$quality_bin))
+
+cat('\n\nConfusion matrix....\n')
+
+table(p_out_cross$prediction, wine_red$quality_bin)
 
 ```
 
